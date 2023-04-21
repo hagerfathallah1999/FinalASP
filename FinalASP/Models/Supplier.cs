@@ -1,12 +1,17 @@
-﻿namespace FinalASP.Models
+﻿using System.ComponentModel.DataAnnotations;
+namespace FinalASP.Models
 {
     public class Supplier
     {
+        [Key]
         public int id {  get; set; }
-        public string name { get; set; }
-        public string Location { get; set; }
-        public string Capacity { get; set; }
-        public ICollection<SupplierMartials> SupplierMartials { get; set; } = new List<SupplierMartials>();
+        [Required(ErrorMessage = "This field is Required")]
+        public string name { get; set; } = string.Empty;
+        [Required(ErrorMessage = "This field is Required")]
+        public string Location { get; set; } = string.Empty;
+        [Required(ErrorMessage = "This field is Required")]
+        public string Capacity { get; set; } = string.Empty;
+        public ICollection<SupplierMatrial> SupplierMatrials { get; set; } = new List<SupplierMatrial>();
 
     }
 }

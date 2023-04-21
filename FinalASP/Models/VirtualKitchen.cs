@@ -16,7 +16,7 @@ namespace FinalASP.Models
         [Required(ErrorMessage = "This field is Required")]
         public double Phone { get; set; }
         public string Domain { get; set; } = string.Empty;
-        public ICollection<Reservations> Reservations { get; set; } = new List<Reservations>();
+        public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
 
     }
 }

@@ -1,4 +1,5 @@
 using FinalASP.Models;
+using FinalASP.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Principal;
@@ -18,8 +19,21 @@ namespace FinalASP
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
 
+            });
             //
+            builder.Services.AddScoped<IDeliveryCompanyRepository, DeliveryCompanyRepository>();
+            builder.Services.AddScoped<IKitchenRepository, KitchenRepository>();
+            builder.Services.AddScoped<IPhysicalKitchenRepository, PhysicalKitchenRepository>();
+            builder.Services.AddScoped<IPhysicalOrderListRepository, PhysicalOrderListRepository>();
+            builder.Services.AddScoped<IPhysicalOrderRepository, PhysicalOrderRepository>();
+            builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
+            builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
+            builder.Services.AddScoped<IVirtualKitchenRepository, VirtualKitchenRepository>();
+            builder.Services.AddScoped<IVirtualOrderRepository, VirtualOrderRepository>();
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {

@@ -18,7 +18,7 @@ namespace FinalASP.Models
         public double Phone { get; set; }
         public string Domain { get; set; } = string.Empty;
         public ICollection<Kitchen> OwnedKitchens { get; set; } = new List<Kitchen>();
-        public ICollection<Reservations> Reservations { get; set; } = new List<Reservations>();
+        public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
 
     }
 }

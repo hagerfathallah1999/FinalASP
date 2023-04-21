@@ -2,7 +2,7 @@
 
 namespace FinalASP.Models
 {
-    public class Reservations
+    public class Reservation
     {
         [Key]
         public int id {  get; set; }
@@ -20,7 +20,7 @@ namespace FinalASP.Models
         public VirtualKitchen VirtualKitchen { get; set; }
         public PhysicalKitchen PhysicalKitchen { get; set; }
         public Kitchen kitchen { get; set; }
-        public ICollection<VirtualOrders> VirtualOrders { get; set; } = new List<VirtualOrders>();
+        public ICollection<VirtualOrder> VirtualOrders { get; set; } = new List<VirtualOrder>();
 
     }
 }
