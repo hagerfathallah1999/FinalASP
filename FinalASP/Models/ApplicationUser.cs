@@ -4,5 +4,6 @@ namespace FinalASP.Models
 {
     public class ApplicationUser : IdentityUser
     {
+
     }
 }

@@ -116,7 +116,7 @@ namespace FinalASP.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("DeliveryCompanys");
+                    b.ToTable("DeliveryCompanys", (string)null);
                 });
 
             modelBuilder.Entity("FinalASP.Models.Kitchen", b =>
@@ -163,7 +163,7 @@ namespace FinalASP.Migrations
 
                     b.HasIndex("PhysicalKitchenId");
 
-                    b.ToTable("Kitchens");
+                    b.ToTable("Kitchens", (string)null);
                 });
 
             modelBuilder.Entity("FinalASP.Models.PhysicalKitchen", b =>
@@ -199,7 +199,7 @@ namespace FinalASP.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PhysicalKitchens");
+                    b.ToTable("PhysicalKitchens", (string)null);
                 });
 
             modelBuilder.Entity("FinalASP.Models.PhysicalOrder", b =>
@@ -235,7 +235,7 @@ namespace FinalASP.Migrations
 
                     b.HasIndex("PhysicalOrderListID");
 
-                    b.ToTable("PhysicalOrders");
+                    b.ToTable("PhysicalOrders", (string)null);
                 });
 
             modelBuilder.Entity("FinalASP.Models.PhysicalOrderList", b =>
@@ -256,7 +256,7 @@ namespace FinalASP.Migrations
 
                     b.HasIndex("PhysicalKitchenID");
 
-                    b.ToTable("PhysicalOrderLists");
+                    b.ToTable("PhysicalOrderLists", (string)null);
                 });
 
             modelBuilder.Entity("FinalASP.Models.Reservation", b =>
@@ -296,7 +296,7 @@ namespace FinalASP.Migrations
 
                     b.HasIndex("kitchenID");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Reservations", (string)null);
                 });
 
             modelBuilder.Entity("FinalASP.Models.Supplier", b =>
@@ -321,7 +321,7 @@ namespace FinalASP.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Suppliers");
+                    b.ToTable("Suppliers", (string)null);
                 });
 
             modelBuilder.Entity("FinalASP.Models.SupplierMatrial", b =>
@@ -353,7 +353,7 @@ namespace FinalASP.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("SupplierMatrials");
+                    b.ToTable("SupplierMatrials", (string)null);
                 });
 
             modelBuilder.Entity("FinalASP.Models.VirtualKitchen", b =>
@@ -389,7 +389,7 @@ namespace FinalASP.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("VirtualKitchens");
+                    b.ToTable("VirtualKitchens", (string)null);
                 });
 
             modelBuilder.Entity("FinalASP.Models.VirtualOrder", b =>
@@ -425,7 +425,7 @@ namespace FinalASP.Migrations
 
                     b.HasIndex("ReservationID");
 
-                    b.ToTable("VirtualOrders");
+                    b.ToTable("VirtualOrders", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -13,7 +13,7 @@ namespace FinalASP
             var builder = WebApplication.CreateBuilder(args);
             //
             builder.Services.AddDbContext<CloudKitchenContext>(options =>
-            options.UseNpgsql(builder.Configuration.GetConnectionString("G"))
+            options.UseNpgsql(builder.Configuration.GetConnectionString("cs"))
             );
             //
 
