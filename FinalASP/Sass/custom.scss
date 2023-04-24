@@ -1,0 +1,16 @@
+$gold-clr: #D4AF37;
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+
+$custom-theme-colors:
+    (
+    "gold-clr": #D4AF37
+    );
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
