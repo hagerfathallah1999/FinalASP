@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FinalASP.Controllers
 {
-    public class SupplierController : Controller
+
+    public class SupplierMatrialController : Controller
     {
         IDeliveryCompanyRepository DeliveryCompanyRepo;
         IKitchenRepository IKitchenRepo;
@@ -15,11 +16,12 @@ namespace FinalASP.Controllers
         ISupplierRepository ISupplierRepo;
         IVirtualKitchenRepository IVirtualKitchenRepo;
         IVirtualOrderRepository IVirtualOrderRepo;
+        ISupplierMatrialRepository ISupplierMatrialRepo;
 
-        public SupplierController(IDeliveryCompanyRepository _DeliveryCompanyRepo, IKitchenRepository _IKitchenRepo,
+        public SupplierMatrialController(IDeliveryCompanyRepository _DeliveryCompanyRepo, IKitchenRepository _IKitchenRepo,
             IVirtualOrderRepository _IVirtualOrderRepo, IVirtualKitchenRepository _IVirtualKitchenRepo, ISupplierRepository _ISupplierRepo,
             IReservationRepository _IReservationRepo, IPhysicalOrderRepository _IPhysicalOrderRepo,
-            IPhysicalOrderListRepository _IPhysicalOrderListRepo, IPhysicalKitchenRepository _IPhysicalKitchenRepo)
+            IPhysicalOrderListRepository _IPhysicalOrderListRepo, IPhysicalKitchenRepository _IPhysicalKitchenRepo, ISupplierMatrialRepository _ISupplierMatrialRepo)
         {
             DeliveryCompanyRepo = _DeliveryCompanyRepo;
             IKitchenRepo = _IKitchenRepo;
@@ -28,15 +30,15 @@ namespace FinalASP.Controllers
             IPhysicalOrderRepo = _IPhysicalOrderRepo;
             IReservationRepo = _IReservationRepo;
             ISupplierRepo = _ISupplierRepo;
+            ISupplierMatrialRepo = _ISupplierMatrialRepo;
             IVirtualKitchenRepo = _IVirtualKitchenRepo;
             IVirtualOrderRepo = _IVirtualOrderRepo;
         }
 
         public IActionResult Index()
         {
-            List<Supplier> SupplierModel = ISupplierRepo.GetAll();
-            return View("Index", SupplierModel);
+            List<SupplierMatrial> SupplierMatrialModel = ISupplierMatrialRepo.GetAll();
+            return View("Index", SupplierMatrialModel);
         }
-        
     }
 }

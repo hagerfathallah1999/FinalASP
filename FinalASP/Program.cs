@@ -34,6 +34,7 @@ namespace FinalASP
             builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
             builder.Services.AddScoped<IVirtualKitchenRepository, VirtualKitchenRepository>();
             builder.Services.AddScoped<IVirtualOrderRepository, VirtualOrderRepository>();
+            builder.Services.AddScoped<ISupplierMatrialRepository, SupplierMatrialRepository>();
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {

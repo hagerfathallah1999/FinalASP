@@ -2,7 +2,7 @@
 
 namespace FinalASP.Repositories
 {
-    public class SupplierMatrialRepository
+    public class SupplierMatrialRepository : ISupplierMatrialRepository
     {
         CloudKitchenContext context;
         public SupplierMatrialRepository(CloudKitchenContext _context)
