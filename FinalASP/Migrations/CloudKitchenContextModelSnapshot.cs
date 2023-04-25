@@ -314,31 +314,23 @@ namespace FinalASP.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
-                    b.Property<string>("capacity")
+                    b.Property<string>("Capacity")
                         .IsRequired()
                         .HasColumnType("text");
 
-<<<<<<< HEAD
-                    b.Property<string>("location")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("logo")
-=======
                     b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Location")
->>>>>>> 82d4cb6c90041d464a3f186854068f2fd09bf8aa
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("logo")
                         .IsRequired()
                         .HasColumnType("text");
 

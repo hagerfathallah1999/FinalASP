@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     [DbContext(typeof(CloudKitchenContext))]
-    [Migration("20230425023809_mariaaaam")]
-    partial class mariaaaam
+    [Migration("20230425130432_mariameditttinggg")]
+    partial class mariameditttinggg
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -317,19 +317,23 @@ namespace FinalASP.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
-                    b.Property<string>("capacity")
+                    b.Property<string>("Capacity")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("location")
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("logo")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -353,6 +357,10 @@ namespace FinalASP.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<double>("Price")
                         .HasColumnType("double precision");

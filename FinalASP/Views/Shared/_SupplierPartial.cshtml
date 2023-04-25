@@ -16,15 +16,22 @@
                         <div asp-validation-summary="All" class="text-danger"></div>
 
                         <div class="form-outline mb-4">
-                            <label for="name" class="form-label">Name</label>
-                            <input asp-for="name" class="form-control form-control-lg" id="name" />
-                            <span asp-validation-for="name" class="text-danger"></span>
+                            <label for="CompanyName" class="form-label">CompanyName</label>
+                            <input asp-for="CompanyName" class="form-control form-control-lg" id="CompanyName" />
+                            <span asp-validation-for="CompanyName" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-outline mb-4">
+                            <label for="Username" class="form-label">Username</label>
+                            <input asp-for="Username" class="form-control form-control-lg" id="Username" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
                         </div>
 
                         <div class="form-outline mb-4">
-                            <label for="location" class="form-label">Location</label>
-                            <input asp-for="location" class="form-control form-control-lg" id="location" />
-                            <span asp-validation-for="location" class="text-danger"></span>
+                            <label for="Location" class="form-label">Location</label>
+                            <input asp-for="Location" class="form-control form-control-lg" id="Location" />
+                            <span asp-validation-for="Location" class="text-danger"></span>
                         </div>
 
                         <div class="form-outline mb-4">
@@ -32,14 +39,19 @@
                             <input asp-for="phone" class="form-control form-control-lg" id="phone" />
                             <span asp-validation-for="phone" class="text-danger"></span>
                         </div>
+                                                <div class="form-outline mb-4">
+                            <label for="CompanyName" class="form-label">CompanyName</label>
+                            <input asp-for="CompanyName" class="form-control form-control-lg" id="CompanyName" />
+                            <span asp-validation-for="CompanyName" class="text-danger"></span>
+                        </div>
 
                         <div class="form-outline mb-4">
-                            <label for="capacity" class="form-label">Capacity</label>
-                            <select asp-for="capacity" class="form-select form-select-lg" id="capacity">
+                            <label for="Capacity" class="form-label">Capacity</label>
+                            <select asp-for="Capacity" class="form-select form-select-lg" id="Capacity">
                                 <option value="Retail">Retail</option>
                                 <option value="Wholesaler">Wholesaler</option>
                             </select>
-                            <span asp-validation-for="capacity" class="text-danger"></span>
+                            <span asp-validation-for="Capacity" class="text-danger"></span>
                         </div>
 
                         <div class="form-outline mb-4">
@@ -55,7 +67,7 @@
                         </div>
                         <div class="form-outline mb-4">
                             <label for="logo" class="form-label">Logo</label>
-                            <input type="file" asp-for="logo" class="form-control form-control-lg" id="logo" accept="images/*" />
+                            <input type="file" asp-for="logo" class="form-control form-control-lg" id="logo"/>
                         </div>
 
                         <div class="d-flex justify-content-center">
