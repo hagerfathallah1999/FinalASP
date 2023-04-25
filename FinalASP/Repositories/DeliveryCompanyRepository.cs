@@ -34,5 +34,9 @@ namespace FinalASP.Repositories
             context.DeliveryCompanys.Remove(DelDeliveryCompany);
             context.SaveChanges();
         }
+        public int GetDeliveryIdByName(string name)
+        {
+            return context.DeliveryCompanys.FirstOrDefault(S => S.Name == name).id;
+        }
     }
 }

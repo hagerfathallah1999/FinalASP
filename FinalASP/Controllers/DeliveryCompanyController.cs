@@ -6,7 +6,7 @@ namespace FinalASP.Controllers
 {
     public class DeliveryCompanyController : Controller
     {
-        IDeliveryCompanyRepository DeliveryCompanyRepo;
+        IDeliveryCompanyRepository IDeliveryCompanyRepo;
         IKitchenRepository IKitchenRepo;
         IPhysicalKitchenRepository IPhysicalKitchenRepo;
         IPhysicalOrderListRepository IPhysicalOrderListRepo;
@@ -21,7 +21,7 @@ namespace FinalASP.Controllers
             IReservationRepository _IReservationRepo, IPhysicalOrderRepository _IPhysicalOrderRepo,
             IPhysicalOrderListRepository _IPhysicalOrderListRepo, IPhysicalKitchenRepository _IPhysicalKitchenRepo)
         {
-            DeliveryCompanyRepo = _DeliveryCompanyRepo;
+            IDeliveryCompanyRepo = _DeliveryCompanyRepo;
             IKitchenRepo = _IKitchenRepo;
             IPhysicalKitchenRepo = _IPhysicalKitchenRepo;
             IPhysicalOrderListRepo = _IPhysicalOrderListRepo;
@@ -34,7 +34,7 @@ namespace FinalASP.Controllers
 
         public IActionResult Index()
         {
-            List<DeliveryCompany> DeliveryCompanyModel = DeliveryCompanyRepo.GetAll();
+            List<DeliveryCompany> DeliveryCompanyModel = IDeliveryCompanyRepo.GetAll();
             return View("Index", DeliveryCompanyModel);
         }
 		public IActionResult New()
@@ -46,10 +46,18 @@ namespace FinalASP.Controllers
 		{
 			if (ModelState.IsValid == true)
 			{
-				DeliveryCompanyRepo.Insert(newdelivery);
+				IDeliveryCompanyRepo.Insert(newdelivery);
 				return RedirectToAction("DeliveryProfile");
 			}
 			return View("New", newdelivery);
 		}
-	}
+        public IActionResult DeliveryProfile()
+        {
+            string DeliveryName = User.Identity.Name;
+            int DeliveryId = IDeliveryCompanyRepo.GetDeliveryIdByName(DeliveryName);
+            DeliveryCompany Delivery = IDeliveryCompanyRepo.GetById(DeliveryId);
+            ViewData["Delivery"] = Delivery;
+            return View(Delivery);
+        }
+    }
 }

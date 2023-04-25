@@ -9,5 +9,6 @@ namespace FinalASP.Repositories
         void Insert(VirtualKitchen VirtualKitchen);
         void Update(VirtualKitchen VirtualKitchen);
         void Delete(int id);
+        int GetChefIdByName(string name);
     }
 }

@@ -9,5 +9,6 @@ namespace FinalASP.Repositories
         void Insert(Kitchen Kitchen);
         void Update(Kitchen Kitchen);
         void Delete(int id);
+        List<Kitchen> GetKitchensByPhyKitchen(int PhyKitchenId);
     }
 }

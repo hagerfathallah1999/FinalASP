@@ -6,7 +6,7 @@ namespace FinalASP.Controllers
 {
     public class PhysicalKitchenController : Controller
     {
-        IDeliveryCompanyRepository DeliveryCompanyRepo;
+        IDeliveryCompanyRepository IDeliveryCompanyRepo;
         IKitchenRepository IKitchenRepo;
         IPhysicalKitchenRepository IPhysicalKitchenRepo;
         IPhysicalOrderListRepository IPhysicalOrderListRepo;
@@ -21,7 +21,7 @@ namespace FinalASP.Controllers
             IReservationRepository _IReservationRepo, IPhysicalOrderRepository _IPhysicalOrderRepo,
             IPhysicalOrderListRepository _IPhysicalOrderListRepo, IPhysicalKitchenRepository _IPhysicalKitchenRepo)
         {
-            DeliveryCompanyRepo = _DeliveryCompanyRepo;
+            IDeliveryCompanyRepo = _DeliveryCompanyRepo;
             IKitchenRepo = _IKitchenRepo;
             IPhysicalKitchenRepo = _IPhysicalKitchenRepo;
             IPhysicalOrderListRepo = _IPhysicalOrderListRepo;
@@ -51,5 +51,35 @@ namespace FinalASP.Controllers
 			}
 			return View("New", newKitchen);
 		}
-	}
+        public IActionResult GetPhyshicalKitchens()
+        {
+            string KitchenName = User.Identity.Name;
+            int PhyKitchenId = IPhysicalKitchenRepo.GetPhyshicalIdByName(KitchenName);
+            PhysicalKitchen PhyKitchen = IPhysicalKitchenRepo.GetById(PhyKitchenId);
+            ViewData["Kitchen"] = PhyKitchen;
+            List <Kitchen> KitchensModel = IKitchenRepo.GetKitchensByPhyKitchen(PhyKitchenId);
+            return View("GetPhyshicalKitchens", KitchensModel);
+        }
+        public IActionResult AddKitchenToPhyKitchen()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddKitchenToPhyKitchen(Kitchen Kitchen)
+        {
+            string KitchenName = User.Identity.Name;
+            int PhyKitchenId = IPhysicalKitchenRepo.GetPhyshicalIdByName(KitchenName);
+            Kitchen.PhysicalKitchenId = PhyKitchenId;
+            IKitchenRepo.Insert(Kitchen);
+            return RedirectToAction("GetPhyshicalKitchens");
+        }
+        public IActionResult PhyKitchenProfile()
+        {
+            string PhyKitchenName = User.Identity.Name;
+            int PhyKitchenId = IPhysicalKitchenRepo.GetPhyshicalIdByName(PhyKitchenName);
+            PhysicalKitchen PhyKitchen = IPhysicalKitchenRepo.GetById(PhyKitchenId);
+            ViewData["PhyKitchen"] = PhyKitchen;
+            return View(PhyKitchen);
+        }
+    }
 }

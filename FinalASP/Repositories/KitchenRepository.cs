@@ -33,5 +33,11 @@ namespace FinalASP.Repositories
             context.Kitchens.Remove(Kitchen);
             context.SaveChanges();
         }
+        public List<Kitchen> GetKitchensByPhyKitchen(int PhyKitchenId)
+        {
+            List<Kitchen> Kitchens = context.Kitchens.Where(e => e.PhysicalKitchenId == PhyKitchenId).ToList();
+            return Kitchens;
+        }
+        
     }
 }

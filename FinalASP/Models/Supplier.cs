@@ -17,7 +17,7 @@ namespace FinalASP.Models
 		public string type { get; set; } = string.Empty;
 		[Required(ErrorMessage = "phone is Required")]
 		public string phone { get; set; } = string.Empty;
-        [Required(ErrorMessage = "This field is Required")]
+        
         public string logo { get; set; } = string.Empty;
         public ICollection<SupplierMatrial> SupplierMatrials { get; set; } = new List<SupplierMatrial>();
 

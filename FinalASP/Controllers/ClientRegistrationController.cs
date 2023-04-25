@@ -44,7 +44,8 @@ namespace FinalASP.Controllers
                     await signInManager.SignInAsync(clientModel, false);
                     if (newClient.Role == "Supplier")
                     {
-						return RedirectToAction("New", "Supplier");
+                        TempData["UserName"] = newClient.UserName;
+                        return RedirectToAction("New", "Supplier");
                     }else if (newClient.Role == "Chef")
                     {
                         return RedirectToAction("New", "VirtualKitchen");
