@@ -35,7 +35,7 @@ namespace FinalASP.Controllers
                     {
                         //cookie
                         await signInManager.SignInAsync(userModel, clientVM.RememberMe);
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index","Home");
                     }
                 }
                 ModelState.AddModelError("", "Invalid Login, please try again");

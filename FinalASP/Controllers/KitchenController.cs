@@ -37,5 +37,6 @@ namespace FinalASP.Controllers
             List<Kitchen> KitchenModel = IKitchenRepo.GetAll();
             return View("Index", KitchenModel);
         }
+
     }
 }

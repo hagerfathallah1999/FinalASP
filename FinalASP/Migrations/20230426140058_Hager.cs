@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     /// <inheritdoc />
-    public partial class mariomaaaaaaaaaa : Migration
+    public partial class Hager : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

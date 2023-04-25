@@ -52,5 +52,13 @@ namespace FinalASP.Controllers
             }
             return View("New", newChef);
         }
+        public IActionResult ChefProfile()
+        {
+            string ChefName = User.Identity.Name;
+            int ChefId = IVirtualKitchenRepo.GetChefIdByName(ChefName);
+            VirtualKitchen Chef = IVirtualKitchenRepo.GetById(ChefId);
+            ViewData["Chef"] = Chef;
+            return View(Chef);
+        }
     }
 }

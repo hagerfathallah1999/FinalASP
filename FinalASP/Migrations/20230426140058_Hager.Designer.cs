@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     [DbContext(typeof(CloudKitchenContext))]
-    [Migration("20230425212316_mariomaaaaaaaaaa")]
-    partial class mariomaaaaaaaaaa
+    [Migration("20230426140058_Hager")]
+    partial class Hager
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

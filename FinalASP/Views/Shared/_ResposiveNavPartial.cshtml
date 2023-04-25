@@ -1,11 +1,13 @@
-﻿
-<nav class="navbar navbar-expand-lg navbar-light text-bg-dark bg-light">
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+<nav class="navbar navbar-expand-lg navbar-dark text-bg-light bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand mb-0 h1" href="#">CloudKitchen</a>
+            <a class="navbar-brand mb-0 h1" href="#">Kitcheniro</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse bg-dark" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
                     <li class="nav-item">
                         <div class="d-flex home-icon-style">
@@ -14,33 +16,66 @@
                             </div>
 
                             <div>
-                                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                  <a class="nav-link active" aria-current="page" href="/">Home</a>
                             </div>
                         </div>
                        
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Resources
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">BLA BLA</a></li>
-                            <li><a class="dropdown-item" href="#">BLA BLA</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">ABOUT US</a></li>
-                        </ul>
+                        <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
                     </li>
                 </ul>
-                <form class="d-flex gap-1">
-                <a class="btn btn-outline-dark" href="#">Login</a>
-                <a class="btn btn-outline-dark" href="#">Registration</a>
-                </form>
+            @{
+                if (User.IsInRole("Supplier") || User.IsInRole("Chef") || User.IsInRole("Delivery") || User.IsInRole("Kitchen"))
+                {
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                            <strong>@User.Identity.Name</strong>
+                        </a>
+                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                            @{
+                                string url=string.Empty;
+                                if (User.IsInRole("Supplier"))
+                                {
+                                    url = "/Supplier/SupplierProfile";
+                                }
+                                else if (User.IsInRole("Chef"))
+                                {
+                                    url = "/VirtualKitchen/ChefProfile";
+                                }
+                                else if (User.IsInRole("Delivery"))
+                                {
+                                    url = "/DeliveryCompany/DeliveryProfile";
+                                }
+                                else if (User.IsInRole("Kitchen"))
+                                {
+                                    url = "/PhysicalKitchen/PhyKitchenProfile";
+                                }
+                            }
+                            <li><a class="dropdown-item" href="@url">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/ClientLogOut/LogOut">Sign out</a></li>
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <form class="d-flex gap-1">
+                        <a class="btn btn-outline-light" href="/ClientLogIn/LogIn">Login</a>
+                        <a class="btn btn-outline-light" href="/ClientRegistration/Registration">Registration</a>
+                    </form>
+                }
+            }
+
+            
+                
             </div>
         </div>
     </nav>
@@ -48,6 +83,17 @@
 
 
 <style>
+
+    nav {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%
+    }
+
+    .container-fluid {
+        
+    }
 
     * {
         font-family: monospace;
@@ -67,14 +113,14 @@
     }
 
     .container-fluid {
-        height : 80px;
-        border-bottom: 1px solid black;
+        height: 80px;
+        width: 100%;
 /*        border-top: 1px solid black;*/
 /*        margin-top: 3px;*/
     }
 
     .bi-house-door {
-        color: black;
+        color: white;
         font-size: large;
     }
 

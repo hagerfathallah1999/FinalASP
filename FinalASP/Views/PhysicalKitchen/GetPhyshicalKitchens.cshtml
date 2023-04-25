@@ -1,0 +1,27 @@
+﻿@model IEnumerable<FinalASP.Models.Kitchen>
+
+@{
+    ViewData["Title"] = "GetPhyshicalKitchens";
+}
+<p>
+    <a asp-action="AddKitchenToPhyKitchen">Create New</a>
+</p>
+<div class="row">
+    @*<partial name="_SupplierSidepar" />*@
+    <div class="col-md-9">
+        @foreach (var item in Model)
+        {
+            <div class="card" style="width: 18rem; display: inline-block;">
+                <img src="\images\@item.KitchenImages" class="card-img-top" alt="@item.Description" style="height:220px" />
+
+                <div class="text-center card-body">
+                    <h5 class="text-center card-title">@item.Name</h5>
+                    @item.Price
+                    <p class="text-center card-text">@item.Description.</p>
+                    <a href="#!" class="text-center btn btn-primary">Add to cart</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@*<script src="~/js/site.js"></script>*@
