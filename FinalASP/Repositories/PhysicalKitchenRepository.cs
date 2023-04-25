@@ -33,5 +33,14 @@ namespace FinalASP.Repositories
             context.PhysicalKitchens.Remove(PhysicalKitchen);
             context.SaveChanges();
         }
+        public int GetPhyshicalIdByName(string name)
+        {
+            return context.PhysicalKitchens.FirstOrDefault(S => S.Name == name).Id;
+        }
+        public PhysicalKitchen GetPhyshicalByName(string name)
+        {
+            return context.PhysicalKitchens.FirstOrDefault(S => S.Name == name);
+        }
+        
     }
 }

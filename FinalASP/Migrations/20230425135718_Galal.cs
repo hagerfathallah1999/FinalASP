@@ -7,7 +7,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     /// <inheritdoc />
-    public partial class mariomaaaaaaaaaa : Migration
+<<<<<<<< HEAD:FinalASP/Migrations/20230425135718_Galal.cs
+    public partial class Galal : Migration
+========
+    public partial class newedit : Migration
 >>>>>>>> 0be8a45a66304784c49b9ee869ced83279a12ee2:FinalASP/Migrations/20230425143317_newedit.cs
     {
         /// <inheritdoc />
@@ -59,11 +62,11 @@ namespace FinalASP.Migrations
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CompanyName = table.Column<string>(type: "text", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Domain = table.Column<string>(type: "text", nullable: false),
                     Phone = table.Column<string>(type: "text", nullable: false),
                     CoverageArea = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
                     logo = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -77,12 +80,12 @@ namespace FinalASP.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CompanyName = table.Column<string>(type: "text", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Locaion = table.Column<string>(type: "text", nullable: false),
                     LogoImage = table.Column<string>(type: "text", nullable: false),
                     Phone = table.Column<double>(type: "double precision", nullable: false),
-                    Domain = table.Column<string>(type: "text", nullable: false)
+                    Domain = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -96,11 +99,12 @@ namespace FinalASP.Migrations
                     id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CompanyName = table.Column<string>(type: "text", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
+                    Username = table.Column<string>(type: "text", nullable: false),
                     Location = table.Column<string>(type: "text", nullable: false),
                     Capacity = table.Column<string>(type: "text", nullable: false),
                     type = table.Column<string>(type: "text", nullable: false),
                     phone = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
                     logo = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -116,10 +120,10 @@ namespace FinalASP.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Address = table.Column<string>(type: "text", nullable: false),
-                    CompanyName = table.Column<string>(type: "text", nullable: false),
                     LogoImage = table.Column<string>(type: "text", nullable: false),
                     Phone = table.Column<double>(type: "double precision", nullable: false),
-                    Domain = table.Column<string>(type: "text", nullable: false)
+                    Domain = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

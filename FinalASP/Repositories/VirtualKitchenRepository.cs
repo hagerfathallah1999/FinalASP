@@ -33,5 +33,9 @@ namespace FinalASP.Repositories
             context.VirtualKitchens.Remove(VirtualKitchen);
             context.SaveChanges();
         }
+        public int GetChefIdByName(string name)
+        {
+            return context.VirtualKitchens.FirstOrDefault(S => S.Name == name).Id;
+        }
     }
 }

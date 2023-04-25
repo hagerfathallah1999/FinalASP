@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\.vscode\tasks.json" />
   </ItemGroup>
 
@@ -22,7 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Sass\" />
+    <Folder Include="Styles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
   </ItemGroup>
 
 </Project>

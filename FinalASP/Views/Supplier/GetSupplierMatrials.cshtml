@@ -3,9 +3,7 @@
 @{
     ViewData["Title"] = "GetSupplierMatrials";
 }
-<p>
-    <a asp-action="AddMatrialToSupplier">Create New</a>
-</p>
+<partial name="_ResposiveNavPartial" />
 <div class="row">
     <partial name="_SupplierSidepar" />
 <div class="col-md-9">
@@ -21,6 +19,10 @@
         </div>
     </div>
 }
+        <p>
+            <a class="btn btn-outline-dark" asp-action="AddMatrialToSupplier">Add New Product</a>
+        </p>
 </div>
+    
 </div>
 @*<script src="~/js/site.js"></script>*@

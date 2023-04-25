@@ -9,6 +9,7 @@ namespace FinalASP.Repositories
         void Insert(DeliveryCompany DeliveryCompany);
         void Update(DeliveryCompany DeliveryCompany);
         void Delete(int id);
+        int GetDeliveryIdByName(string name);
 
     }
 }
