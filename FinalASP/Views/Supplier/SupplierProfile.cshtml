@@ -1,9 +1,8 @@
-﻿@model Supplier
-@{
+﻿@{
     ViewData["Title"] = "SupplierProfile";
 }
 
-<h1>@Model.CompanyName Profile</h1>
+<h1>@ViewBag.Supplier.CompanyName's Profile</h1>
 
 <div class="row">
     <partial name="_SupplierSidepar" />

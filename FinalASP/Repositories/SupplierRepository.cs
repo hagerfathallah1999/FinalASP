@@ -37,5 +37,9 @@ namespace FinalASP.Repositories
         {
             return context.Suppliers.FirstOrDefault(S => S.Username == name).id;
         }
+        public Supplier GetSupplierByName(string name)
+        {
+            return context.Suppliers.FirstOrDefault(S => S.Username == name);
+        }
     }
 }
