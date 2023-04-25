@@ -116,7 +116,7 @@ namespace FinalASP.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("DeliveryCompanys", (string)null);
+                    b.ToTable("DeliveryCompanys");
                 });
 
             modelBuilder.Entity("FinalASP.Models.Kitchen", b =>
@@ -163,7 +163,7 @@ namespace FinalASP.Migrations
 
                     b.HasIndex("PhysicalKitchenId");
 
-                    b.ToTable("Kitchens", (string)null);
+                    b.ToTable("Kitchens");
                 });
 
             modelBuilder.Entity("FinalASP.Models.PhysicalKitchen", b =>
@@ -199,7 +199,7 @@ namespace FinalASP.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PhysicalKitchens", (string)null);
+                    b.ToTable("PhysicalKitchens");
                 });
 
             modelBuilder.Entity("FinalASP.Models.PhysicalOrder", b =>
@@ -235,7 +235,7 @@ namespace FinalASP.Migrations
 
                     b.HasIndex("PhysicalOrderListID");
 
-                    b.ToTable("PhysicalOrders", (string)null);
+                    b.ToTable("PhysicalOrders");
                 });
 
             modelBuilder.Entity("FinalASP.Models.PhysicalOrderList", b =>
@@ -256,7 +256,7 @@ namespace FinalASP.Migrations
 
                     b.HasIndex("PhysicalKitchenID");
 
-                    b.ToTable("PhysicalOrderLists", (string)null);
+                    b.ToTable("PhysicalOrderLists");
                 });
 
             modelBuilder.Entity("FinalASP.Models.Reservation", b =>
@@ -296,7 +296,7 @@ namespace FinalASP.Migrations
 
                     b.HasIndex("kitchenID");
 
-                    b.ToTable("Reservations", (string)null);
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("FinalASP.Models.Supplier", b =>
@@ -311,17 +311,25 @@ namespace FinalASP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id");
 
-                    b.ToTable("Suppliers", (string)null);
+                    b.ToTable("Suppliers");
                 });
 
             modelBuilder.Entity("FinalASP.Models.SupplierMatrial", b =>
@@ -331,6 +339,10 @@ namespace FinalASP.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<double>("Price")
                         .HasColumnType("double precision");
@@ -353,7 +365,7 @@ namespace FinalASP.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("SupplierMatrials", (string)null);
+                    b.ToTable("SupplierMatrials");
                 });
 
             modelBuilder.Entity("FinalASP.Models.VirtualKitchen", b =>
@@ -389,7 +401,7 @@ namespace FinalASP.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("VirtualKitchens", (string)null);
+                    b.ToTable("VirtualKitchens");
                 });
 
             modelBuilder.Entity("FinalASP.Models.VirtualOrder", b =>
@@ -425,7 +437,7 @@ namespace FinalASP.Migrations
 
                     b.HasIndex("ReservationID");
 
-                    b.ToTable("VirtualOrders", (string)null);
+                    b.ToTable("VirtualOrders");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

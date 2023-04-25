@@ -33,5 +33,9 @@ namespace FinalASP.Repositories
             context.Suppliers.Remove(Supplier);
             context.SaveChanges();
         }
+        public int GetSupplierIdByName(string name)
+        {
+            return context.Suppliers.FirstOrDefault(S => S.Username == name).id;
+        }
     }
 }
