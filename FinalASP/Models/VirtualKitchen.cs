@@ -6,18 +6,18 @@ namespace FinalASP.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required(ErrorMessage = "This field is Required")]
+        [Required(ErrorMessage = "Name is Required")]
         public string Name { get; set; } = string.Empty;
-        [Required(ErrorMessage = "This field is Required")]
-        public string Email { get; set; } = string.Empty;
-        [Required(ErrorMessage = "This field is Required")]
+        [Required(ErrorMessage = "Address is Required")]
         public string Address { get; set; } = string.Empty;
 		public string LogoImage { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Phone is Required")]
         public double Phone { get; set; }
-		[Required(ErrorMessage = "This field is Required")]
+		[Required(ErrorMessage = "Domain is Required")]
 
-		public string Domain { get; set; } = string.Empty;
-		[Required(ErrorMessage = "This field is Required")]
+        public string Domain { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Email is Required")]
+        public string Email { get; set; } = string.Empty;
 
 		public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
 

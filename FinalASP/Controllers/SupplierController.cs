@@ -85,7 +85,7 @@ namespace FinalASP.Controllers
             if (ModelState.IsValid == true)
             {
                 ISupplierRepo.Insert(newSupplier);
-                return RedirectToAction("SupplierProfile");
+                return RedirectToAction("LogIn");
             }
             return View("New", newSupplier);
         }

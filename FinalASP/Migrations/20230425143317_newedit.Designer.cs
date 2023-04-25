@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     [DbContext(typeof(CloudKitchenContext))]
-    [Migration("20230425130432_mariameditttinggg")]
-    partial class mariameditttinggg
+    [Migration("20230425143317_newedit")]
+    partial class newedit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -322,6 +322,10 @@ namespace FinalASP.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 

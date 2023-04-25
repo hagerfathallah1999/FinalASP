@@ -44,7 +44,7 @@ namespace FinalASP.Controllers
                     await signInManager.SignInAsync(clientModel, false);
                     if (newClient.Role == "Supplier")
                     {
-						return RedirectToAction("New", "Supplier");
+                        return RedirectToAction("New", "Supplier");
                     }else if (newClient.Role == "Chef")
                     {
                         return RedirectToAction("New", "VirtualKitchen");
