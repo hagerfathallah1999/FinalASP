@@ -43,6 +43,8 @@ namespace FinalASP.Controllers
         public IActionResult GetSupplierMatrials()
         {
             string SupplierName = User.Identity.Name;
+            Supplier Supplier = ISupplierRepo.GetSupplierByName(SupplierName);
+            ViewData["Supplier"] = Supplier;
             int SupplierId = ISupplierRepo.GetSupplierIdByName(SupplierName);
             List<SupplierMatrial> MatrialsModel = ISupplierMatrialRepo.GetMatrialsBySupplier(SupplierId);
             return View("GetSupplierMatrials", MatrialsModel);
@@ -65,6 +67,7 @@ namespace FinalASP.Controllers
             string SupplierName = User.Identity.Name;
             int SupplierId = ISupplierRepo.GetSupplierIdByName(SupplierName);
             Supplier supplierModel = ISupplierRepo.GetById(SupplierId);
+            ViewData["Supplier"] = supplierModel;
             return View(supplierModel);
         }
 
