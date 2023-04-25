@@ -1,6 +1,7 @@
 ﻿using FinalASP.Models;
 using FinalASP.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Core.Types;
 
 namespace FinalASP.Controllers
 {
@@ -36,6 +37,21 @@ namespace FinalASP.Controllers
         {
             List<Supplier> SupplierModel = ISupplierRepo.GetAll();
             return View("Index", SupplierModel);
+        }
+        /////
+        public IActionResult New()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SaveNew(Supplier newSupplier)
+        {
+            if (ModelState.IsValid == true)
+            {
+                ISupplierRepo.Insert(newSupplier);
+                return RedirectToAction("SupplierProfile");
+            }
+            return View("New", newSupplier);
         }
     }
 }

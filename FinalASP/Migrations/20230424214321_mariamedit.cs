@@ -5,7 +5,7 @@
 namespace FinalASP.Migrations
 {
     /// <inheritdoc />
-    public partial class initG : Migration
+    public partial class mariamedit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

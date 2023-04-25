@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace FinalASP.Controllers
 {
-    public class ClientRegistrationController : Controller
+	public class ClientRegistrationController : Controller
     {
         //Inject
         private readonly UserManager<ApplicationUser> userManager;
@@ -32,16 +32,30 @@ namespace FinalASP.Controllers
                 clientModel.UserName = newClient.UserName;
                 clientModel.Email=newClient.Email;  
                 clientModel.PasswordHash = newClient.Password;
+                clientModel.Role = newClient.Role;
                 //save db
                 IdentityResult result =
                     await userManager.CreateAsync(clientModel, newClient.Password); //Hashing  //Block create user in db
-
                 if (result.Succeeded)
                 {
-                    //------------------Create Cookie Authora
-                    await signInManager.SignInAsync(clientModel, false);//create cookie //create cookie client
-                    //return RedirectToAction("Index", "Employee");
-                    return RedirectToAction("Index");
+                    // Add role to user
+                    await userManager.AddToRoleAsync(clientModel, newClient.Role);
+                    // Create cookie
+                    await signInManager.SignInAsync(clientModel, false);
+                    if (newClient.Role == "Supplier")
+                    {
+						return RedirectToAction("New", "Supplier");
+                    }else if (newClient.Role == "Chef")
+                    {
+                        return RedirectToAction("New", "VirtualKitchen");
+                    }else if(newClient.Role == "Delivery")
+                    {
+                        return RedirectToAction("New", "DeliveryCompany");
+                    }else if(newClient.Role == "Kitchen")
+                    {
+                        return RedirectToAction("New", "PhysicalKitchen");
+                    }
+                    return RedirectToAction("Home");
                 }
                 else
                 {

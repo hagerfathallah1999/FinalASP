@@ -1,0 +1,55 @@
+﻿@model Supplier
+
+@{
+	Layout = "~/views/shared/_layoutregisttest.cshtml";
+	ViewData["Title"] = "New";
+}
+<partial name="_SupplierPartial" />
+
+@*<form method="post" asp-action="SaveNew" asp-controller="Supplier">
+	<div>
+		<label asp-for="name"></label>
+		<input asp-for="name" class="form-control" />
+		<span asp-validation-for="name" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="location"></label>
+		<input asp-for="location" class="form-control" />
+		<span asp-validation-for="location" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="capacity"></label>
+	<select asp-for="capacity" class="form-control">
+		<option>retail</option>
+			<option>Wholesaler</option>
+	</select>
+	<span asp-validation-for="capacity" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="type"></label>
+		<select asp-for="type" class="form-control">
+			<option>fruits and vegetables</option>
+			<option>seafood</option>
+			<option>meats</option>
+			<option>organic food</option>
+			<option>all types</option>
+		</select>
+		<span asp-validation-for="type" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="phone"></label>
+		<input asp-for="phone" class="form-control" />
+		<span asp-validation-for="phone" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="logo"></label>
+		<input asp-for="logo" class="form-control" />
+	</div>
+	<br />
+	<input type="submit" class="btn btn-primary" value="New Supplier" />
+</form>
+@section scripts{
+	<script src="~/lib//jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}*@

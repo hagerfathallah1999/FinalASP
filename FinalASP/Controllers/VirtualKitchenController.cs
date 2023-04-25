@@ -37,5 +37,19 @@ namespace FinalASP.Controllers
             List<VirtualKitchen> VirtualKitchenModel = IVirtualKitchenRepo.GetAll();
             return View("Index", VirtualKitchenModel);
         }
+        public IActionResult New()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SaveNew(VirtualKitchen newChef)
+        {
+            if (ModelState.IsValid == true)
+            {
+                IVirtualKitchenRepo.Insert(newChef);
+                return RedirectToAction("ChefProfile");
+            }
+            return View("New", newChef);
+        }
     }
 }

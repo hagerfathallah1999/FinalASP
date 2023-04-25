@@ -1,0 +1,72 @@
+﻿@model Supplier
+
+@{
+    ViewData["Title"] = "New Supplier";
+}
+<section <img src="~/images/foodRegester.jpg" class="vh-100 bg-image" />
+
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Create New Supplier Account</h2>
+                    <form method="post" asp-action="SaveNew" asp-controller="Supplier" enctype="multipart/form-data">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+
+                        <div class="form-outline mb-4">
+                            <label for="name" class="form-label">Name</label>
+                            <input asp-for="name" class="form-control form-control-lg" id="name" />
+                            <span asp-validation-for="name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label for="location" class="form-label">Location</label>
+                            <input asp-for="location" class="form-control form-control-lg" id="location" />
+                            <span asp-validation-for="location" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label for="phone" class="form-label">phone</label>
+                            <input asp-for="phone" class="form-control form-control-lg" id="phone" />
+                            <span asp-validation-for="phone" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label for="capacity" class="form-label">Capacity</label>
+                            <select asp-for="capacity" class="form-select form-select-lg" id="capacity">
+                                <option value="Retail">Retail</option>
+                                <option value="Wholesaler">Wholesaler</option>
+                            </select>
+                            <span asp-validation-for="capacity" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label for="type" class="form-label">Type</label>
+                            <select asp-for="type" class="form-select form-select-lg" id="type">
+                                <option value="Fruits and Vegetables">Fruits and Vegetables</option>
+                                <option value="Seafood">Seafood</option>
+                                <option value="Meats">Meats</option>
+                                <option value="Organic Food">Organic Food</option>
+                                <option value="All Types">All Types</option>
+                            </select>
+                            <span asp-validation-for="type" class="text-danger"></span>
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label for="logo" class="form-label">Logo</label>
+                            <input type="file" asp-for="logo" class="form-control form-control-lg" id="logo" accept="images/*" />
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                        </div>
+                    </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ </section>
