@@ -1,0 +1,106 @@
+﻿<section class="home-card-style">
+    <div class="card">
+
+            <div class="card-header border-warning">
+                <h5 class="card-title text-center">KitchenName</h5>
+            </div>
+
+            <div>
+                <img src="~/images/img.png" class="card-img-top" alt="...">
+            </div>
+
+            <div class="card-footer border-warning">
+                <div>
+                    <p>Price:</p>
+                </div>
+
+                <div>
+                    <p>Position:</p>
+                </div>
+                            
+                <div>
+                <button>Details</button>
+                   @* <a href="#" class="btn btn-outline-warning">Details</a>*@
+                </div>
+           </div>
+
+    </div> 
+</section>
+<style>
+    .home-card-style {
+        margin: 0 10%;
+    }
+
+    .card {
+       width: 20rem;
+       border-color: #ffc107;
+    }
+
+    .card-title {
+        font-family: monospace;
+        font-size: x-large;
+        font-weight: bold;
+    }
+
+    .card-footer {
+        display: flex;
+        text-align: center;
+        justify-content: space-between;
+        width: 20rem;
+    }
+
+    .card-footer p {
+            font-family: monospace;
+            font-size: x-large;
+            font-weight: 500;
+    }
+
+    .card-footer p:hover {
+        color: #ffc107;
+        transition: .3s;
+    }
+
+    button {
+        border: 2px solid #ffc107;
+        border-radius: 10%;
+        background-color: white;
+        color: black;
+        width: 70px;
+        height: 35px;
+        
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+        background-color: #ffc107;
+    }
+</style>
+@*<style>
+
+
+.card-header {
+    background-color: white;
+}
+
+
+
+    .card-text {
+        font-family: monospace;
+        font-size: medium;
+        font-weight: 100;
+        color: black;
+    }
+
+    .list-group-item {
+        font-family: monospace;
+        font-size: large;
+        font-weight: 500;
+        color: #ffc107;
+    }
+
+    .home-card-style .card .list-group .list-group-item.separator {
+        border-top: 1px solid #ffc107;
+    }
+
+</style>*@

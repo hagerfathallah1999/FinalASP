@@ -1,0 +1,61 @@
+﻿<section class="home-card-style">
+    <div class="card">
+        <img src="~/images/img.png" class="card-img-top" alt="...">
+      <div class="card-body">
+            <h5 class="card-title">KitchenName</h5>
+            <p class="card-text">blablabla about Kitchen.</p>
+      </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">KitchenPrice: $</li>
+            <li class="list-group-item separator">KitchenPosition: </li>
+        </ul>
+    </div>
+</section>
+
+<style>
+   
+    .home-card-style {
+        margin: 0 10%;
+    }
+
+    .card {
+        width: 18rem;
+        border-color: #ffc107;
+        
+    }
+
+    .card-title {
+        font-family: monospace;
+        font-size: x-large;
+        font-weight: bold;
+        color: #ffc107;
+    }
+
+    .card-text {
+        font-family: monospace;
+        font-size: medium;
+        font-weight: 100;
+        color: black;
+    }
+
+    .list-group-item {
+        font-family: monospace;
+        font-size: large;
+        font-weight: 500;
+        color: #ffc107;
+    }
+
+    .home-card-style .card .list-group .list-group-item.separator {
+        border-top: 1px solid #ffc107;
+    }
+
+</style>
+
+
+ 
+@* Inject to Use
+
+<partial name="_HomeCardPartial" />
+
+*@
+    
