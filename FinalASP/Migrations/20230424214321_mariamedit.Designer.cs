@@ -3,6 +3,7 @@ using System;
 using FinalASP.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     [DbContext(typeof(CloudKitchenContext))]
-    partial class CloudKitchenContextModelSnapshot : ModelSnapshot
+    [Migration("20230424214321_mariamedit")]
+    partial class mariamedit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,10 +117,6 @@ namespace FinalASP.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("logo")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -318,27 +317,15 @@ namespace FinalASP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-<<<<<<< HEAD
                     b.Property<string>("location")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("logo")
-=======
-                    b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Location")
->>>>>>> 82d4cb6c90041d464a3f186854068f2fd09bf8aa
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Username")
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -362,10 +349,6 @@ namespace FinalASP.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
-
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<double>("Price")
                         .HasColumnType("double precision");

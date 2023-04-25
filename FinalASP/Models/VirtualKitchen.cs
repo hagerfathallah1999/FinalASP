@@ -12,11 +12,14 @@ namespace FinalASP.Models
         public string Email { get; set; } = string.Empty;
         [Required(ErrorMessage = "This field is Required")]
         public string Address { get; set; } = string.Empty;
-        public string LogoImage { get; set; } = string.Empty;
-        [Required(ErrorMessage = "This field is Required")]
+		public string LogoImage { get; set; } = string.Empty;
         public double Phone { get; set; }
-        public string Domain { get; set; } = string.Empty;
-        public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
+		[Required(ErrorMessage = "This field is Required")]
+
+		public string Domain { get; set; } = string.Empty;
+		[Required(ErrorMessage = "This field is Required")]
+
+		public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
 
     }
 }
