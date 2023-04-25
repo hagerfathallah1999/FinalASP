@@ -37,5 +37,19 @@ namespace FinalASP.Controllers
             List<DeliveryCompany> DeliveryCompanyModel = DeliveryCompanyRepo.GetAll();
             return View("Index", DeliveryCompanyModel);
         }
-    }
+		public IActionResult New()
+		{
+			return View();
+		}
+		[HttpPost]
+		public IActionResult SaveNew(DeliveryCompany newdelivery)
+		{
+			if (ModelState.IsValid == true)
+			{
+				DeliveryCompanyRepo.Insert(newdelivery);
+				return RedirectToAction("DeliveryProfile");
+			}
+			return View("New", newdelivery);
+		}
+	}
 }

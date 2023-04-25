@@ -37,5 +37,19 @@ namespace FinalASP.Controllers
             List<PhysicalKitchen> PhysicalKitchenModel = IPhysicalKitchenRepo.GetAll();
             return View("Index", PhysicalKitchenModel);
         }
-    }
+		public IActionResult New()
+		{
+			return View();
+		}
+		[HttpPost]
+		public IActionResult SaveNew(PhysicalKitchen newKitchen)
+		{
+			if (ModelState.IsValid == true)
+			{
+				IPhysicalKitchenRepo.Insert(newKitchen);
+				return RedirectToAction("KitchenProfile");
+			}
+			return View("New", newKitchen);
+		}
+	}
 }

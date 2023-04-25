@@ -1,0 +1,24 @@
+﻿@*@model AspNetUsers
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Index</h1>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    @foreach (var User in Model)
+    {
+        <tr>
+            <th scope="row">@User.Id</th>
+            <td>@User.UserName</td>
+            <td>@User.Role</td>
+        </tr>
+    }
+</table>
+
+*@

@@ -1,0 +1,50 @@
+﻿@model PhysicalKitchen
+@{
+	Layout = "~/views/shared/_layoutregisttest.cshtml";
+	ViewData["Title"] = "New";
+}
+<partial name="_KitchenPartial" />
+
+@*<form method="post" asp-action="SaveNew" asp-controller="PhysicalKitchen">
+	<div>
+		<label asp-for="Name"></label>
+		<input asp-for="Name" class="form-control" />
+		<span asp-validation-for="Name" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Locaion"></label>
+		<input asp-for="Locaion" class="form-control" />
+		<span asp-validation-for="Locaion" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Domain"></label>
+		<select asp-for="Domain" class="form-control">
+			<option>Fast Food Resturant</option>
+			<option>Fine Dining Resturant</option>
+			<option>Hotel Kitchen</option>
+			<option>Other</option>
+		</select>
+		<span asp-validation-for="Domain" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Phone"></label>
+		<input asp-for="Phone" class="form-control" />
+		<span asp-validation-for="Phone" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Email"></label>
+		<input asp-for="Email" class="form-control" />
+		<span asp-validation-for="Email" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="LogoImage"></label>
+		<input asp-for="LogoImage" class="form-control" />
+	</div>
+	<br />
+	<input type="submit" class="btn btn-primary" value="New Kitchen" />
+</form>
+@section scripts{
+	<script src="~/lib//jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}*@
