@@ -46,10 +46,11 @@ namespace FinalASP.Controllers
 		{
 			if (ModelState.IsValid == true)
 			{
-				IPhysicalKitchenRepo.Insert(newKitchen);
-				return RedirectToAction("KitchenProfile");
-			}
-			return View("New", newKitchen);
+                newKitchen.Name = TempData["UserName"].ToString();
+                IPhysicalKitchenRepo.Insert(newKitchen);
+                return RedirectToAction("LogIn", "ClientLogIn");
+            }
+            return View("New", newKitchen);
 		}
 	}
 }

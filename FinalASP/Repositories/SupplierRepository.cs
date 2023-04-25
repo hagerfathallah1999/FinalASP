@@ -35,11 +35,11 @@ namespace FinalASP.Repositories
         }
         public int GetSupplierIdByName(string name)
         {
-            return context.Suppliers.FirstOrDefault(S => S.Username == name).id;
+            return context.Suppliers.FirstOrDefault(S => S.Name == name).id;
         }
         public Supplier GetSupplierByName(string name)
         {
-            return context.Suppliers.FirstOrDefault(S => S.Username == name);
+            return context.Suppliers.FirstOrDefault(S => S.Name == name);
         }
     }
 }

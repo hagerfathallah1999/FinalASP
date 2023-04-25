@@ -6,7 +6,8 @@ namespace FinalASP.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required(ErrorMessage = "Name is Required")]
+        [Required(ErrorMessage = "CompnayName is Required")]
+        public string CompanyName { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         [Required(ErrorMessage = "Email is Required")]
         public string Locaion { get; set; } = string.Empty;
@@ -15,8 +16,6 @@ namespace FinalASP.Models
         public double Phone { get; set; }
 		[Required(ErrorMessage = "Domain is Required")]
 		public string Domain { get; set; } = string.Empty;
-        [Required(ErrorMessage = "Email is Required")]
-        public string Email { get; set; } = string.Empty;
         public ICollection<Kitchen> OwnedKitchens { get; set; } = new List<Kitchen>();
         public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
 

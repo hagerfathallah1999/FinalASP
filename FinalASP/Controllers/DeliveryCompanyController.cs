@@ -46,10 +46,11 @@ namespace FinalASP.Controllers
 		{
 			if (ModelState.IsValid == true)
 			{
-				DeliveryCompanyRepo.Insert(newdelivery);
-				return RedirectToAction("DeliveryProfile");
-			}
-			return View("New", newdelivery);
+                newdelivery.Name = TempData["UserName"].ToString();
+                DeliveryCompanyRepo.Insert(newdelivery);
+                return RedirectToAction("LogIn", "ClientLogIn");
+            }
+            return View("New", newdelivery);
 		}
 	}
 }

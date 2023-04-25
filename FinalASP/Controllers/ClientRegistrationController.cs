@@ -44,15 +44,19 @@ namespace FinalASP.Controllers
                     await signInManager.SignInAsync(clientModel, false);
                     if (newClient.Role == "Supplier")
                     {
+                        TempData["UserName"] = newClient.UserName;
                         return RedirectToAction("New", "Supplier");
                     }else if (newClient.Role == "Chef")
                     {
+                        TempData["UserName"] = newClient.UserName;
                         return RedirectToAction("New", "VirtualKitchen");
                     }else if(newClient.Role == "Delivery")
                     {
+                        TempData["UserName"] = newClient.UserName;
                         return RedirectToAction("New", "DeliveryCompany");
                     }else if(newClient.Role == "Kitchen")
                     {
+                        TempData["UserName"] = newClient.UserName;
                         return RedirectToAction("New", "PhysicalKitchen");
                     }
                     return RedirectToAction("Home");

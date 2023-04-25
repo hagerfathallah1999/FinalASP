@@ -84,8 +84,9 @@ namespace FinalASP.Controllers
         {
             if (ModelState.IsValid == true)
             {
+                newSupplier.Name = TempData["UserName"].ToString();
                 ISupplierRepo.Insert(newSupplier);
-                return RedirectToAction("LogIn");
+                return RedirectToAction("LogIn", "ClientLogIn");
             }
             return View("New", newSupplier);
         }

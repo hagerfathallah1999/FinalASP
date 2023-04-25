@@ -7,7 +7,7 @@ namespace FinalASP.Models
         public int id {  get; set; }
         [Required(ErrorMessage = "CompanyName is Required")]
 		public string CompanyName { get; set; } = string.Empty;
-        public string Username { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
         [Required(ErrorMessage = "location is Required")]
         public string Location { get; set; } = string.Empty;
         [Required(ErrorMessage = "Capacity is Required")]
@@ -16,7 +16,6 @@ namespace FinalASP.Models
 		public string type { get; set; } = string.Empty;
 		[Required(ErrorMessage = "Phone is Required")]
 		public string phone { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
         public string logo { get; set; } = string.Empty;
         public ICollection<SupplierMatrial> SupplierMatrials { get; set; } = new List<SupplierMatrial>();
 
