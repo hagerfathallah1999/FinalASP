@@ -12,6 +12,7 @@ namespace FinalASP.Models
         public string description { get; set; } = string.Empty;
         [Required(ErrorMessage = "This field is Required")]
         public double Price { get; set; }
+        public string Image { get; set; } = string.Empty;
         [Required(ErrorMessage = "This field is Required")]
         public double quantity { get; set; }
         //public string image { get; set; } = string.Empty;

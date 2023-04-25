@@ -1,8 +1,9 @@
 ﻿using FinalASP.Models;
 
+
 namespace FinalASP.Repositories
 {
-    public class SupplierMatrialRepository
+    public class SupplierMatrialRepository : ISupplierMatrialRepository
     {
         CloudKitchenContext context;
         public SupplierMatrialRepository(CloudKitchenContext _context)
@@ -31,6 +32,17 @@ namespace FinalASP.Repositories
         {
             SupplierMatrial SupplierMatrial = GetById(id);
             context.SupplierMatrials.Remove(SupplierMatrial);
+            context.SaveChanges();
+        }
+        public List<SupplierMatrial> GetMatrialsBySupplier(int SupplierId)
+        {
+            List<SupplierMatrial> SupplierMatrials = context.SupplierMatrials.Where(e => e.SupplierId == SupplierId).ToList();
+            return SupplierMatrials;
+        }
+        
+        public void AddMatrialToSupplier (SupplierMatrial supplierMatrial)
+        {
+            context.SupplierMatrials.Add(supplierMatrial);
             context.SaveChanges();
         }
     }
