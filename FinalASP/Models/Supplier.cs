@@ -7,7 +7,7 @@ namespace FinalASP.Models
         public int id {  get; set; }
         [Required(ErrorMessage = "CompanyName is Required")]
 		public string CompanyName { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
+        public string Username { get; set; } = string.Empty;
         [Required(ErrorMessage = "location is Required")]
         public string Location { get; set; } = string.Empty;
         [Required(ErrorMessage = "Capacity is Required")]

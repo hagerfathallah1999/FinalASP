@@ -8,6 +8,7 @@ namespace FinalASP.Controllers
 {
     public class SupplierController : Controller
     {
+        
         IDeliveryCompanyRepository DeliveryCompanyRepo;
         IKitchenRepository IKitchenRepo;
         IPhysicalKitchenRepository IPhysicalKitchenRepo;
@@ -84,7 +85,7 @@ namespace FinalASP.Controllers
         {
             if (ModelState.IsValid == true)
             {
-                newSupplier.Name = TempData["UserName"].ToString();
+                newSupplier.Username = TempData["UserName"].ToString();
                 ISupplierRepo.Insert(newSupplier);
                 return RedirectToAction("LogIn", "ClientLogIn");
             }

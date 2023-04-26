@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "New Supplier";
 }
-<section <img src="~/images/foodRegester.png" class="vh-100 bg-image" />
+<section <img src="/images/foodRegester.png" class="vh-100 bg-image" />
 
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
         <div class="container h-100">
@@ -53,9 +53,16 @@
                             </select>
                             <span asp-validation-for="type" class="text-danger"></span>
                         </div>
-                        <div class="form-outline mb-4">
+
+                       @* <div class="form-outline mb-4">
                             <label for="logo" class="form-label">Logo</label>
                             <input type="file" asp-for="logo" class="form-control form-control-lg" id="logo"/>
+                        </div>*@
+
+                        <div class="input-group mb-3">
+                            <input asp-for="logo" type="file" class="form-control" id="inputGroupFile02">
+                            <label asp-for="logo" class="input-group-text" for="inputGroupFile02">Upload</label>
+                            <span asp-validation-for="logo" class="text-danger"></span>
                         </div>
 
                         <div class="d-flex justify-content-center">
