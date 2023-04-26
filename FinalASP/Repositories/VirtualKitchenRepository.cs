@@ -19,6 +19,8 @@ namespace FinalASP.Repositories
         }
         public void Insert(VirtualKitchen VirtualKitchen)
         {
+            int id = context.VirtualKitchens.Count();
+            VirtualKitchen.Id = id;
             context.VirtualKitchens.Add(VirtualKitchen);
             context.SaveChanges();
         }

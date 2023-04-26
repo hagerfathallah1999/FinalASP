@@ -19,6 +19,8 @@ namespace FinalASP.Repositories
         }
         public void Insert(Supplier Supplier)
         {
+            int id = context.Suppliers.Count();
+            Supplier.id = id;
             context.Suppliers.Add(Supplier);
             context.SaveChanges();
         }
@@ -35,11 +37,12 @@ namespace FinalASP.Repositories
         }
         public int GetSupplierIdByName(string name)
         {
-            return context.Suppliers.FirstOrDefault(S => S.Name == name).id;
+            return context.Suppliers.FirstOrDefault(S => S.Username == name).id;
         }
         public Supplier GetSupplierByName(string name)
         {
-            return context.Suppliers.FirstOrDefault(S => S.Name == name);
+            return context.Suppliers.FirstOrDefault(S => S.Username == name);
         }
+
     }
 }
