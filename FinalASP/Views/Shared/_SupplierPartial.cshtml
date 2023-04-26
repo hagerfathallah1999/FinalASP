@@ -31,7 +31,13 @@
                             <label for="phone" class="form-label">phone</label>
                             <input asp-for="phone" class="form-control form-control-lg" id="phone" />
                             <span asp-validation-for="phone" class="text-danger"></span>
-                        
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input asp-for="logo" type="file" class="form-control" id="inputGroupFile02">
+                            <label asp-for="logo" class="input-group-text" for="inputGroupFile02">Upload</label>
+                            <span asp-validation-for="logo" class="text-danger"></span>
+                        </div>
 
                         <div class="form-outline mb-4">
                             <label for="Capacity" class="form-label">Capacity</label>
@@ -59,11 +65,7 @@
                             <input type="file" asp-for="logo" class="form-control form-control-lg" id="logo"/>
                         </div>*@
 
-                        <div class="input-group mb-3">
-                            <input asp-for="logo" type="file" class="form-control" id="inputGroupFile02">
-                            <label asp-for="logo" class="input-group-text" for="inputGroupFile02">Upload</label>
-                            <span asp-validation-for="logo" class="text-danger"></span>
-                        </div>
+                        
 
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
