@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "_KitchenPartial";
 }
-<section class="vh-100 bg-image" style="background-image: url('~/images/foodRegester.jpg');">
+<section class="vh-100 bg-image" style="background-image: url('/images/foodRegester.jpg');">
 
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
         <div class="container h-100">
@@ -42,9 +42,16 @@
                             </select>
                             <span asp-validation-for="Domain" class="text-danger"></span>
                         </div>
-                        <div class="form-outline mb-4">
+
+                        @*<div class="form-outline mb-4">
                             <label for="LogoImage" class="form-label">LogoImage</label>
                             <input type="file" asp-for="LogoImage" class="form-control form-control-lg" id="LogoImage" />
+                        </div>*@
+
+                        <div class="input-group mb-3">
+                            <input asp-for="LogoImage" type="file" class="form-control" id="inputGroupFile02">
+                            <label asp-for="LogoImage" class="input-group-text" for="inputGroupFile02">Upload</label>
+                            <span asp-validation-for="LogoImage" class="text-danger"></span>
                         </div>
 
                         <div class="d-flex justify-content-center">
