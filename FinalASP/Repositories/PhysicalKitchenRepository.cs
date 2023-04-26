@@ -19,6 +19,8 @@ namespace FinalASP.Repositories
         }
         public void Insert(PhysicalKitchen PhysicalKitchen)
         {
+            int id = context.PhysicalKitchens.Count();
+            PhysicalKitchen.Id = id;
             context.PhysicalKitchens.Add(PhysicalKitchen);
             context.SaveChanges();
         }

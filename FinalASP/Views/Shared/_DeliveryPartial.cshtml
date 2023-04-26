@@ -40,9 +40,16 @@
                             </select>
                             <span asp-validation-for="Domain" class="text-danger"></span>
                         </div>
-                        <div class="form-outline mb-4">
+
+                        @*<div class="form-outline mb-4">
                             <label for="logo" class="form-label">Logo</label>
                             <input type="file" asp-for="logo" class="form-control form-control-lg" id="logo" accept="images/*" />
+                        </div>*@
+
+                        <div class="input-group mb-3">
+                            <input asp-for="logo" type="file" class="form-control" id="inputGroupFile02">
+                            <label asp-for="logo" class="input-group-text" for="inputGroupFile02">Upload</label>
+                            <span asp-validation-for="logo" class="text-danger"></span>
                         </div>
 
                         <div class="d-flex justify-content-center">
