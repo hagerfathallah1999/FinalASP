@@ -11,6 +11,6 @@ namespace FinalASP.Repositories
         void Delete(int id);
         Supplier GetSupplierByName(string name);
         int GetSupplierIdByName(string name);
-        Supplier GetSupplierByName(string name);
+        
     }
 }
