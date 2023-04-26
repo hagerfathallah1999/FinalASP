@@ -16,7 +16,7 @@ namespace FinalASP.Controllers
         IVirtualKitchenRepository IVirtualKitchenRepo;
         IVirtualOrderRepository IVirtualOrderRepo;
 
-        public DeliveryCompanyController(IDeliveryCompanyRepository _DeliveryCompanyRepo, IKitchenRepository _IKitchenRepo,
+        public DeliveryCompanyController (IDeliveryCompanyRepository _DeliveryCompanyRepo, IKitchenRepository _IKitchenRepo,
             IVirtualOrderRepository _IVirtualOrderRepo, IVirtualKitchenRepository _IVirtualKitchenRepo, ISupplierRepository _ISupplierRepo,
             IReservationRepository _IReservationRepo, IPhysicalOrderRepository _IPhysicalOrderRepo,
             IPhysicalOrderListRepository _IPhysicalOrderListRepo, IPhysicalKitchenRepository _IPhysicalKitchenRepo)
@@ -37,21 +37,21 @@ namespace FinalASP.Controllers
             List<DeliveryCompany> DeliveryCompanyModel = IDeliveryCompanyRepo.GetAll();
             return View("Index", DeliveryCompanyModel);
         }
-        public IActionResult New()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult SaveNew(DeliveryCompany newdelivery)
-        {
-            if (ModelState.IsValid == true)
-            {
+		public IActionResult New()
+		{
+			return View();
+		}
+		[HttpPost]
+		public IActionResult SaveNew(DeliveryCompany newdelivery)
+		{
+			if (ModelState.IsValid == true)
+			{
                 newdelivery.Name = TempData["UserName"].ToString();
                 IDeliveryCompanyRepo.Insert(newdelivery);
                 return RedirectToAction("LogIn", "ClientLogIn");
             }
             return View("New", newdelivery);
-        }
+		}
         public IActionResult DeliveryProfile()
         {
             string DeliveryName = User.Identity.Name;
@@ -62,4 +62,3 @@ namespace FinalASP.Controllers
         }
     }
 }
-
