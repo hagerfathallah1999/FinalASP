@@ -1,4 +1,5 @@
 ﻿using FinalASP.Models;
+using FinalASP.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Policy;
@@ -9,17 +10,19 @@ namespace FinalASP.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         CloudKitchenContext context = new CloudKitchenContext();
-        public HomeController(ILogger<HomeController> logger, CloudKitchenContext _context)
+        IKitchenRepository IKitchenRepo;
+        public HomeController(ILogger<HomeController> logger, IKitchenRepository iKitchenRepo, CloudKitchenContext _context)
         {
             _logger = logger;
-            context = _context;
+               IKitchenRepo = iKitchenRepo;
+         context = _context;
         }
 
         public IActionResult Index()
         {
             
             string UserName = User.Identity.Name;
-            
+            MyGeneralModel.kitchens = IKitchenRepo.GetAllWithOwner();
             if (User.IsInRole("Supplier"))
             {
                 MyGeneralModel.Image = context.Suppliers.FirstOrDefault(S => S.Username == UserName).logo;
@@ -38,7 +41,6 @@ namespace FinalASP.Controllers
             else if (User.IsInRole("Kitchen"))
             {
                 MyGeneralModel.Image = context.PhysicalKitchens.FirstOrDefault(S => S.Name == UserName).LogoImage;
-                
             }
             return View();
         }
@@ -53,5 +55,6 @@ namespace FinalASP.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        
     }
 }
