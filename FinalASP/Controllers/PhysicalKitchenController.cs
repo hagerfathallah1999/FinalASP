@@ -88,12 +88,10 @@ namespace FinalASP.Controllers
                 var file = files[i];
                 if (file == null)
                     continue;
-
                 string fileName = Path.GetFileName(file.FileName);
                 string uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
                 using var stream = new FileStream(uploadPath, FileMode.Create);
                 await file.CopyToAsync(stream);
-
                 switch (i)
                 {
                     case 0:
@@ -107,7 +105,6 @@ namespace FinalASP.Controllers
                         break;
                 }
             }
-
             IKitchenRepo.Insert(Kitchen);
             return RedirectToAction("GetPhyshicalKitchens");
         }
