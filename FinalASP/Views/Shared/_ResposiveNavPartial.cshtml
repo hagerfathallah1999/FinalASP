@@ -4,9 +4,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark text-bg-light bg-dark">
         <div class="container-fluid">
         <a class="navbar-brand mb-0 h1 d-flex" href="#">
-            <img src="~/images/logo.png" alt="Kitcheniro Logo">
-            <span id="Kitchenir"> Kitchenir <span id="o">o</span></span>
-        </a>
+            <img class="logo-one" src="~/images/logo.png" alt="Kitcheniro Logo">     
+            <img class="logo-two" src="~/images/kitcheniro kaas2.png" alt="Kitcheniro Logo">
+
+@*            <span id="Kitchenir"> Kitchenir <span id="o">o</span></span>
+*@        </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -86,8 +88,17 @@
 
 
 <style>
+    .logo-one{
+        height: 65px;
+        width: 155px;
+    }
+    
 
-/*    .navbar-dark .navbar-brand {
+    .logo-two {
+        height: 30px;
+        width: 138px;
+    }
+    /*    .navbar-dark .navbar-brand {
         color: #ff9200;
     }*/
 
@@ -109,16 +120,6 @@
         font-size: 30px;
         font-family: monospace;
         font-weight: inherit;
-/*
-        font-size: 30px;
-        font-family: "Kitchen std";
-        color: rgb(255, 220, 0);
-        line-height: 2.144;
-        text-shadow: 0px 1px 2.76px rgba(72, 72, 72, 0.39);
-        position: absolute;
-        left: -0.408px;
-        top: -14.864px;
-        z-index: 1;*/
     }
 
     #o {
@@ -162,11 +163,13 @@
         align-items: center;
         flex-direction: column;
         flex: auto;
+        gap:8px;
+        padding-top: 1px;
     }
 
         .navbar-brand img  {
-            width: 160px;
-            height: 70px;
+/*            width: 160px;
+            height: 70px;*/
     }  
 
     .navbar-nav {
