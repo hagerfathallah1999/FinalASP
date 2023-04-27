@@ -42,11 +42,21 @@ namespace FinalASP.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult SaveNew(VirtualKitchen newChef)
+        public IActionResult SaveNew(VirtualKitchen newChef, IFormFile LogoImage)
         {
             if (ModelState.IsValid == true)
             {
                 newChef.Name = TempData["UserName"].ToString();
+                string fileName = LogoImage.FileName;
+
+                fileName = Path.GetFileName(fileName);
+
+                string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
+
+                var stream = new FileStream(uploadpath, FileMode.Create);
+
+                LogoImage.CopyToAsync(stream);
+                newChef.LogoImage = fileName;
                 IVirtualKitchenRepo.Insert(newChef);
                 return RedirectToAction("Index", "Home");
             }

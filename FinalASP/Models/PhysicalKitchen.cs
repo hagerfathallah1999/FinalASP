@@ -11,7 +11,7 @@ namespace FinalASP.Models
         public string Name { get; set; } = string.Empty;
         [Required(ErrorMessage = "Email is Required")]
         public string Locaion { get; set; } = string.Empty;
-        public byte[]? LogoImage { get; set; }
+        public string LogoImage { get; set; } = string.Empty;
         [Required(ErrorMessage = "Phone is Required")]
         public double Phone { get; set; }
 		[Required(ErrorMessage = "Domain is Required")]

@@ -12,13 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     [DbContext(typeof(CloudKitchenContext))]
-<<<<<<<< HEAD:FinalASP/Migrations/20230426234302_suppliername.Designer.cs
-    [Migration("20230426234302_suppliername")]
-    partial class suppliername
-========
-    [Migration("20230427125102_galal")]
-    partial class galal
->>>>>>>> cf3174dbd93b74a98bc4ed313a78af3e693c38a7:FinalASP/Migrations/20230427125102_galal.Designer.cs
+    [Migration("20230427174753_physicalkitchemimage")]
+    partial class physicalkitchemimage
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

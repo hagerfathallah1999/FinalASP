@@ -5,7 +5,7 @@
 namespace FinalASP.Migrations
 {
     /// <inheritdoc />
-    public partial class imageby : Migration
+    public partial class @new : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

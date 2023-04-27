@@ -42,11 +42,22 @@ namespace FinalASP.Controllers
 			return View();
 		}
 		[HttpPost]
-		public IActionResult SaveNew(DeliveryCompany newdelivery)
+		public IActionResult SaveNew(DeliveryCompany newdelivery,IFormFile logo)
 		{
 			if (ModelState.IsValid == true)
 			{
                 newdelivery.Name = TempData["UserName"].ToString();
+              
+                string fileName = logo.FileName;
+
+                fileName = Path.GetFileName(fileName);
+
+                string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
+
+                var stream = new FileStream(uploadpath, FileMode.Create);
+
+                logo.CopyToAsync(stream);
+                newdelivery.logo = fileName;
                 IDeliveryCompanyRepo.Insert(newdelivery);
                 return RedirectToAction("Index", "Home");
             }

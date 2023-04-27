@@ -201,8 +201,9 @@ namespace FinalASP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<byte[]>("LogoImage")
-                        .HasColumnType("bytea");
+                    b.Property<string>("LogoImage")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()

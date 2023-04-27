@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "New Supplier";
 }
-<section <img src="/images/foodRegester.png" class="vh-100 bg-image" />
+<section class="vh73 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
 
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
         <div class="container h-100">
@@ -12,7 +12,8 @@
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Create New Supplier Account</h2>
-                        <form method="post" asp-action="SaveNew" asp-controller="Supplier">
+                            @*----------- Accept multi form of iformfile-----------*@
+                        <form method="post" asp-action="SaveNew" asp-controller="Supplier" enctype="multipart/form-data">
                         <div asp-validation-summary="All" class="text-danger"></div>
 
                         <div class="form-outline mb-4">
@@ -35,7 +36,7 @@
 
                         <div class="input-group mb-3">
                             <input asp-for="logo" type="file" class="form-control" id="logo" onchange="displayFileName()">
-                            <label class="input-group-text" for="logo">Upload</label>
+                            <label class="form-label" for="logo">Upload</label>
                             <span asp-validation-for="logo" class="text-danger"></span>
                         </div>
 

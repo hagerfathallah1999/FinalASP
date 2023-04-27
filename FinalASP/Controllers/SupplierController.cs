@@ -1,6 +1,7 @@
 ﻿using FinalASP.Models;
 using FinalASP.Repositories;
 using FinalASP.ViewModel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol.Core.Types;
 
@@ -81,11 +82,21 @@ namespace FinalASP.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult SaveNew(Supplier newSupplier)
+        public IActionResult SaveNew(Supplier newSupplier ,IFormFile logo)
         {
             if (ModelState.IsValid == true)
             {
                 newSupplier.Username = TempData["UserName"].ToString();
+                string fileName = logo.FileName;
+
+                fileName = Path.GetFileName(fileName);
+
+                string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
+
+                var stream = new FileStream(uploadpath, FileMode.Create);
+
+                logo.CopyToAsync(stream);
+                newSupplier.logo = fileName;
                 ISupplierRepo.Insert(newSupplier);
                 return RedirectToAction("Index", "Home");
             }
