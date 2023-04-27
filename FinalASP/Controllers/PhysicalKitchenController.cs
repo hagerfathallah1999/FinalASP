@@ -42,11 +42,21 @@ namespace FinalASP.Controllers
 			return View();
 		}
 		[HttpPost]
-		public IActionResult SaveNew(PhysicalKitchen newKitchen)
+		public IActionResult SaveNew(PhysicalKitchen newKitchen,IFormFile LogoImage)
 		{
 			if (ModelState.IsValid == true)
 			{
                 newKitchen.Name = TempData["UserName"].ToString();
+                string fileName = LogoImage.FileName;
+
+                fileName = Path.GetFileName(fileName);
+
+                string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
+
+                var stream = new FileStream(uploadpath, FileMode.Create);
+
+                LogoImage.CopyToAsync(stream);
+                newKitchen.LogoImage = fileName;
                 IPhysicalKitchenRepo.Insert(newKitchen);
                 
                 return RedirectToAction("Index", "Home");
@@ -67,14 +77,42 @@ namespace FinalASP.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddKitchenToPhyKitchen(Kitchen Kitchen)
+        public async Task<IActionResult> AddKitchenToPhyKitchen(Kitchen Kitchen, IFormFile KitchenImage1, IFormFile KitchenImage2, IFormFile KitchenImage3)
         {
             string KitchenName = User.Identity.Name;
             int PhyKitchenId = IPhysicalKitchenRepo.GetPhyshicalIdByName(KitchenName);
             Kitchen.PhysicalKitchenId = PhyKitchenId;
+
+            var files = new List<IFormFile> { KitchenImage1, KitchenImage2, KitchenImage3 };
+            for (int i = 0; i < files.Count; i++)
+            {
+                var file = files[i];
+                if (file == null)
+                    continue;
+
+                string fileName = Path.GetFileName(file.FileName);
+                string uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
+                using var stream = new FileStream(uploadPath, FileMode.Create);
+                await file.CopyToAsync(stream);
+
+                switch (i)
+                {
+                    case 0:
+                        Kitchen.KitchenImage1 = fileName;
+                        break;
+                    case 1:
+                        Kitchen.KitchenImage2 = fileName;
+                        break;
+                    case 2:
+                        Kitchen.KitchenImage3 = fileName;
+                        break;
+                }
+            }
+
             IKitchenRepo.Insert(Kitchen);
             return RedirectToAction("GetPhyshicalKitchens");
         }
+
         public IActionResult PhyKitchenProfile()
         {
             string PhyKitchenName = User.Identity.Name;
