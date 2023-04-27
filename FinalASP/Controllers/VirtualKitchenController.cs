@@ -48,7 +48,7 @@ namespace FinalASP.Controllers
             {
                 newChef.Name = TempData["UserName"].ToString();
                 IVirtualKitchenRepo.Insert(newChef);
-                return RedirectToAction("LogIn", "ClientLogIn");
+                return RedirectToAction("Index", "Home");
             }
             return View("New", newChef);
         }

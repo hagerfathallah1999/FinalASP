@@ -15,7 +15,7 @@ namespace FinalASP.Controllers
         public async Task<IActionResult> LogOut()
         {
             await signInManager.SignOutAsync();
-            return RedirectToAction("LogIn", "ClientLogIn");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
