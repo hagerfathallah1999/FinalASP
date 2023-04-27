@@ -13,8 +13,12 @@ namespace FinalASP.Models
 
         [Required(ErrorMessage = "This field is Required")]
         public string Locaion { get; set; } = string.Empty;
-        [Required(ErrorMessage = "This field is Required")]
-        public string KitchenImages { get; set; } // need to be a list of images 
+        [Required(ErrorMessage = "This img1 is Required")]
+        public string KitchenImage1 { get; set; } = string.Empty;// need to be a list of images 
+        [Required(ErrorMessage = "This img2 is Required")]
+        public string KitchenImage2 { get; set; } = string.Empty;
+        [Required(ErrorMessage = "This img3 is Required")]
+        public string KitchenImage3 { get; set; } = string.Empty;
         [Required(ErrorMessage = "This field is Required")]
         public bool State { get; set; } // if the Kitchen reserved or not
         public string Domain { get; set; } = string.Empty;
