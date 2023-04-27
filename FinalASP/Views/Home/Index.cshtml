@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Html.Partial("_ResposiveNavPartial",(string) ViewBag.image);
 }
 
 <div class="text-center">
@@ -7,15 +8,14 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
 </div>
 
-
 @*<partial name="_HomeCardPartial" />
-*@
+
 
 
 @*<partial name="_DetailsCard" />*@
 
 
-<partial name="_ResposiveNavPartial" />
+<partial name="_ResposiveNavPartial"/>
 
 @*By Haget this is the first slider*@
 
