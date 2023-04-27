@@ -8,13 +8,13 @@ namespace FinalASP.Models
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "This field is Required")]
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "This field is Required")]
         public string Locaion { get; set; } = string.Empty;
         [Required(ErrorMessage = "This img1 is Required")]
-        public string KitchenImage1 { get; set; } = string.Empty;// need to be a list of images 
+        public string KitchenImage1 { get; set; } = string.Empty;
         [Required(ErrorMessage = "This img2 is Required")]
         public string KitchenImage2 { get; set; } = string.Empty;
         [Required(ErrorMessage = "This img3 is Required")]

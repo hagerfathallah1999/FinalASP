@@ -7,7 +7,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     /// <inheritdoc />
+<<<<<<<< HEAD:FinalASP/Migrations/20230426234302_suppliername.cs
     public partial class suppliername : Migration
+========
+    public partial class galal : Migration
+>>>>>>>> cf3174dbd93b74a98bc4ed313a78af3e693c38a7:FinalASP/Migrations/20230427125102_galal.cs
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
