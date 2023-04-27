@@ -1,6 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Authorization
-@inject IAuthorizationService AuthorizationService
-
+@model MyGeneralModel
 <nav class="navbar navbar-expand-lg navbar-dark text-bg-light bg-dark">
         <div class="container-fluid">
         <a class="navbar-brand mb-0 h1 d-flex" href="#">
@@ -37,31 +36,34 @@
             @{
                 if (User.IsInRole("Supplier") || User.IsInRole("Chef") || User.IsInRole("Delivery") || User.IsInRole("Kitchen"))
                 {
+                    string url=string.Empty;
+                    string src = string.Empty;
+                    if (User.IsInRole("Supplier"))
+                    {
+                        url = "/Supplier/SupplierProfile";
+                        src = $"/images/{@Model.SupplierImage}";
+                    }
+                    else if (User.IsInRole("Chef"))
+                    {
+                        url = "/VirtualKitchen/ChefProfile";
+                        src = $"/images/{@Model.ChefImage}";
+                    }
+                    else if (User.IsInRole("Delivery"))
+                    {
+                        url = "/DeliveryCompany/DeliveryProfile";
+                        src = $"/images/{@Model.DeliveryImage}";
+                    }
+                    else if (User.IsInRole("Kitchen"))
+                    {
+                        url = "/PhysicalKitchen/PhyKitchenProfile";
+                        src = $"/images/{@Model.KitchenImage}";
+                    }
                     <div class="dropdown">
                         <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" >
                             <strong class="username-login-style">@User.Identity.Name</strong>
-                            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                            <img src="@src" alt="" width="32" height="32" class="rounded-circle me-2">
                         </a>
                         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                            @{
-                                string url=string.Empty;
-                                if (User.IsInRole("Supplier"))
-                                {
-                                    url = "/Supplier/SupplierProfile";
-                                }
-                                else if (User.IsInRole("Chef"))
-                                {
-                                    url = "/VirtualKitchen/ChefProfile";
-                                }
-                                else if (User.IsInRole("Delivery"))
-                                {
-                                    url = "/DeliveryCompany/DeliveryProfile";
-                                }
-                                else if (User.IsInRole("Kitchen"))
-                                {
-                                    url = "/PhysicalKitchen/PhyKitchenProfile";
-                                }
-                            }
                             <li><a class="dropdown-item" href="@url">Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="/ClientLogOut/LogOut">Sign out</a></li>

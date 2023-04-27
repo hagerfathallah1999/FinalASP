@@ -1,5 +1,8 @@
-﻿@{
+﻿@model MyGeneralModel
+@{
     ViewData["Title"] = "Home Page";
+    
+    Html.Partial("_ResposiveNavPartial",Model);
 }
 
 <div class="text-center">
