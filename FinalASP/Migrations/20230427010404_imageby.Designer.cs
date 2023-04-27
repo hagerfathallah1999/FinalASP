@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     [DbContext(typeof(CloudKitchenContext))]
-    [Migration("20230426173526_Galal")]
-    partial class Galal
+    [Migration("20230427010404_imageby")]
+    partial class imageby
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -145,7 +145,15 @@ namespace FinalASP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("KitchenImages")
+                    b.Property<string>("KitchenImage1")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("KitchenImage2")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("KitchenImage3")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -196,9 +204,8 @@ namespace FinalASP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("LogoImage")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<byte[]>("LogoImage")
+                        .HasColumnType("bytea");
 
                     b.Property<string>("Name")
                         .IsRequired()

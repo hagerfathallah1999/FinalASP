@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     [DbContext(typeof(CloudKitchenContext))]
-    [Migration("20230426211327_addKitchenImages")]
-    partial class addKitchenImages
+    [Migration("20230427004937_imagebyte")]
+    partial class imagebyte
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -204,9 +204,8 @@ namespace FinalASP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("LogoImage")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<byte[]>("LogoImage")
+                        .HasColumnType("bytea");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -337,7 +336,7 @@ namespace FinalASP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("text");
 
