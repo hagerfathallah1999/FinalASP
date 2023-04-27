@@ -48,7 +48,7 @@ namespace FinalASP.Controllers
 			{
                 newKitchen.Name = TempData["UserName"].ToString();
                 IPhysicalKitchenRepo.Insert(newKitchen);
-                return RedirectToAction("LogIn", "ClientLogIn");
+                return RedirectToAction("Index", "Home");
             }
             return View("New", newKitchen);
 		}

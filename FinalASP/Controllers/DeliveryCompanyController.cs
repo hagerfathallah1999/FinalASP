@@ -48,7 +48,7 @@ namespace FinalASP.Controllers
 			{
                 newdelivery.Name = TempData["UserName"].ToString();
                 IDeliveryCompanyRepo.Insert(newdelivery);
-                return RedirectToAction("LogIn", "ClientLogIn");
+                return RedirectToAction("Index", "Home");
             }
             return View("New", newdelivery);
 		}

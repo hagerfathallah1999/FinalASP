@@ -87,7 +87,7 @@ namespace FinalASP.Controllers
             {
                 newSupplier.Username = TempData["UserName"].ToString();
                 ISupplierRepo.Insert(newSupplier);
-                return RedirectToAction("LogIn", "ClientLogIn");
+                return RedirectToAction("Index", "Home");
             }
             return View("New", newSupplier);
         }
