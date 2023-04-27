@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     [DbContext(typeof(CloudKitchenContext))]
-    [Migration("20230427154554_Hager")]
-    partial class Hager
+    [Migration("20230427153127_new")]
+    partial class @new
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -204,9 +204,8 @@ namespace FinalASP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("LogoImage")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<byte[]>("LogoImage")
+                        .HasColumnType("bytea");
 
                     b.Property<string>("Name")
                         .IsRequired()
