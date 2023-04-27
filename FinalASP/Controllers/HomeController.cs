@@ -19,28 +19,28 @@ namespace FinalASP.Controllers
         {
             
             string UserName = User.Identity.Name;
-            MyGeneralModel model = new MyGeneralModel();
+            
             if (User.IsInRole("Supplier"))
             {
-                string SupplierImage = context.Suppliers.FirstOrDefault(S => S.Username == UserName).logo;
-                model.SupplierImage= SupplierImage;
+                MyGeneralModel.Image = context.Suppliers.FirstOrDefault(S => S.Username == UserName).logo;
+                
             }
             else if (User.IsInRole("Chef"))
             {
-                string ChefImage = context.VirtualKitchens.FirstOrDefault(S => S.Name == UserName).LogoImage;
-                model.ChefImage = ChefImage;
+                MyGeneralModel.Image = context.VirtualKitchens.FirstOrDefault(S => S.Name == UserName).LogoImage;
+                
             }
             else if (User.IsInRole("Delivery"))
             {
-                string DeliveryImage = context.DeliveryCompanys.FirstOrDefault(S => S.Name == UserName).logo;
-                model.DeliveryImage = DeliveryImage;
+                MyGeneralModel.Image = context.DeliveryCompanys.FirstOrDefault(S => S.Name == UserName).logo;
+                
             }
             else if (User.IsInRole("Kitchen"))
             {
-                string KitchenImage = context.PhysicalKitchens.FirstOrDefault(S => S.Name == UserName).LogoImage;
-                model.KitchenImage = KitchenImage;
+                MyGeneralModel.Image = context.PhysicalKitchens.FirstOrDefault(S => S.Name == UserName).LogoImage;
+                
             }
-            return View(model);
+            return View();
         }
 
         public IActionResult Privacy()

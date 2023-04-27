@@ -1,5 +1,4 @@
 ﻿@using Microsoft.AspNetCore.Authorization
-@model MyGeneralModel
 <nav class="navbar navbar-expand-lg navbar-dark text-bg-light bg-dark">
         <div class="container-fluid">
         <a class="navbar-brand mb-0 h1 d-flex" href="#">
@@ -37,26 +36,27 @@
                 if (User.IsInRole("Supplier") || User.IsInRole("Chef") || User.IsInRole("Delivery") || User.IsInRole("Kitchen"))
                 {
                     string url=string.Empty;
-                    string src = string.Empty;
+                    string src = $"/images/{@MyGeneralModel.Image}";
+
                     if (User.IsInRole("Supplier"))
                     {
                         url = "/Supplier/SupplierProfile";
-                        src = $"/images/{@Model.SupplierImage}";
+                       
                     }
                     else if (User.IsInRole("Chef"))
                     {
                         url = "/VirtualKitchen/ChefProfile";
-                        src = $"/images/{@Model.ChefImage}";
+                       
                     }
                     else if (User.IsInRole("Delivery"))
                     {
                         url = "/DeliveryCompany/DeliveryProfile";
-                        src = $"/images/{@Model.DeliveryImage}";
+                       
                     }
                     else if (User.IsInRole("Kitchen"))
                     {
                         url = "/PhysicalKitchen/PhyKitchenProfile";
-                        src = $"/images/{@Model.KitchenImage}";
+                        
                     }
                     <div class="dropdown">
                         <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" >
