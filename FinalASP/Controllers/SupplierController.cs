@@ -57,11 +57,17 @@ namespace FinalASP.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddMatrialToSupplier(SupplierMatrial supplierMatrial)
+        public IActionResult AddMatrialToSupplier(SupplierMatrial supplierMatrial, IFormFile Image)
         {
             string SupplierName = User.Identity.Name;
             int SupplierId = ISupplierRepo.GetSupplierIdByName(SupplierName);
             supplierMatrial.SupplierId= SupplierId;
+            string fileName = Image.FileName;
+            fileName = Path.GetFileName(fileName);
+            string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
+            var stream = new FileStream(uploadpath, FileMode.Create);
+            Image.CopyToAsync(stream);
+            supplierMatrial.Image = fileName;
             ISupplierMatrialRepo.AddMatrialToSupplier(supplierMatrial);
             return RedirectToAction("GetSupplierMatrials");
         }

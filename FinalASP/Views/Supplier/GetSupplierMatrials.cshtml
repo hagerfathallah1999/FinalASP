@@ -5,24 +5,24 @@
 }
 <partial name="_ResposiveNavPartial" />
 <div class="row">
-    <partial name="_SupplierSidepar" />
-<div class="col-md-9">
-@foreach (var item in Model) {
-    <div class="card" style="width: 18rem; display: inline-block;">
-                <img src="\images\@item.Image" class="card-img-top" alt="@item.description" style="height:220px" />
+        <partial name="_SupplierSidepar" />
+    <div class="col-md-9">
+        @foreach (var item in Model) {
+            <div class="card" style="width: 18rem; display: inline-block;">
+                        <img src="\images\@item.Image" class="card-img-top" alt="@item.description" style="height:220px" />
 
-        <div class="text-center card-body">
-            <h5 class="text-center card-title">@item.name</h5>
-            @item.Price
-            <p class="text-center card-text">@item.description.</p>
-            <a href="#!" class="text-center btn btn-primary">Add to cart</a>
-        </div>
+                <div class="text-center card-body">
+                    <h5 class="text-center card-title">@item.name</h5>
+                    @item.Price
+                    <p class="text-center card-text">@item.description.</p>
+                    <a href="#!" class="text-center btn btn-primary">Add to cart</a>
+                </div>
+            </div>
+        }
+                <p>
+                    <a class="btn btn-outline-dark" asp-action="AddMatrialToSupplier">Add New Product</a>
+                </p>
     </div>
-}
-        <p>
-            <a class="btn btn-outline-dark" asp-action="AddMatrialToSupplier">Add New Product</a>
-        </p>
-</div>
     
 </div>
 @*<script src="~/js/site.js"></script>*@

@@ -2,55 +2,60 @@
 
 @{
     ViewData["Title"] = "AddMatrialToSupplier";
-    
 }
 <partial name="_ResposiveNavPartial" />
-<h1>AddMatrialToSupplier</h1>
+<section class="vh73 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-7">Add Material to supplier</h2>
+                            <form method="post" asp-action="AddMatrialToSupplier" asp-controller="Supplier" enctype="multipart/form-data">
+                                <div asp-validation-summary="All" class="text-danger"></div>
 
-<h4>SupplierMatrial</h4>
-<hr />
+                                <div class="form-outline mb-7">
+                                    <label for="name" class="form-label">name</label>
+                                    <input asp-for="name" class="form-control form-control-lg" id="name" />
+                                    <span asp-validation-for="name" class="text-danger"></span>
+                                </div>
 
+                                <div class="form-outline mb-7">
+                                    <label for="description" class="form-label">description</label>
+                                    <input asp-for="description" class="form-control form-control-lg" id="description" />
+                                    <span asp-validation-for="description" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline mb-7">
+                                    <label for="Price" class="form-label">Price</label>
+                                    <input asp-for="Price" class="form-control form-control-lg" id="Price" />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline mb-7">
+                                    <label asp-for="Image" class="form-label">Upload your material image</label>
+                                    <input type="file" asp-for="Image" class="form-control form-control-lg" id="Image" />
+                                    <span asp-validation-for="Image" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline mb-7">
+                                    <label for="quantity" class="form-label">quantity</label>
+                                    <input asp-for="quantity" class="form-control form-control-lg" id="quantity" />
+                                    <span asp-validation-for="quantity" class="text-danger"></span>
+                                </div>
+                                <div class="d-flex justify-content-center">
 
-<div class="row">
-    <div class="col-md-4">
-        <form method="post" asp-action="AddMatrialToSupplier">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="name" class="control-label"></label>
-                <input asp-for="name" class="form-control" />
-                <span asp-validation-for="name" class="text-danger"></span>
+                                    <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body m-md-5">Create</button>
+                                    <a asp-action="Index" class="btn btn-success btn-block btn-lg gradient-custom-6 text-body m-md-5">Back to List</a>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="description" class="control-label"></label>
-                <input asp-for="description" class="form-control" />
-                <span asp-validation-for="description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image" class="form-label">Upload your product image</label>
-                <input asp-for="Image" class="form-control" type="file" id="customFile" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="quantity" class="control-label"></label>
-                <input asp-for="quantity" class="form-control" />
-                <span asp-validation-for="quantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+</section>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <!--Jquery-->

@@ -1,13 +1,12 @@
-﻿@model IEnumerable<FinalASP.Models.Kitchen>
+﻿
+@model IEnumerable<FinalASP.Models.Kitchen>
 
 @{
     ViewData["Title"] = "GetPhyshicalKitchens";
 }
-<p>
-    <a asp-action="AddKitchenToPhyKitchen">Create New</a>
-</p>
+<partial name="_ResposiveNavPartial" />
 <div class="row">
-    @*<partial name="_SupplierSidepar" />*@
+    <partial name="_SupplierSidepar" />
     <div class="col-md-9">
         @foreach (var item in Model)
         {
@@ -22,6 +21,9 @@
                 </div>
             </div>
         }
+        <p>
+            <a class="btn btn-outline-dark" asp-action="AddKitchenToPhyKitchen">Create New </a>
+        </p>
     </div>
 </div>
 @*<script src="~/js/site.js"></script>*@

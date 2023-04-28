@@ -4,6 +4,7 @@ namespace FinalASP.ViewModel
 {
     public class ClientLogInViewModel
     {
+        [Required] 
         public string UserName { get; set; }
 
         [DataType(DataType.Password)]

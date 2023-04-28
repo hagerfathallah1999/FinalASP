@@ -38,7 +38,7 @@ namespace FinalASP.Controllers
                         return RedirectToAction("Index","Home");
                     }
                 }
-                ModelState.AddModelError("", "Invalid Login, please try again");
+                ModelState.AddModelError("", "Invalid Login, Username or password is wrong");
             }
             return View(clientVM);
         }
