@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     /// <inheritdoc />
-    public partial class imageby : Migration
+    public partial class MigrationZft : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -79,7 +79,7 @@ namespace FinalASP.Migrations
                     CompanyName = table.Column<string>(type: "text", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Locaion = table.Column<string>(type: "text", nullable: false),
-                    LogoImage = table.Column<byte[]>(type: "bytea", nullable: true),
+                    LogoImage = table.Column<string>(type: "text", nullable: false),
                     Phone = table.Column<double>(type: "double precision", nullable: false),
                     Domain = table.Column<string>(type: "text", nullable: false)
                 },

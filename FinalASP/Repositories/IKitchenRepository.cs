@@ -10,5 +10,6 @@ namespace FinalASP.Repositories
         void Update(Kitchen Kitchen);
         void Delete(int id);
         List<Kitchen> GetKitchensByPhyKitchen(int PhyKitchenId);
+        List<Kitchen> GetAllWithOwner();
     }
 }

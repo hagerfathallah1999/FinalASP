@@ -1,4 +1,5 @@
 ﻿using FinalASP.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalASP.Repositories
 {
@@ -12,6 +13,10 @@ namespace FinalASP.Repositories
         public List<Kitchen> GetAll()
         {
             return context.Kitchens.ToList();
+        }
+        public List<Kitchen> GetAllWithOwner()
+        {
+            return context.Kitchens.Include(P=>P.PhysicalKitchen).ToList();
         }
         public Kitchen GetById(int id)
         {
@@ -38,6 +43,7 @@ namespace FinalASP.Repositories
             List<Kitchen> Kitchens = context.Kitchens.Where(e => e.PhysicalKitchenId == PhyKitchenId).ToList();
             return Kitchens;
         }
+
         
     }
 }

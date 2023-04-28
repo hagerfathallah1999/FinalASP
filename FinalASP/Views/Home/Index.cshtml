@@ -1,31 +1,174 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-   @* <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+<div class="home-div">
+    <section class="home-section">
+        <div>
+            <section class="nav-section">
+                <partial name="_ResposiveNavPartial" />
+            </section>
+        </div>
+
+@*        <div class="explore-our-kitchens-btn">
+            <a href="#">
+                <span>Explore Our Kitchens</span>
+            </a>
+        </div>*@
+@*
+        <div>
+            <section class="slider-section">
+                    <partial name="_HomeSliderPartial" />
+            </section>
+        </div>*@
+
+
+        <div>
+            <section>
+                <div class="sec-one">
+                    <partial name="_SectionOnePartial" />
+                </div>
+            </section>
+        </div>
+
+        <div>
+            <section>
+                <div class="sec-two">
+
+                </div>
+            </section>
+        </div>
+
+        <div>
+            <section>
+                <div class="sec-three">
+                </div>
+            </section>
+        </div>
+
+        <div>
+            <section>
+                <div class="sec-four">
+
+                </div>
+            </section>
+        </div>
+
+        <div>
+            <section>
+                <div class="sec-five">
+                </div>
+            </section>
+        </div>
+@*
+        <div>
+            <section class="footer-section">
+                <partial name="_FooterPartial" />
+            </section>
+        </div>*@
+
+    </section>
 </div>
 
 
-@*<partial name="_HomeCardPartial" />
-*@
+<style>
+
+    .sec-one {
+        position: absolute;
+        left:0;
+        right:0;
+        top: 130px;
+        height: 500px;
+        width: 100%;
+    }
+
+        .sec-two {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 1198px;
+        height: 600px;
+        width: 100%;
+        background-color: rgba(0, 255, 0, 0.5);
+
+    }
+
+        .sec-three {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 1798px;
+        height: 600px;
+        width: 100%;
+        background-color: rgba(0, 0, 255, 0.5);
+    }
+
+        .sec-four {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 2398px;
+        height: 600px;
+        width: 100%;
+        background-color: rgba(255, 0, 0, 0.5);
+    }
+
+    .sec-five {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 2998px;
+        height: 600px;
+        width: 100%;
+        background-color: rgba(0, 255, 0, 0.5);
+    }
+
+/*    .explore-our-kitchens-btn {
+        width: 300px;
+        height: 100px;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        left: 25%;
+        top: 50%;
+    }
+    .explore-our-kitchens-btn span {
+        color: white;
+    }*/
+</style>
 
 
-@*<partial name="_DetailsCard" />*@
-
-
-<partial name="_ResposiveNavPartial" />
-
-@*By Haget this is the first slider*@
-
-
-<partial name="_HomeSliderPartial" />
 
 
 
 
-@*By Haget this is the second slider*@
-@*<partial name="_SliderTwoPartial" />*@
 
-<partial name="_FooterPartial" />
+
+
+
+
+
+
+
+
+
+@*<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <div class="col">
+        @foreach (var item in MyGeneralModel.kitchens)
+        {
+            <div class="p-3">
+                <div class="card" style="width: 18rem; display: inline-block;">
+                    <img src="\images\@item.KitchenImage1" class="card-img-top" alt="@item.Description" style="height:220px" />
+
+                    <div class="text-center card-body">
+                        <h5 class="text-center card-title">@item.Name</h5>
+                        @item.Price
+                        <p class="text-center card-text">@item.Description.</p>
+                        <p class="text-center card-text">Owner:@item.PhysicalKitchen.Name</p>
+                        <a href="#!" class="text-center btn btn-primary">See Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>*@
