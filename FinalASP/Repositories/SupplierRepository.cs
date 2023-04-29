@@ -19,8 +19,8 @@ namespace FinalASP.Repositories
         }
         public void Insert(Supplier Supplier)
         {
-            int id = context.Suppliers.Count();
-            Supplier.id = id;
+            MyGeneralModel.SupplierIdTracker = context.Suppliers.Count();
+            Supplier.id = MyGeneralModel.SupplierIdTracker;
             context.Suppliers.Add(Supplier);
             context.SaveChanges();
         }
