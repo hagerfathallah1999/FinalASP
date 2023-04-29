@@ -1,0 +1,196 @@
+﻿<div>
+    <section>
+            <div>
+                <div class="content-sec-one d-flex">
+                    <div class="subject-content-sec-one d-flex">
+
+                        <div>
+                            <span>
+                                Shared Kitchens,
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                New Deals,
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                More Income!
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="sub_subject-content-sec-one d-flex">
+
+                        <div>
+                            <span>
+                                If You Want…
+                            </span>
+                        </div>
+
+                        <div>
+                            <span>
+                                To Make Your Startup Idea Comes True!
+                            </span>
+                        </div>
+
+                        <div>
+                            <span>
+                                To Increase Your Utilization Rate & Your Profit!
+                            </span>
+                        </div>
+
+                        <div>
+                            <span>
+                                To Expand Your Business Deals!
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                <div @*class="explore-btn"*@>
+                        <a class="btn btn-light text-bg-dark" href="#">Explore Our Kitchens</a>
+                    </div>
+
+                </div>
+
+                <div class="bg-sec-one">
+                    <img src="~/images/form-function-kitchen-header.jpg" class="d-block w-100" alt="kitchen">
+                </div>
+
+            </div>
+    </section>
+</div>
+
+
+<style>
+    .content-sec-one {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 660px;
+        z-index: 1;
+        height: 430px;
+        background-color: rgba(0, 0, 0, 0.1);
+        position: relative;
+        left: 153px;
+        padding-top: 153px;
+        gap: 15px;
+    }
+
+    .content-sec-one span {
+            font-family: monospace;
+            color: white;
+    }
+
+    .subject-content-sec-one {
+        flex-direction: column;
+    }
+
+        .subject-content-sec-one span {
+            font-size: 35px;
+
+        }
+
+
+    .sub_subject-content-sec-one {
+        flex-direction: column;
+    }
+
+    .sub_subject-content-sec-one span {
+            font-size: 25px;
+    }
+
+    img {
+        height: 600px;
+        width: 100%;
+        position: relative; 
+        z-index: 0; /* Set a lower z-index to position the image below the spans */
+    }
+
+    .bg-sec-one {
+        height: 600px;
+        position: absolute;
+        width: 100%;
+        top: 0px;
+        right: 0;
+        left: 0;
+    }
+
+/*    .explore-btn:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+    }*/
+</style>
+
+@*<style>
+    .content-sec-one {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex: auto;
+        position: absolute;
+        top: 10%;
+        right: 10%;
+    }
+
+    .content-sec-one span {
+        font-family: monospace;
+    }
+
+    .subject-content-sec-one {
+
+    }
+
+    .subject-content-sec-one span {
+
+    }
+
+    .sub_subject-content-sec-one {
+    }
+
+    .sub_subject-content-sec-one span {
+    }
+
+    .explore-our-kitchens-btn-sec-one {
+        width: 300px;
+        height: 100px;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        left: 25%;
+        border: 1px;
+        border-radius: 20%;
+    }
+
+    .explore-our-kitchens-btn-sec-one span {
+            color: white;
+            top: 6px;
+            position: absolute;
+            top: 30px;
+            border: -13px;
+            left: 13px;
+            font-size: 25px;
+            font-family: monospace;
+            font-weight: bold;
+    }
+
+    img {
+        height: 500px;
+        width: 100%;
+    }
+
+    .bg-sec-one {
+        height: 500px;
+        position: absolute;
+        width: 100%;
+        top: 130px;
+        right: 0;
+        left: 0;
+    }
+</style>*@

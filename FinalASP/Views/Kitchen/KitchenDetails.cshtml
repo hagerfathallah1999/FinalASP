@@ -1,0 +1,146 @@
+﻿@model FinalASP.Models.Kitchen
+
+<partial name="_ResposiveNavPartial" />
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/images/@Model.KitchenImage1" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="/images/@Model.KitchenImage2" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="/images/@Model.KitchenImage3" class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+<div class="booking-form">
+    <div class="booking-bg"></div>
+    <form>
+        <div class="form-header">
+            <h2>Make your reservation</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <span class="form-label">Start Date</span>
+                    <input class="form-control" type="date" required="" id="Start" min="2023-04-29" max="2030-12-31">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <span class="form-label">End Date</span>
+                    <input class="form-control" type="date" required="" id="End" >
+                </div>
+            </div>
+        </div>
+        <div class="form-btn">
+            <button class="submit-btn">Book Now</button>
+        </div>
+    </form>
+</div>
+
+      
+@*<input type="date"
+       name="begin"
+       class="DateBegin"
+       placeholder="dd-mm-yyyy"
+       value=""
+       min="2023-04-29"
+       max="2030-12-31" />*@
+
+<script>
+    const dateStart = document.getElementById('Start');
+    const dateEnd = document.getElementById('End');
+
+    dateStart.addEventListener("change", (e) => {
+        console.log(e.target.valueAsDate.toISOString());
+        dateEnd.setAttribute("min", `${e.target.value}`);
+    });
+    
+    dateEnd.addEventListener("change", (e) => {
+        console.log(e.target.valueAsDate.toISOString());
+        const startDate = new Date(dateStart.valueAsDate);
+        const endDate = new Date(e.target.valueAsDate);
+        const timeDiff = endDate.getTime() - startDate.getTime();
+        const daysDiff = timeDiff / (1000 * 3600 * 24); // convert milliseconds to days
+        console.log(`Number of days between ${startDate.toDateString()} and ${endDate.toDateString()}: ${Math.floor(daysDiff)}`);
+    });
+    
+</script>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    #carouselExampleIndicators.carousel {
+        height: 600px;
+        width: 700px;
+        /*margin-left: auto;*/
+        margin-right: auto;
+    }
+
+    #carouselExampleIndicators .carousel-inner img {
+        height: 600px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    #carouselExampleIndicators .carousel-control-prev-icon,
+    #carouselExampleIndicators .carousel-control-next-icon {
+        background-color: black;
+        border-radius: 50%;
+    }
+
+    #carouselExampleIndicators .carousel-control-prev-icon {
+        right: -40px;
+    }
+
+    #carouselExampleIndicators .carousel-control-next-icon {
+        left: -40px;
+    }
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-family: 'Cabin', sans-serif;
+    box-sizing: border-box;
+    position: relative;
+    max-width: 642px;
+    width: 100%;
+    margin: auto;
+    background: #fff;
+    box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.3);
+</style>
+
