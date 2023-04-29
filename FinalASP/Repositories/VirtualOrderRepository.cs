@@ -19,6 +19,8 @@ namespace FinalASP.Repositories
         }
         public void Insert(VirtualOrder VirtualOrder)
         {
+            MyGeneralModel.VirualOrderIdTracker = context.PhysicalKitchens.Count();
+            VirtualOrder.Id = MyGeneralModel.VirualOrderIdTracker;
             context.VirtualOrders.Add(VirtualOrder);
             context.SaveChanges();
         }
