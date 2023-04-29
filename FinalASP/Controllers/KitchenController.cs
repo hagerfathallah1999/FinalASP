@@ -34,8 +34,14 @@ namespace FinalASP.Controllers
 
         public IActionResult Index()
         {
-            List<Kitchen> KitchenModel = IKitchenRepo.GetAll();
+            List<Kitchen> KitchenModel = IKitchenRepo.GetAllWithOwner();
             return View("Index", KitchenModel);
+        }
+
+        public IActionResult KitchenDetails([FromRoute] int id)
+        {
+            Kitchen? KitchenModel = IKitchenRepo.GetById(id);
+            return View("KitchenDetails", KitchenModel);
         }
         
 

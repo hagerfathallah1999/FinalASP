@@ -19,13 +19,13 @@ namespace FinalASP.Repositories
         }
         public void Insert(VirtualKitchen VirtualKitchen)
         {
-            int id = context.VirtualKitchens.Count();
-            VirtualKitchen.Id = id;
+            MyGeneralModel.KitchenIdTracker = context.VirtualKitchens.Count();
+            VirtualKitchen.Id = MyGeneralModel.KitchenIdTracker;
             context.VirtualKitchens.Add(VirtualKitchen);
             context.SaveChanges();
         }
         public void Update(VirtualKitchen VirtualKitchen)
-        {
+        {   
             context.Update(VirtualKitchen);
             context.SaveChanges();
         }
