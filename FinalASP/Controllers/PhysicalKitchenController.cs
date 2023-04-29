@@ -47,6 +47,8 @@ namespace FinalASP.Controllers
 			if (ModelState.IsValid == true)
 			{
                 newKitchen.Name = TempData["UserName"].ToString();
+                newKitchen.Email = TempData["Email"].ToString();
+
                 string fileName = LogoImage.FileName;
 
                 fileName = Path.GetFileName(fileName);

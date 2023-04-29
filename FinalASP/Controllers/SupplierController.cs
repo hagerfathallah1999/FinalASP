@@ -4,6 +4,7 @@ using FinalASP.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol.Core.Types;
+using System.Security.Principal;
 
 namespace FinalASP.Controllers
 {
@@ -75,14 +76,48 @@ namespace FinalASP.Controllers
         {
             string SupplierName = User.Identity.Name;
             int SupplierId = ISupplierRepo.GetSupplierIdByName(SupplierName);
+            List<SupplierMatrial> list =ISupplierMatrialRepo.GetMatrialsBySupplier(SupplierId).ToList();
             Supplier supplierModel = ISupplierRepo.GetById(SupplierId);
             ViewData["Supplier"] = supplierModel;
+            TempData["List"] = list.Count;
             return View(supplierModel);
         }
 
 
 
         /////
+        public IActionResult Edit(int id)
+        {
+
+
+            List<SupplierMatrial> supplierMaterialList =ISupplierMatrialRepo.GetMatrialsBySupplier(id).ToList();
+            Supplier supplierToEdit = ISupplierRepo.GetById(id);
+            ViewData["deptList"] = supplierMaterialList;
+
+            return View(supplierToEdit);//View=>Edit
+        }
+        //Submite MEthod=post
+        [HttpPost]
+        public IActionResult Edit([FromRoute] int id, Supplier supplierToEdit)
+        {
+            if (ModelState.IsValid == true)
+            {
+                try
+                {
+                    ISupplierRepo.Update(supplierToEdit);
+
+                    return RedirectToAction("SupplierProfile");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Name", ex.Message);
+                }
+            }
+            List<SupplierMatrial> supplierMaterialList = ISupplierMatrialRepo.GetMatrialsBySupplier(id).ToList();
+            ViewData["depts"] = supplierMaterialList;
+            return View(supplierToEdit);//View Eidt
+        }
+        //
         public IActionResult New()
         {
             return View();
@@ -93,6 +128,7 @@ namespace FinalASP.Controllers
             if (ModelState.IsValid == true)
             {
                 newSupplier.Username = TempData["UserName"].ToString();
+                newSupplier.Email = TempData["Email"].ToString();
                 string fileName = logo.FileName;
 
                 fileName = Path.GetFileName(fileName);

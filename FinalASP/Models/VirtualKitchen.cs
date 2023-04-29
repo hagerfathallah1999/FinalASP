@@ -7,6 +7,8 @@ namespace FinalASP.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+
         [Required(ErrorMessage = "Address is Required")]
         public string Address { get; set; } = string.Empty;
         [Required(ErrorMessage = "CompnayName is Required")]

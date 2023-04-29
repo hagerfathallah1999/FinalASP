@@ -47,6 +47,8 @@ namespace FinalASP.Controllers
             if (ModelState.IsValid == true)
             {
                 newChef.Name = TempData["UserName"].ToString();
+                newChef.Email = TempData["Email"].ToString();
+
                 string fileName = LogoImage.FileName;
 
                 fileName = Path.GetFileName(fileName);

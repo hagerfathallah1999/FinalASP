@@ -47,7 +47,7 @@ namespace FinalASP.Controllers
 			if (ModelState.IsValid == true)
 			{
                 newdelivery.Name = TempData["UserName"].ToString();
-              
+                newdelivery.Email = TempData["Email"].ToString();
                 string fileName = logo.FileName;
 
                 fileName = Path.GetFileName(fileName);

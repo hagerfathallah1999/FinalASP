@@ -8,6 +8,8 @@ namespace FinalASP.Models
         [Required(ErrorMessage = "CompanyName is Required")]
 		public string CompanyName { get; set; } = string.Empty;
         public string Username { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+
         [Required(ErrorMessage = "location is Required")]
         public string Location { get; set; } = string.Empty;
         [Required(ErrorMessage = "Capacity is Required")]
