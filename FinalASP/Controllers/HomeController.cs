@@ -14,8 +14,8 @@ namespace FinalASP.Controllers
         public HomeController(ILogger<HomeController> logger, IKitchenRepository iKitchenRepo, CloudKitchenContext _context)
         {
             _logger = logger;
-               IKitchenRepo = iKitchenRepo;
-         context = _context;
+            IKitchenRepo = iKitchenRepo;
+            context = _context;
         }
 
         public IActionResult Index()
