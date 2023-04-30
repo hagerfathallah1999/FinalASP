@@ -17,7 +17,7 @@ namespace FinalASP.Models
         public double quantity { get; set; }
 
         public int SupplierId { get; set;}
-        public Supplier Supplier { get; set; }
+        public Supplier? Supplier { get; set; }
 
     }
 }

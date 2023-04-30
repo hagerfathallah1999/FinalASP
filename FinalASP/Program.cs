@@ -24,7 +24,15 @@ namespace FinalASP
             options.UseNpgsql(builder.Configuration.GetConnectionString("G"))
             );
             //
+            builder.Services.AddDistributedMemoryCache();
 
+            builder.Services.AddSession(options =>
+            {
+                //options.IdleTimeout = TimeSpan.FromSeconds(10);
+               
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddSession(options =>
@@ -86,6 +94,7 @@ namespace FinalASP
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.UseSession();
             app.UseStaticFiles();
 
             app.UseRouting();

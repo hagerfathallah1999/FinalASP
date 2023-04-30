@@ -20,7 +20,7 @@ namespace FinalASP.Repositories
         public void Insert(PhysicalKitchen PhysicalKitchen)
         {
             MyGeneralModel.PhyKitchenIdTracker = context.PhysicalKitchens.Count();
-            PhysicalKitchen.Id = MyGeneralModel.PhyKitchenIdTracker;
+            PhysicalKitchen.Id = MyGeneralModel.PhyKitchenIdTracker + 1;
             context.PhysicalKitchens.Add(PhysicalKitchen);
             context.SaveChanges();
         }

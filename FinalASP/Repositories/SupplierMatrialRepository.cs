@@ -16,7 +16,7 @@ namespace FinalASP.Repositories
         }
         public SupplierMatrial GetById(int id)
         {
-            return context.SupplierMatrials.FirstOrDefault(c => c.id == id);
+            return context.SupplierMatrials.Include(S => S.Supplier).FirstOrDefault(c => c.id == id);
         }
         public void Insert(SupplierMatrial SupplierMatrial)
         {
@@ -43,6 +43,13 @@ namespace FinalASP.Repositories
         public void AddMatrialToSupplier (SupplierMatrial supplierMatrial)
         {
             context.SupplierMatrials.Add(supplierMatrial);
+            context.SaveChanges();
+        }
+        public void SupFromQunt(SupplierMatrial SupplierMatrial)
+        {
+            double qun = SupplierMatrial.quantity - 1;
+            SupplierMatrial.quantity = qun;
+            context.Update(SupplierMatrial);
             context.SaveChanges();
         }
 
