@@ -21,7 +21,7 @@ namespace FinalASP.Repositories
         public void Insert(DeliveryCompany DeliveryCompany)
         {
             int id = context.DeliveryCompanys.Count();
-            DeliveryCompany.id = id;
+            DeliveryCompany.id = id +1;
             context.DeliveryCompanys.Add(DeliveryCompany);
             context.SaveChanges();
         }

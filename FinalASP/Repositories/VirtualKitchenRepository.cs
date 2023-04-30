@@ -20,7 +20,7 @@ namespace FinalASP.Repositories
         public void Insert(VirtualKitchen VirtualKitchen)
         {
             MyGeneralModel.KitchenIdTracker = context.VirtualKitchens.Count();
-            VirtualKitchen.Id = MyGeneralModel.KitchenIdTracker;
+            VirtualKitchen.Id = MyGeneralModel.KitchenIdTracker + 1;
             context.VirtualKitchens.Add(VirtualKitchen);
             context.SaveChanges();
         }

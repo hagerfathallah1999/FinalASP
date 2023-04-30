@@ -3,8 +3,8 @@
     ViewData["Title"] = "_ChefProfilePartial";
 }
 
-<section >
-    <div class=" py-4 h-100">
+<section class="chif-container">
+    <div class="container-side-chif py-4 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-11 mb-5 mb-lg5">
                 <div class="card mb-5" style="border-radius: .5rem;">
@@ -17,7 +17,7 @@
                             <p>Co.Name: @Model.CompanyName</p>
                             <a href="/VirtualKitchen/Edit?id=@Model.Id" @*asp-action="Edit" asp-route-id="@Model.id"*@ class="btn btn-secondary mb-5">Edit Profile</a>
                         </div>
-                        <div class="col-md-8">
+                        <div class="card-bg-clr col-md-8">
                             <div class="card-body p-4">
                                 <h6>Information</h6>
                                 <hr class="mt-0 mb-4">
@@ -58,9 +58,32 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>
 <style>
+
+
+    .container-side-chif {
+
+        position: absolute;
+        top: 16%;
+        right: 2%;
+        width: 80%;
+    }
+
+    .card-bg-clr {
+        background-color: #212529;
+    }
+
+        .card-bg-clr h6 {
+            color: white;
+        }
+    .chif-container {
+/*        position: relative;
+        height: 904px;
+        width: 100%;
+        background-color: lightgray;*/
+    }
+
     .gradient-custom {
           /* Chrome 10-25, Safari 5.1-6 */
 /*        background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));*/

@@ -5,97 +5,139 @@
 <div>
 <h4>@Model.Name Kitchen Details</h4>
 </div>
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+
+<div class="container-kit-details d-flex">
+
+    <div class="container-kit-details-part-one d-flex">
+
+
+
+
+ @*------------------------------------------*@
+
+ <div>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/images/@Model.KitchenImage1" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/images/@Model.KitchenImage2" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/images/@Model.KitchenImage3" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        @{
+            string state = "Reserved";
+            if (Model.State == false)
+                state = "Available";
+        }
     </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="/images/@Model.KitchenImage1" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="/images/@Model.KitchenImage2" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="/images/@Model.KitchenImage3" class="d-block w-100" alt="...">
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-    @{
-        string state = "Reserved";
-        if (Model.State == false)
-            state = "Available";
-    }
-</div>
-<dl class="row">
-        <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.Description)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Description)
-    </dd>
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.Locaion)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Locaion)
-    </dd>
-       <dt class="col-sm-2">
-        Field Domain
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Domain)
-    </dd>
-    <dt class="col-sm-2">
-        State
-    </dt>
-    <dd class="col-sm-10">
-        @state
-    </dd>
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.Phone)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Phone)
-    </dd>
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.Price)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Price)$/Day
-    </dd>
-    <dt class="col-sm-2">
-        Owner
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.PhysicalKitchen.CompanyName)
-    </dd>
-</dl>
+
+
+ </div>
+
+
+@*------------------------------------------*@
+
+@*------------------------------------------*@
+
 <div>
-<a href="/Reservation/Resrve" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Procede To Reservation Page</a>
+
+            <table class="table table-dark custom-table">
+                <thead>
+                    <tr>
+                        <th class="col-sm-2" scope="col">@Html.DisplayNameFor(model => model.Description)</th>
+                        <th class="col-sm-10" scope="col">@Html.DisplayNameFor(model => model.Locaion)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-sm-2">@Html.DisplayFor(model => model.Description)</td>
+                        <td class="col-sm-10">@Html.DisplayFor(model => model.Locaion)</td>
+                    </tr>
+                    <tr>
+                        <th class="col-sm-2" scope="row">Field Domain</th>
+                        <td class="col-sm-10">@Html.DisplayFor(model => model.Domain)</td>
+                    </tr>
+                    <tr>
+                        <th class="col-sm-2" scope="row">State</th>
+                        <td class="col-sm-10">@state</td>
+                    </tr>
+                    <tr>
+                        <th class="col-sm-2" scope="row">@Html.DisplayNameFor(model => model.Phone)</th>
+                        <td class="col-sm-10">@Html.DisplayFor(model => model.Phone)</td>
+                    </tr>
+                    <tr>
+                        <th class="col-sm-2" scope="row">@Html.DisplayNameFor(model => model.Price)</th>
+                        <td class="col-sm-10">@Html.DisplayFor(model => model.Price)$ / Day</td>
+                    </tr>
+                    <tr>
+                        <th class="col-sm-2" scope="row">Owner</th>
+                        <td class="col-sm-10">@Html.DisplayFor(model => model.PhysicalKitchen.CompanyName)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+</div>
+
+
+</div>
+@*------------------------------------------*@
+
+<div>
+<a href="/Reservation/Resrve" class="btn btn-dark btn-lg" tabindex="-1" role="button" aria-disabled="true">Procede To Reservation Page</a>
+</div>
+
 </div>
 
 
 
 <style>
+
+    .custom-table {
+        height: 500px;
+    }
+
+    .container-kit-details {
+        left: 5%;
+        width: 90%;
+        background-color: white;
+        position: relative;
+        top: 135px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container-kit-details-part-one {
+        flex-direction: row;
+    }
+
+
     #carouselExampleIndicators.carousel {
-        height: 600px;
-        width: 700px;
-        /*margin-left: auto;*/
-        margin-right: auto;
+        height: 500px;
+        width: 500px;
     }
 
     #carouselExampleIndicators .carousel-inner img {
-        height: 600px;
+        height: 500px;
         width: 100%;
         object-fit: cover;
     }

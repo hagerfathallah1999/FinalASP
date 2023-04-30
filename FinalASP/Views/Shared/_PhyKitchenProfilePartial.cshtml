@@ -4,7 +4,7 @@
 }
 
 <section>
-    <div class=" py-4 h-100">
+    <div class="container-side py-4 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-11 mb-5 mb-lg5">
                 <div class="card mb-5" style="border-radius: .5rem;">
@@ -55,6 +55,7 @@
                                     </div>
                                 </div>
                                 <a class="btn btn-primary" asp-action="GetPhyshicalKitchens">Check Kitchens</a>
+                                <a class="btn btn-primary" href="/PhysicalKitchen/AddKitchenToPhyKitchen">Add Kitchen</a>
                             </div>
                         </div>
                     </div>
@@ -63,9 +64,16 @@
             </div>
         </div>
     </div>
-    </div>
 </section>
 <style>
+    .container-side {
+        position: absolute;
+        top: 9%;
+        right: 2%;
+        width: 80%;
+    }
+
+
     .gradient-custom {
         /* Chrome 10-25, Safari 5.1-6 */
         /*        background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));*/

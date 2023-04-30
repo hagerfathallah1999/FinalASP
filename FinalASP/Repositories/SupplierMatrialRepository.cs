@@ -12,7 +12,7 @@ namespace FinalASP.Repositories
         }
         public List<SupplierMatrial> GetAll()
         {
-            return context.SupplierMatrials.ToList();
+            return context.SupplierMatrials.Include(S=>S.Supplier).ToList();
         }
         public SupplierMatrial GetById(int id)
         {
@@ -44,5 +44,13 @@ namespace FinalASP.Repositories
             context.SupplierMatrials.Add(supplierMatrial);
             context.SaveChanges();
         }
+        public void SupFromQunt(SupplierMatrial SupplierMatrial)
+        {
+            double qun = SupplierMatrial.quantity - 1;
+            SupplierMatrial.quantity = qun;
+            context.Update(SupplierMatrial);
+            context.SaveChanges();
+        }
+
     }
 }
