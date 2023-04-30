@@ -6,35 +6,24 @@
 }
 <partial name="_ResposiveNavPartial" />
 <div class="row">
-    <partial name="_ProfileSidebarPartial" />
-
-@*   
-    --------------------------------------------------------------
-*@  
-   <div class="container-cards-kit">
-        <div class=" col-md-9">
-            @foreach (var item in Model)
-            {
-                <div class="card" style="width: 18rem; display: inline-block;">
-                    <img src="\images\@item.KitchenImage1" class="card-img-top" alt="@item.Description" style="height:220px" />
-                    <div class="text-center card-body">
-                        <h5 class="text-center card-title">@item.Name</h5>
-                        @item.Price
-                        <p class="text-center card-text">@item.Description.</p>
-                        <a href="#!" class="text-center btn btn-primary">Add to cart</a>
-                    </div>
+    <partial name="_PhyKitchenSideBarPartial" />
+    <div class="col-md-9">
+        @foreach (var item in Model)
+        {
+            <div class="card" style="width: 18rem; display: inline-block;">
+                <img src="\images\@item.KitchenImage1" class="card-img-top" alt="@item.Description" style="height:220px" />
+                <div class="text-center card-body">
+                    <h5 class="text-center card-title">@item.Name</h5>
+                    @item.Price
+                    <p class="text-center card-text">@item.Description.</p>
+                    <a asp-action="Edit" asp-controller="Kitchen" asp-route-id="@item.Id" class="text-center btn btn-primary">Edit Kitchen</a>
                 </div>
-            }
-            <p>
-                <a class="btn btn-outline-dark" asp-action="AddKitchenToPhyKitchen">Create New </a>
-            </p>
-        </div>
+            </div>
+        }
+        <p>
+            <a class="btn btn-outline-dark" asp-action="AddKitchenToPhyKitchen">Create New </a>
+        </p>
     </div>
-
- @*   
-    --------------------------------------------------------------
-*@  
-
 </div>
 @*<script src="~/js/site.js"></script>*@
 

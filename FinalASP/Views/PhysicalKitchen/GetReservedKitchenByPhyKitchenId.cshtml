@@ -1,0 +1,61 @@
+﻿@model IEnumerable<FinalASP.Models.Reservation>
+
+@{
+    ViewData["Title"] = "GetReservedKitchenByPhyKitchenId";
+}
+
+@foreach (var item in Model)
+{
+
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.TotalPrice)
+            </dt>
+            <dd class="col-sm-10">
+
+                @Html.DisplayFor(model => item.TotalPrice)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.StartDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => item.StartDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.VirtualKitchen.CompanyName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => item.VirtualKitchen.CompanyName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.EndDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => item.EndDate)
+            </dd>
+            @*n3ml include kitchen*@
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.kitchen.Locaion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => item.kitchen.Locaion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.kitchen.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => item.kitchen.Name)
+            </dd>
+        </dl>
+    </div>
+}
+<div>
+    <a asp-action="ChefProfile" asp-controller="VirtualKitchen">Back to Profile</a>
+</div>
+
+
+
+
+

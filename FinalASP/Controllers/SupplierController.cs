@@ -54,12 +54,7 @@ namespace FinalASP.Controllers
             List<SupplierMatrial> MatrialsModel = ISupplierMatrialRepo.GetMatrialsBySupplier(SupplierId);
             return View("GetSupplierMatrials", MatrialsModel);
         }
-        //public IActionResult Edit(Supplier supplier)
-        //{
-        //    Supplier supplierToEdit = ISupplierRepo.GetById(supplier.id);
-        //    ISupplierRepo.Update(supplierToEdit);
-        //    return View(supplierToEdit);
-        //}
+  
         public IActionResult AddMatrialToSupplier()
         {
             return View();
@@ -90,52 +85,11 @@ namespace FinalASP.Controllers
             return View(supplierModel);
         }
 
-
-
-		/////
-		//public IActionResult Edit(int id)
-		//{
-		//    List<SupplierMatrial> supplierMaterialList = ISupplierMatrialRepo.GetMatrialsBySupplier(id).ToList();
-		//     Supplier supplierToEdit = ISupplierRepo.GetById(id);
-		//    ISupplierRepo.Update(supplierToEdit);
-		//    return View(supplierToEdit);//View=>Edit
-		//}
-		////Submite MEthod=post
-		//[HttpPost]
-		//public IActionResult Edit([FromRoute] int id, Supplier supplierToEdit, IFormFile logo)
-		//{
-		//    if (ModelState.IsValid == true)
-		//    {
-		//        try
-		//        {
-		//            //string fileName = logo.FileName;
-		//            //fileName = Path.GetFileName(fileName);
-		//            //string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
-		//            //var stream = new FileStream(uploadpath, FileMode.Create);
-		//            //logo.CopyToAsync(stream);
-		//            //supplierToEdit.logo = fileName;
-		//            ISupplierRepo.Update(supplierToEdit);
-
-		//            return RedirectToAction("SupplierProfile");
-		//        }
-		//        catch (Exception ex)
-		//        {
-		//            ModelState.AddModelError("Name", ex.Message);
-		//        }
-		//    }
-		//    List<SupplierMatrial> supplierMaterialList = ISupplierMatrialRepo.GetMatrialsBySupplier(id).ToList();
-		//    ViewData["materials"] = supplierMaterialList;
-		//    return View(supplierToEdit);//View Eidt
-		//}
-
 		public IActionResult Edit(int id)
 		{
 			List<SupplierMatrial> supplierMaterialList = ISupplierMatrialRepo.GetMatrialsBySupplier(id).ToList();
 			Supplier supplierToEdit = ISupplierRepo.GetById(id);
 			ViewData["deptList"] = supplierMaterialList;
-
-
-
 			return View(supplierToEdit);//View=>Edit
 		}
 		//Submite MEthod=post

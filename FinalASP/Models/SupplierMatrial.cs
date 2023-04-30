@@ -15,7 +15,6 @@ namespace FinalASP.Models
         public string Image { get; set; } = string.Empty;
         [Required(ErrorMessage = "This field is Required")]
         public double quantity { get; set; }
-
         public int SupplierId { get; set;}
         public Supplier? Supplier { get; set; }
 
