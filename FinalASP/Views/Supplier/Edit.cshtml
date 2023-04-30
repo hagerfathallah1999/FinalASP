@@ -3,64 +3,74 @@
 @{
     ViewData["Title"] = "Edit";
 }
+<section class="vh73 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Edit your profile data </h2>
+              
+              <form asp-action="Edit" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <input type="hidden" asp-for="id" />
+                   <input asp-for="Username" value="@Model.Username" type="hidden" />
+                  <input asp-for="Email" value="@Model.Email" type="hidden" />
 
-<h1>Edit</h1>
+                <div class="form-group">
+                  <label asp-for="CompanyName" class="control-label"></label>
+                  <input asp-for="CompanyName" class="form-control" value="@Model.CompanyName" />
+                  <span asp-validation-for="CompanyName" class="text-danger"></span>
+                </div>
 
-<h4>Supplier</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <input type="hidden" asp-for="id" />
-            <div class="form-group">
-                <label asp-for="CompanyName" class="control-label"></label>
-                <input asp-for="CompanyName" class="form-control" value="@Model.CompanyName" />
-                <span asp-validation-for="CompanyName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" value="@Model.Username" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" value="@Model.Email" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
-                <input asp-for="Location" class="form-control" value="@Model.Location" />
-                <span asp-validation-for="Location" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Capacity" class="control-label"></label>
-                <input asp-for="Capacity" class="form-control" value="@Model.Capacity" />
-                <span asp-validation-for="Capacity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="type" class="control-label"></label>
-                <input asp-for="type" class="form-control" value="@Model.type" />
-                <span asp-validation-for="type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="phone" class="control-label"></label>
-                <input asp-for="phone" class="form-control" value="@Model.phone" />
-                <span asp-validation-for="phone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="logo" class="control-label"></label>
-                <input asp-for="logo" class="form-control" value="@Model.logo" />
-                <span asp-validation-for="logo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+                <div class="form-group">
+                  <label asp-for="Location" class="control-label"></label>
+                  <input asp-for="Location" class="form-control" value="@Model.Location" />
+                  <span asp-validation-for="Location" class="text-danger"></span>
+                </div>
 
-<div>
-    <a class="btn-success" asp-action="SupplierProfile">Back to Profile</a>
-</div>
+                <div class="form-group">
+                  <label asp-for="Capacity" class="control-label"></label>
+                  <select asp-for="Capacity" class="form-select form-select-lg" id="Capacity" value="@Model.Capacity">
+                    <option value="Retail">Retail</option>
+                    <option value="Wholesaler">Wholesaler</option>
+                  </select>
+                  <span asp-validation-for="Capacity" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                  <label asp-for="type" class="control-label"></label>
+                  <select asp-for="type" class="form-select form-select-lg" id="type" value="@Model.type">
+                    <option value="Fast Food">Fast Food</option>
+                    <option value="Home-made cook">Home-made cook</option>
+                    <option value="Pastry cook">Pastry cook</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <span asp-validation-for="type" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                  <label asp-for="phone" class="control-label"></label>
+                  <input asp-for="phone" class="form-control" value="@Model.phone" />
+                  <span asp-validation-for="phone"></span>
+               </div>
+                                <div class="input-group mb-3">
+                                    <input asp-for="logo" type="file" class="form-control" value=@Model.logo id="logo" onchange="displayFileName()">
+                                    <label class="form-label" for="logo">Upload</label>
+                                    <span asp-validation-for="logo" class="text-danger"></span>
+                                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body m-md-5">Save Edits</button>
+                    <a asp-action="SupplierProfile" class="btn btn-success btn-block btn-lg gradient-custom-6 text-body m-md-5">Back to Profile</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
 

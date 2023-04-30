@@ -117,7 +117,43 @@ namespace FinalASP.Controllers
             int PhyKitchenId = IPhysicalKitchenRepo.GetPhyshicalIdByName(PhyKitchenName);
             PhysicalKitchen PhyKitchen = IPhysicalKitchenRepo.GetById(PhyKitchenId);
             ViewData["PhyKitchen"] = PhyKitchen;
+            List<Kitchen> list = IKitchenRepo.GetKitchensByPhyKitchen(PhyKitchenId).ToList();
+            TempData["List"] = list.Count;
+            ///get of physical kitchen orders >>>>>>>
+            List<PhysicalOrderList> reservations = IPhysicalOrderListRepo.GetAll().ToList();
+            TempData["Num.of Reservations"] = reservations.Count;
             return View(PhyKitchen);
+        }
+        public IActionResult Edit(int id)
+        {
+            PhysicalKitchen PhysicalkitchenToEdit = IPhysicalKitchenRepo.GetById(id);
+            return View(PhysicalkitchenToEdit);//View=>Edit
+        }
+        //Submite MEthod=post
+        [HttpPost]
+        public IActionResult Edit([FromRoute] int id, PhysicalKitchen PhysicalkitchenToEdit, IFormFile LogoImage)
+        {
+            if (ModelState.IsValid == true)
+            {
+                try
+                {
+                    string fileName = LogoImage.FileName;
+                    fileName = Path.GetFileName(fileName);
+                    string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
+                    var stream = new FileStream(uploadpath, FileMode.Create);
+                    LogoImage.CopyToAsync(stream);
+                    PhysicalkitchenToEdit.LogoImage = fileName;
+                    IPhysicalKitchenRepo.Update(PhysicalkitchenToEdit);
+
+                    return RedirectToAction("PhyKitchenProfile");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Name", ex.Message);
+                }
+            }
+   
+            return View(PhysicalkitchenToEdit);//View Eidt
         }
     }
 }

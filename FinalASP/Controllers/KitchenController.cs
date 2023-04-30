@@ -43,7 +43,7 @@ namespace FinalASP.Controllers
             Kitchen? KitchenModel = IKitchenRepo.GetById(id);
             return View("KitchenDetails", KitchenModel);
         }
-        
+
 
     }
 }
