@@ -1,5 +1,5 @@
 ﻿using FinalASP.Models;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalASP.Repositories
 {
@@ -12,11 +12,11 @@ namespace FinalASP.Repositories
         }
         public List<SupplierMatrial> GetAll()
         {
-            return context.SupplierMatrials.ToList();
+            return context.SupplierMatrials.Include(S=>S.Supplier).ToList();
         }
         public SupplierMatrial GetById(int id)
         {
-            return context.SupplierMatrials.FirstOrDefault(c => c.id == id);
+            return context.SupplierMatrials.Include(S => S.Supplier).FirstOrDefault(c => c.id == id);
         }
         public void Insert(SupplierMatrial SupplierMatrial)
         {
@@ -45,5 +45,13 @@ namespace FinalASP.Repositories
             context.SupplierMatrials.Add(supplierMatrial);
             context.SaveChanges();
         }
+        public void SupFromQunt(SupplierMatrial SupplierMatrial)
+        {
+            double qun = SupplierMatrial.quantity - 1;
+            SupplierMatrial.quantity = qun;
+            context.Update(SupplierMatrial);
+            context.SaveChanges();
+        }
+
     }
 }

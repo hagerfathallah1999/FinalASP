@@ -81,7 +81,7 @@ else
         const timeDiff = endDate.getTime() - startDate.getTime();
         const daysDiff = timeDiff / (1000 * 3600 * 24); // convert milliseconds to days
         var TP = @ViewBag.kitchen.Price * daysDiff;
-        var feePrice = (TP * 0.1);
+        var feePrice =(parseInt((TP * 0.1), 10);
         nightsEl.textContent = daysDiff;
         Totalprice.textContent = `$${TP}`;
         PriceData.setAttribute("value", `${TP}`);

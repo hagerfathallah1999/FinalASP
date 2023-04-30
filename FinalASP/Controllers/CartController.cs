@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FinalASP.Controllers
 {
-
-    public class SupplierMatrialController : Controller
+    public class CartController : Controller
     {
         IDeliveryCompanyRepository DeliveryCompanyRepo;
         IKitchenRepository IKitchenRepo;
@@ -18,7 +17,7 @@ namespace FinalASP.Controllers
         IVirtualOrderRepository IVirtualOrderRepo;
         ISupplierMatrialRepository ISupplierMatrialRepo;
 
-        public SupplierMatrialController(IDeliveryCompanyRepository _DeliveryCompanyRepo, IKitchenRepository _IKitchenRepo,
+        public CartController(IDeliveryCompanyRepository _DeliveryCompanyRepo, IKitchenRepository _IKitchenRepo,
             IVirtualOrderRepository _IVirtualOrderRepo, IVirtualKitchenRepository _IVirtualKitchenRepo, ISupplierRepository _ISupplierRepo,
             IReservationRepository _IReservationRepo, IPhysicalOrderRepository _IPhysicalOrderRepo,
             IPhysicalOrderListRepository _IPhysicalOrderListRepo, IPhysicalKitchenRepository _IPhysicalKitchenRepo, ISupplierMatrialRepository _ISupplierMatrialRepo)
@@ -34,22 +33,34 @@ namespace FinalASP.Controllers
             IVirtualKitchenRepo = _IVirtualKitchenRepo;
             IVirtualOrderRepo = _IVirtualOrderRepo;
         }
-
-        public IActionResult Index()
+        public IActionResult YourCart()
         {
-            List<SupplierMatrial> SupplierMatrialModel = ISupplierMatrialRepo.GetAll();
-            return View("Index", SupplierMatrialModel);
-        }
-        public IActionResult GetMatrialWithID ([FromRoute]int id)
-        {
-            SupplierMatrial supplierMatrial = ISupplierMatrialRepo.GetById(id);
             return View();
         }
-        public IActionResult SupFromQunt(SupplierMatrial supplierMatrial) 
+        public ActionResult AddToCart([FromRoute]int id) 
         {
+            SupplierMatrial productModel = ISupplierMatrialRepo.GetById(id);
+            item item = new item();
+            item.SupplierMatrial= productModel;
 
-            return View();
+            if (MyGeneralModel.Matrials == null )
+            {
+                MyGeneralModel.Matrials = new List<item>();
+                MyGeneralModel.Matrials.Add(item);
+            }
+            else
+            {
+                var existingItem = MyGeneralModel.Matrials.FirstOrDefault(P => P.SupplierMatrial.id == id);
+                if (existingItem != null)
+                {
+                    MyGeneralModel.Matrials.FirstOrDefault(P => P.SupplierMatrial.id == id).Quantity++;
+                }
+                else
+                {
+                    MyGeneralModel.Matrials.Add(item);
+                }
+            }
+            return RedirectToAction("YourCart");
         }
     }
-
 }
