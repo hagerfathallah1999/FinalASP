@@ -1,4 +1,5 @@
-﻿using FinalASP.Models;
+﻿
+using FinalASP.Models;
 using FinalASP.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -20,23 +21,19 @@ namespace FinalASP.Controllers
 
         public IActionResult Index()
         {
-            
+
             string UserName = User.Identity.Name;
-            MyGeneralModel.kitchens = IKitchenRepo.GetAllWithOwner();
             if (User.IsInRole("Supplier"))
             {
                 MyGeneralModel.Image = context.Suppliers.FirstOrDefault(S => S.Username == UserName).logo;
-                
             }
             else if (User.IsInRole("Chef"))
             {
                 MyGeneralModel.Image = context.VirtualKitchens.FirstOrDefault(S => S.Name == UserName).LogoImage;
-                
             }
             else if (User.IsInRole("Delivery"))
             {
                 MyGeneralModel.Image = context.DeliveryCompanys.FirstOrDefault(S => S.Name == UserName).logo;
-                
             }
             else if (User.IsInRole("Kitchen"))
             {
@@ -55,6 +52,6 @@ namespace FinalASP.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        
+       
     }
 }

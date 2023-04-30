@@ -1,0 +1,174 @@
+﻿@model FinalASP.Models.Reservation
+@if (User.IsInRole("Chef") && MyGeneralModel.Kitchen.State ==false)
+{
+    <h4>Reservation for @MyGeneralModel.Kitchen.Name</h4>
+    <div class="container">
+        <div class="box card">
+            <p class="heading"><strong>$@ViewBag.kitchen.Price &nbsp;</strong> Day </p>
+            <form asp-action="Resrve">
+                <div class="check">
+                    <div id="check-in">
+                        <label for="form-control">Start-Date</label>
+                        <br />
+                        <input asp-for="StartDate" class="form-control" id="Start" type="date" required min="2023-04-29" max="2030-12-31" />
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+                    <div id="check-out">
+                        <label for="form-control">End-Date</label>
+                        <br />
+                        <input asp-for="EndDate" class="form-control" id="End" type="date" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input asp-for="VirtualKitchenID" class="form-control visually-hidden" value="@ViewBag.ChefId">
+                </div>
+                <div class="form-group">
+                    <input asp-for="PhysicalKitchenID" class="form-control visually-hidden" value="@MyGeneralModel.Kitchen.PhysicalKitchenId">
+                </div>
+                <div class="form-group">
+                    <input asp-for="kitchenID" class="form-control visually-hidden" value="@MyGeneralModel.Kitchen.Id">
+                </div>
+                <div class="form-group">
+                    <input asp-for="TotalPrice" class="form-control visually-hidden" id="TP" />
+                </div>
+                <div class="reserve-button">
+                    <button class="submit-btn">Reserve</button>
+                </div>
+            </form>
+
+            <p class="after-button">This is Payment Phase</p>
+            <div class="item">
+                <p id="period" class="period">$@ViewBag.kitchen.Price x <span id="nights"></span> Days </p>
+                <p id="Totalprice" class="Totalprice"></p>
+            </div>
+            <div class="item">
+                <p class="service">Kitchenir service fee</p>
+                <p id="price" class="price"></p>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="Message">
+        <p >You Need To be a Chef So you can reserve This Kitchen</p>
+        <p>Or this Kitchen is already reserved for anothe clint</p>
+        <a href="/Kitchen/index" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Back To Our Kitchens</a>
+    </div>
+}
+
+
+
+<script>
+    const dateStart = document.getElementById('Start');
+    const dateEnd = document.getElementById('End');
+    const nightsEl = document.getElementById('nights');
+    const Totalprice = document.getElementById('Totalprice');
+    const fee = document.getElementById('price');
+    const PriceData = document.getElementById('TP')
+
+    dateStart.addEventListener("change", (e) => {
+        console.log(e.target.valueAsDate.toISOString());
+        dateEnd.setAttribute("min", `${e.target.value}`);
+    });
+
+    dateEnd.addEventListener("change", (e) => {
+        //console.log(e.target.valueAsDate.toISOString());
+        const startDate = new Date(dateStart.valueAsNumber);
+        const endDate = new Date(e.target.valueAsNumber);
+        dateEnd.setAttribute("value", `${startDate}`);
+        e.target.setAttribute("value", `${endDate}`);
+        const timeDiff = endDate.getTime() - startDate.getTime();
+        const daysDiff = timeDiff / (1000 * 3600 * 24); // convert milliseconds to days
+        var TP = @ViewBag.kitchen.Price * daysDiff;
+        var feePrice = (TP * 0.1);
+        nightsEl.textContent = daysDiff;
+        Totalprice.textContent = `$${TP}`;
+        PriceData.setAttribute("value", `${TP}`);
+        fee.textContent = `$${feePrice}`;
+        //console.log(`Number of days between ${startDate.toDateString()} and ${endDate.toDateString()}: ${Math.floor(daysDiff)}`);
+
+    });
+
+
+
+</script>
+
+<style>
+    .box {
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+        width: 300px;
+        font-family: sans-serif;
+    }
+
+    .heading {
+        color: black;
+        font-size: 20px;
+        padding-bottom: 20px;
+    }
+
+    .check {
+        display: flex;
+    }
+
+    #check-in,
+    #check-out {
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 6px;
+        width: 150px;
+        height: 50px;
+        font-size: 12px;
+        padding-left: 20px;
+        padding-top: 10px;
+    }
+
+    .form-control {
+        border: none;
+        padding-top: 3px;
+    }
+
+    .submit-btn {
+        width: 80%;
+        height: 50px;
+        margin: auto;
+        /* background-color: #ff1a75; */
+        background-image: linear-gradient(to bottom right, #ff3385, #ff1a75);
+        border-radius: 10px;
+        border-color: #ff1a75;
+        font-weight: bolder;
+        font-size: 20px;
+        color: antiquewhite;
+    }
+
+    .reserve-button {
+        display: flex;
+        justify-content: center;
+        padding-top: 15px;
+    }
+
+    .after-button {
+        display: flex;
+        justify-content: center;
+        color: #7a7a52;
+    }
+
+    .item, p {
+        display: flex;
+        color: #7a7a52;
+        margin-bottom: 2px;
+    }
+
+    .period,
+    .service {
+        width: 75%;
+    }
+
+    .price .Totalprice {
+        width: 25%;
+    }
+
+</style>
+

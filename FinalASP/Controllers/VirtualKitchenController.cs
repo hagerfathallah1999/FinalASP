@@ -72,5 +72,36 @@ namespace FinalASP.Controllers
             ViewData["Chef"] = Chef;
             return View(Chef);
         }
+        public IActionResult Edit(int id)
+        {
+            VirtualKitchen VirtualKitchenToEdit = IVirtualKitchenRepo.GetById(id);
+            return View(VirtualKitchenToEdit);//View=>Edit
+        }
+        //Submite MEthod=post
+        [HttpPost]
+        public IActionResult Edit([FromRoute] int id, VirtualKitchen VirtualKitchenToEdit, IFormFile LogoImage)
+        {
+            if (ModelState.IsValid == true)
+            {
+                try
+                {
+                    string fileName = LogoImage.FileName;
+                    fileName = Path.GetFileName(fileName);
+                    string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
+                    var stream = new FileStream(uploadpath, FileMode.Create);
+                    LogoImage.CopyToAsync(stream);
+                    VirtualKitchenToEdit.LogoImage = fileName;
+                    IVirtualKitchenRepo.Update(VirtualKitchenToEdit);
+
+                    return RedirectToAction("ChefProfile");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Name", ex.Message);
+                }
+            }
+
+            return View(VirtualKitchenToEdit);//View Eidt
+        }
     }
 }

@@ -48,14 +48,18 @@
                                     <span asp-validation-for="KitchenImage3" class="text-danger"></span>
                                 </div>
                                 <div class="form-outline mb-7">
-                                    <label for="Domain" class="form-label">Domain</label>
-                                    <input asp-for="Domain" class="form-control form-control-lg" id="Domain" />
-                                    <span asp-validation-for="Domain" class="text-danger"></span>
-                                </div>
-                                <div class="form-outline mb-7">
                                     <label for="Phone" class="form-label">Phone</label>
                                     <input asp-for="Phone" class="form-control form-control-lg" id="Phone" />
                                     <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline mb-7">
+                                    <label for="Domain" class="form-label">Domain</label>
+                                        <select asp-for="Domain" class="form-select form-select-lg" id="Domain" />
+                                        <option value="Fast Food Resturant">Fast Food Resturant</option>
+                                        <option value="Fine Dining Resturant">Fine Dining Resturant</option>
+                                        <option value="Hotel Kitchen">Hotel Kitchen</option>
+                                        <option value="Other">Other</option>
+                                    <span asp-validation-for="Domain" class="text-danger"></span>
                                 </div>
                                 <div class="form-outline mb-7">
                                     <label for="Price" class="form-label">Price</label>

@@ -373,3 +373,4 @@ FodyWeavers.xsd
 /FinalASP/Migrations/CloudKitchenContextModelSnapshot.cs
 /FinalASP/Controllers/PhysicalKitchenController.cs
 /FinalASP/Controllers/HomeController.cs
+/FinalASP/Migrations/20230430013836_Initial.cs

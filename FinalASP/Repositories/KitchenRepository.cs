@@ -20,7 +20,7 @@ namespace FinalASP.Repositories
         }
         public Kitchen GetById(int id)
         {
-            return context.Kitchens.FirstOrDefault(c => c.Id == id);
+            return context.Kitchens.Include(P => P.PhysicalKitchen).FirstOrDefault(c => c.Id == id);
         }
         public void Insert(Kitchen Kitchen)
         {
@@ -43,7 +43,12 @@ namespace FinalASP.Repositories
             List<Kitchen> Kitchens = context.Kitchens.Where(e => e.PhysicalKitchenId == PhyKitchenId).ToList();
             return Kitchens;
         }
+        public void ReserveThisKit(Kitchen Kitchen)
+        {
+            Kitchen.State = true;
+            context.Update(Kitchen);
+            context.SaveChanges();
+        }
 
-        
     }
 }

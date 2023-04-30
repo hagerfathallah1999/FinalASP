@@ -1,8 +1,8 @@
-﻿@model FinalASP.Models.Supplier
-
+﻿@model FinalASP.Models.VirtualKitchen
 @{
-    ViewData["Title"] = "_SupplierProfilePartial";
+    ViewData["Title"] = "_ChefProfilePartial";
 }
+
 <section >
     <div class=" py-4 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -11,11 +11,11 @@
                     <div class="row g-0">
                         <div class="col-md-4 gradient-custom text-center text-white"
                              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                            <img src="~/Images/@Model.logo"
+                            <img src="~/Images/@Model.LogoImage"
                                  alt="Avatar" class="img-fluid my-5" style="width: 150px; height:150px" />
-                            <h5>UserNAme: @Model.Username</h5>
+                            <h5>UserNAme: @Model.Name</h5>
                             <p>Co.Name: @Model.CompanyName</p>
-                            <a href="/Supplier/Edit?id=@Model.id" @*asp-action="Edit" asp-route-id="@Model.id"*@ class="btn btn-secondary mb-5">Edit Profile</a>
+                            <a href="/VirtualKitchen/Edit?id=@Model.Id" @*asp-action="Edit" asp-route-id="@Model.id"*@ class="btn btn-secondary mb-5">Edit Profile</a>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body p-4">
@@ -28,27 +28,23 @@
                                     </div>
                                     <div class="col-6 mb-3">
                                         <h6>Location</h6>
-                                        <p class="text-muted">@Model.Location</p>
+                                        <p class="text-muted">@Model.Address</p>
                                     </div>
                                     <div class="col-6 mb-3">
                                         <h6>Phone</h6>
-                                        <p class="text-muted">@Model.phone</p>
+                                        <p class="text-muted">@Model.Phone</p>
                                     </div>
                                     <div class="col-6 mb-3">
-                                        <h6>Capacity</h6>
-                                        <p class="text-muted">@Model.Capacity</p>
+                                        <h6>Domain</h6>
+                                        <p class="text-muted">@Model.Domain</p>
                                     </div>
                                 </div>
-                                <h6>Materials</h6>
+                                <h6>Booked Kitchens</h6>
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
                                         <h6>Recent Num.</h6>
                                         <p class="text-muted">@TempData["List"]</p>
-                                    </div>
-                                    <div class="col-6 mb-3">
-                                        <h6>Type</h6>
-                                        <p class="text-muted">@Model.type</p>
                                     </div>
                                 </div>
                                 <a class="btn btn-primary" asp-action="GetSupplierMatrials">Check Materials</a>
@@ -74,3 +70,4 @@
     <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>*@
+
