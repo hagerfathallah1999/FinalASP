@@ -41,23 +41,34 @@ namespace FinalASP.Controllers
 
         public IActionResult KitchenDetails([FromRoute] int id)
         {
-            //string ChefName = User.Identity.Name;
-            //int ChefId = IVirtualKitchenRepo.GetChefIdByName(ChefName);
             Kitchen kitchen = IKitchenRepo.GetById(id);
             MyGeneralModel.Kitchen = kitchen;
-            //ViewBag.kitchenid = kitchen.Id;
-            //TempData["kitchenPrice"] = kitchen.Price;
-            //TempData["kitchenName"] = kitchen.Name;
-            //TempData["PhykitchenID"] = kitchen.PhysicalKitchenId;
-            //int phyKitId = IKitchenRepo.GetById(id).PhysicalKitchenId;
-            //ViewData["kitchenid"] = id;
-            //ViewData["KitchenModel"] = kitchen;
-            //ViewData["phyKitId"] = phyKitId;
-            //ViewData["ChefId"] = ChefId;
             return View("KitchenDetails", kitchen);
         }
-        
-        
+        public IActionResult Edit(int id)
+        {
+            Kitchen KitchenToEdit = IKitchenRepo.GetById(id);
+            return View(KitchenToEdit);//View=>Edit
+        }
+        //Submite MEthod=post
+        [HttpPost]
+        public async Task<IActionResult> Edit(Kitchen KitchenToEdit)
+        {
+           
+            if (ModelState.IsValid == true)
+            {
+                try
+                {
+                    IKitchenRepo.Update(KitchenToEdit);
+                        return RedirectToAction("GetPhyshicalKitchens", "PhysicalKitchen");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Name", ex.Message);
+                }
+            }
+            return View(KitchenToEdit);//View Eidt
+        }
 
     }
 }

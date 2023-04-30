@@ -12,17 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     [DbContext(typeof(CloudKitchenContext))]
-<<<<<<< HEAD:FinalASP/Migrations/20230430094928_initial.Designer.cs
-    [Migration("20230430094928_initial")]
-=======
-<<<<<<<< HEAD:FinalASP/Migrations/20230429165847_mariamnewedit.Designer.cs
-    [Migration("20230429165847_mariamnewedit")]
-    partial class mariamnewedit
-========
-    [Migration("20230430030758_initial")]
->>>>>>> 2490c1feb823fa2310a1adc70c757fc6847772c8:FinalASP/Migrations/20230430030758_initial.Designer.cs
-    partial class initial
->>>>>>>> ff09ddec9e899732191b837bc427878e2f4d3236:FinalASP/Migrations/20230430030758_initial.Designer.cs
+    [Migration("20230430230004_mariooom")]
+    partial class mariooom
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -402,10 +393,6 @@ namespace FinalASP.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("description")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("image")
                         .IsRequired()
                         .HasColumnType("text");
 

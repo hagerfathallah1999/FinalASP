@@ -40,5 +40,35 @@ namespace FinalASP.Controllers
             List<SupplierMatrial> SupplierMatrialModel = ISupplierMatrialRepo.GetAll();
             return View("Index", SupplierMatrialModel);
         }
+        public IActionResult Edit(int id)
+        {
+            SupplierMatrial MaterialToEdit = ISupplierMatrialRepo.GetById(id);
+            return View(MaterialToEdit);//View=>Edit
+        }
+        //Submite MEthod=post
+        [HttpPost]
+        public IActionResult Edit([FromRoute] int id, SupplierMatrial MaterialToEdit, IFormFile Image)
+        {
+            if (ModelState.IsValid == true)
+            {
+                try
+                {
+                    string fileName = Image.FileName;
+                    fileName = Path.GetFileName(fileName);
+                    string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
+                    var stream = new FileStream(uploadpath, FileMode.Create);
+                    Image.CopyToAsync(stream);
+                    MaterialToEdit.Image = fileName;
+                    ISupplierMatrialRepo.Update(MaterialToEdit);
+
+                    return RedirectToAction("GetSupplierMatrials","Supplier");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Name", ex.Message);
+                }
+            }
+            return View(MaterialToEdit);//View Eidt
+        }
     }
 }

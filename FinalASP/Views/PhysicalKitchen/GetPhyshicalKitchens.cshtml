@@ -6,7 +6,7 @@
 }
 <partial name="_ResposiveNavPartial" />
 <div class="row">
-    <partial name="_SupplierSidepar" />
+    <partial name="_PhyKitchenSideBarPartial" />
     <div class="col-md-9">
         @foreach (var item in Model)
         {
@@ -16,7 +16,7 @@
                     <h5 class="text-center card-title">@item.Name</h5>
                     @item.Price
                     <p class="text-center card-text">@item.Description.</p>
-                    <a href="#!" class="text-center btn btn-primary">Add to cart</a>
+                    <a asp-action="Edit" asp-controller="Kitchen" asp-route-id="@item.Id" class="text-center btn btn-primary">Edit Kitchen</a>
                 </div>
             </div>
         }

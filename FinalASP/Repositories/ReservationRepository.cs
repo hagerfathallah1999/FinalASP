@@ -1,4 +1,5 @@
 ﻿using FinalASP.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalASP.Repositories
 {
@@ -13,10 +14,21 @@ namespace FinalASP.Repositories
         {
             return context.Reservations.ToList();
         }
+        public List<Reservation> GetReservationsByChef(int ChefId)
+        {
+            List<Reservation> reservations = context.Reservations.Include(v=>v.VirtualKitchen).Include(k=>k.kitchen).Where(e => e.VirtualKitchenID == ChefId).ToList();
+            return reservations;
+        }
+        public List<Reservation> GetReservedKitchenByPhyKitchenId(int PhysicalId)
+        {
+            List<Reservation> reservations = context.Reservations.Include(v=>v.VirtualKitchen).Include(k => k.kitchen).Where(p => p.PhysicalKitchenID == PhysicalId).ToList();
+            return reservations;
+        }
         public Reservation GetById(int id)
         {
             return context.Reservations.FirstOrDefault(c => c.id == id);
         }
+     
         public void Insert(Reservation Reservation)
         {
             context.Reservations.Add(Reservation);

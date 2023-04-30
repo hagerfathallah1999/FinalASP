@@ -1,4 +1,8 @@
-﻿@model FinalASP.Models.Supplier
+﻿@model FinalASP.Models.DeliveryCompany
+
+@{
+    ViewData["Title"] = "_DeliverySideBarPartial";
+}
 
 <section>
     <div class="sidebar-style">
@@ -11,14 +15,8 @@
                         </a>
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                             <li>
-                                <a href="#" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span>
-                                </a>
-                            </li>
-
-                            <li>
                                 <a href="/Supplier/GetSupplierMatrials" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span>
+                                    <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Orders</span>
                                 </a>
                             </li>
 
@@ -27,7 +25,7 @@
                             </li>
 
                             <li class="settings-style">
-                                <a asp-action="Edit" asp-controller="Supplier" asp-route="@Model.id" class="nav-link px-0 align-middle">
+                                <a asp-action="Edit" asp-controller="DeliveryCompany" asp-route-id="@Model.id" class="nav-link px-0 align-middle">
                                     <i class="bi bi-gear-fill"></i> <span class="ms-1 d-none d-sm-inline">Settings</span>
                                 </a>
                             </li>
@@ -51,17 +49,17 @@
     }
 
     span {
-        color:white;
+        color: white;
         font-family: monospace;
         font-size: 25px;
         font-weight: inherit;
     }
 
-    span:hover {
-        transform: scale(1.1);
-        cursor: pointer;
+        span:hover {
+            transform: scale(1.1);
+            cursor: pointer;
             color: #fff107;
-    }
+        }
 
     i {
         color: #fff107;
@@ -96,17 +94,17 @@
 
     #p {
         display: flex;
-/*        color: #ff9200;
-*/        color:white;
+        /*        color: #ff9200;
+        */ color: white;
         font-size: 27px;
         font-family: monospace;
         font-weight: inherit;
     }
 
     #rofile {
-/*        color: #fff107;*/
-/*        color: #ff9200;
-*/        color: white;
+        /*        color: #fff107;*/
+        /*        color: #ff9200;
+        */ color: white;
         font-size: 27px;
         font-family: monospace;
         font-weight: inherit;
@@ -129,3 +127,5 @@
         });
     });
 </script>*@
+
+

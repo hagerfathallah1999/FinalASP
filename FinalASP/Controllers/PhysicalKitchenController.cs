@@ -121,8 +121,20 @@ namespace FinalASP.Controllers
             TempData["List"] = list.Count;
             ///get of physical kitchen orders >>>>>>>
             List<PhysicalOrderList> reservations = IPhysicalOrderListRepo.GetAll().ToList();
-            TempData["Num.of Reservations"] = reservations.Count;
+            TempData["Num.of Orders"] = reservations.Count;
+            var reservationmodel = IReservationRepo.GetReservedKitchenByPhyKitchenId(PhyKitchenId);
+            TempData["Num.of Reserved Kitchens"] = reservationmodel.Count;
             return View(PhyKitchen);
+        }
+        public IActionResult GetReservedKitchenByPhyKitchenId()
+        {
+            string PhyKitchenName = User.Identity.Name;
+            int PhysicalKitchenId = IPhysicalKitchenRepo.GetPhyshicalIdByName(PhyKitchenName);
+            
+
+            var reservationmodel = IReservationRepo.GetReservedKitchenByPhyKitchenId(PhysicalKitchenId);
+
+            return View(reservationmodel);
         }
         public IActionResult Edit(int id)
         {

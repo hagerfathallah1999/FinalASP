@@ -70,6 +70,8 @@ namespace FinalASP.Controllers
             int ChefId = IVirtualKitchenRepo.GetChefIdByName(ChefName);
             VirtualKitchen Chef = IVirtualKitchenRepo.GetById(ChefId);
             ViewData["Chef"] = Chef;
+            var reservationmodel = IReservationRepo.GetReservationsByChef(ChefId);
+            TempData["RCount"] = reservationmodel.Count;
             return View(Chef);
         }
         public IActionResult Edit(int id)

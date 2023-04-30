@@ -52,6 +52,15 @@ namespace FinalASP.Controllers
             IKitchenRepo.ReserveThisKit(MyGeneralModel.Kitchen);
             return RedirectToAction("index", "Home");
         }
-        
+        public IActionResult GetChefReservations()
+        {
+            string ChefName = User.Identity.Name;
+            int Chefid = IVirtualKitchenRepo.GetChefIdByName(ChefName);
+
+            var  reservationmodel = IReservationRepo.GetReservationsByChef(Chefid);
+
+            return View("GetChefReservations", reservationmodel);
+        }
+
     }
 }
