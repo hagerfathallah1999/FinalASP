@@ -1,7 +1,10 @@
 ﻿@model FinalASP.Models.Kitchen
-
+<div>
 <partial name="_ResposiveNavPartial" />
-
+</div>
+<div>
+<h4>@Model.Name Kitchen Details</h4>
+</div>
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -28,76 +31,47 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-
-
-<div class="booking-form">
-    <div class="booking-bg"></div>
-    <form>
-        <div class="form-header">
-            <h2>Make your reservation</h2>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <span class="form-label">Start Date</span>
-                    <input class="form-control" type="date" required="" id="Start" min="2023-04-29" max="2030-12-31">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <span class="form-label">End Date</span>
-                    <input class="form-control" type="date" required="" id="End" >
-                </div>
-            </div>
-        </div>
-        <div class="form-btn">
-            <button class="submit-btn">Book Now</button>
-        </div>
-    </form>
+<dl class="row">
+        <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Description)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Description)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Locaion)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Locaion)
+    </dd>
+       <dt class="col-sm-2">
+        Field Domain
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Domain)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Phone)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Phone)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Price)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Price)$/Day
+    </dd>
+    <dt class="col-sm-2">
+        Owner
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.PhysicalKitchen.CompanyName)
+    </dd>
+</dl>
+<div>
+<a href="/Reservation/Resrve" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Procede To Reservation Page</a>
 </div>
-
-      
-@*<input type="date"
-       name="begin"
-       class="DateBegin"
-       placeholder="dd-mm-yyyy"
-       value=""
-       min="2023-04-29"
-       max="2030-12-31" />*@
-
-<script>
-    const dateStart = document.getElementById('Start');
-    const dateEnd = document.getElementById('End');
-
-    dateStart.addEventListener("change", (e) => {
-        console.log(e.target.valueAsDate.toISOString());
-        dateEnd.setAttribute("min", `${e.target.value}`);
-    });
-    
-    dateEnd.addEventListener("change", (e) => {
-        console.log(e.target.valueAsDate.toISOString());
-        const startDate = new Date(dateStart.valueAsDate);
-        const endDate = new Date(e.target.valueAsDate);
-        const timeDiff = endDate.getTime() - startDate.getTime();
-        const daysDiff = timeDiff / (1000 * 3600 * 24); // convert milliseconds to days
-        console.log(`Number of days between ${startDate.toDateString()} and ${endDate.toDateString()}: ${Math.floor(daysDiff)}`);
-    });
-    
-</script>
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
 
 
 

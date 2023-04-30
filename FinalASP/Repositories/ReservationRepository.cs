@@ -33,5 +33,6 @@ namespace FinalASP.Repositories
             context.Reservations.Remove(Reservation);
             context.SaveChanges();
         }
+        
     }
 }

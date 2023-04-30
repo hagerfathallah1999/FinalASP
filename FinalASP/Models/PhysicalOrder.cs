@@ -16,8 +16,9 @@ namespace FinalASP.Models
         public double OrderPrice { get; set; }
         public bool DeliveryOption { get; set; } // out source delivery option
         public int PhysicalOrderListID { get; set; }
+        public int PhysicalKitchenID { get; set; }
 
-
+        public PhysicalKitchen PhysicalKitchen { get; set; }
         public PhysicalOrderList PhysicalOrderList { get; set; }
     }
 }

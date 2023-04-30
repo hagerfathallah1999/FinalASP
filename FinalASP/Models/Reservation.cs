@@ -6,13 +6,12 @@ namespace FinalASP.Models
     {
         [Key]
         public int id {  get; set; }
-        [Required(ErrorMessage = "This field is Required")]
-        public DateTime OrderDate { get; set; }
+        
         public double TotalPrice { get; set; }
         [Required(ErrorMessage = "This field is Required")]
-        public DateTime StartDate { get; set; }
+        public string StartDate { get; set; } = string.Empty;
         [Required(ErrorMessage = "This field is Required")]
-        public DateTime EndDate { get; set; }
+        public string EndDate { get; set; }=string.Empty;
 
         public int VirtualKitchenID { get; set; }
         public int PhysicalKitchenID { get; set; }
