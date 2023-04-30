@@ -18,10 +18,8 @@ namespace FinalASP.Models
         public double Phone { get; set; }
 		[Required(ErrorMessage = "Domain is Required")]
         public string Domain { get; set; } = string.Empty;
-        public int VirtualOrderId { get; set; }
         public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
-
-        public VirtualOrder VirtualOrder { get; set; }
+        
 
     }
 }

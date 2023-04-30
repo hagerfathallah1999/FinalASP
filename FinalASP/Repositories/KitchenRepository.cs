@@ -43,7 +43,12 @@ namespace FinalASP.Repositories
             List<Kitchen> Kitchens = context.Kitchens.Where(e => e.PhysicalKitchenId == PhyKitchenId).ToList();
             return Kitchens;
         }
+        public void ReserveThisKit(Kitchen Kitchen)
+        {
+            Kitchen.State = true;
+            context.Update(Kitchen);
+            context.SaveChanges();
+        }
 
-        
     }
 }

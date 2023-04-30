@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     [DbContext(typeof(CloudKitchenContext))]
-    [Migration("20230430030758_initial")]
+    [Migration("20230430094928_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -449,12 +449,7 @@ namespace FinalASP.Migrations
                     b.Property<double>("Phone")
                         .HasColumnType("double precision");
 
-                    b.Property<int>("VirtualOrderId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("VirtualOrderId");
 
                     b.ToTable("VirtualKitchens");
                 });
@@ -469,6 +464,9 @@ namespace FinalASP.Migrations
 
                     b.Property<bool>("DeliveryOption")
                         .HasColumnType("boolean");
+
+                    b.Property<int>("KitchenID")
+                        .HasColumnType("integer");
 
                     b.Property<double>("OrderPrice")
                         .HasColumnType("double precision");
@@ -489,6 +487,8 @@ namespace FinalASP.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("KitchenID");
 
                     b.HasIndex("ReservationID");
 
@@ -706,24 +706,21 @@ namespace FinalASP.Migrations
                     b.Navigation("Supplier");
                 });
 
-            modelBuilder.Entity("FinalASP.Models.VirtualKitchen", b =>
+            modelBuilder.Entity("FinalASP.Models.VirtualOrder", b =>
                 {
-                    b.HasOne("FinalASP.Models.VirtualOrder", "VirtualOrder")
+                    b.HasOne("FinalASP.Models.Kitchen", "Kitchen")
                         .WithMany()
-                        .HasForeignKey("VirtualOrderId")
+                        .HasForeignKey("KitchenID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("VirtualOrder");
-                });
-
-            modelBuilder.Entity("FinalASP.Models.VirtualOrder", b =>
-                {
                     b.HasOne("FinalASP.Models.Reservation", "Reservation")
                         .WithMany("VirtualOrders")
                         .HasForeignKey("ReservationID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Kitchen");
 
                     b.Navigation("Reservation");
                 });

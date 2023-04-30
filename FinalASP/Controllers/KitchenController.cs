@@ -57,6 +57,7 @@ namespace FinalASP.Controllers
             return View("KitchenDetails", kitchen);
         }
         
+        
 
     }
 }

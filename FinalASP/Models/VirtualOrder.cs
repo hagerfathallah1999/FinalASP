@@ -14,8 +14,8 @@ namespace FinalASP.Models
         public double OrderPrice { get; set; }
         public bool DeliveryOption { get; set; } // out source delivery option
         public int ReservationID { get; set; }
-        
+        public int KitchenID { get; set; }
         public Reservation Reservation { get; set; }
-        
+        public Kitchen Kitchen { get; set; }
     }
 }

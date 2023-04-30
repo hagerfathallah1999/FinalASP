@@ -49,6 +49,7 @@ namespace FinalASP.Controllers
         public IActionResult Resrve(Reservation reservation)
         {
             IReservationRepo.Insert(reservation);
+            IKitchenRepo.ReserveThisKit(MyGeneralModel.Kitchen);
             return RedirectToAction("index", "Home");
         }
         
