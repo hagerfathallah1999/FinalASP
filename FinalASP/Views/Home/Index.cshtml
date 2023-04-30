@@ -3,31 +3,6 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-   @* <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
-</div>
-
-<<<<<<< HEAD
-
-=======
-@*<partial name="_HomeCardPartial" />
->>>>>>> 7ccadea5fd42d2ca6977aec82d3b07a7d5915b5c
-
-
-
-@*<partial name="_DetailsCard" />*@
-
-
-<partial name="_ResposiveNavPartial"/>
-
-@*By Haget this is the first slider*@
-
-
-<<<<<<< HEAD
-@*<partial name="_FooterPartial" />*@
-
-
 <div>
 
     <div>
@@ -46,21 +21,101 @@
         </section>
     </div>
 
+    <div>
+        <section>
+            <div class="sec-two">
+                <partial name="_SectionTwoPartial" />
+            </div>
+        </section>
+    </div>
+
+    <div>
+        <section>
+            <div class="sec-four">
+                <partial name="_SectionFourPartial" />
+            </div>
+        </section>
+    </div>
+
+    <div>
+        <section>
+            <div class="sec-five">
+                <partial name="_SectionFivePartial" />
+            </div>
+        </section>
+    </div>
+
+    <div>
+        <section>
+            <div class="sec-six">
+                <partial name="_SectionSixPartial" />
+            </div>
+        </section>
+    </div>
+
+    <div>
+        <section>
+            <div class="sec-seven">
+                <partial name="_FooterPartial" />
+            </div>
+        </section>
+    </div>
 </div>
 
 <style>
     .sec-one{
         position: absolute;
-        top: 129px;
+        top: 150px;
         width: 100%;
         left: 0;
         right: 0;
     }
+
+    .sec-two {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+
+    .sec-four{
+        width: 100%;
+        height: 750px;
+        position:absolute;
+        top:1500px;
+        right:0;
+        left:0;
+        background-color:white;
+    }
+
+    .sec-five {
+        width: 100%;
+        height: 750px;
+        position: absolute;
+        top: 2250px;
+        right: 0;
+        left: 0;
+        background-color: #212529;
+    }
+
+    .sec-six {
+        width: 100%;
+        height: 750px;
+        position: absolute;
+        top: 3000px;
+        right: 0;
+        left: 0;
+        background-color: white;
+    }
+
+    .sec-seven {
+        width: 100%;
+        height: 350px;
+        position: absolute;
+        top: 3750px;
+        right: 0;
+        left: 0;
+        background-color: #212529;
+    }
 </style>
-=======
-<partial name="_HomeSliderPartial" />
 
-
-
-@*<partial name="_FooterPartial" />*@
->>>>>>> 7ccadea5fd42d2ca6977aec82d3b07a7d5915b5c
