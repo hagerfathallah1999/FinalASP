@@ -115,25 +115,6 @@ namespace FinalASP.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VirtualKitchens",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Email = table.Column<string>(type: "text", nullable: false),
-                    Address = table.Column<string>(type: "text", nullable: false),
-                    CompanyName = table.Column<string>(type: "text", nullable: false),
-                    LogoImage = table.Column<string>(type: "text", nullable: false),
-                    Phone = table.Column<double>(type: "double precision", nullable: false),
-                    Domain = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_VirtualKitchens", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -314,42 +295,6 @@ namespace FinalASP.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Reservations",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    TotalPrice = table.Column<double>(type: "double precision", nullable: false),
-                    StartDate = table.Column<string>(type: "text", nullable: false),
-                    EndDate = table.Column<string>(type: "text", nullable: false),
-                    VirtualKitchenID = table.Column<int>(type: "integer", nullable: false),
-                    PhysicalKitchenID = table.Column<int>(type: "integer", nullable: false),
-                    kitchenID = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reservations", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Reservations_Kitchens_kitchenID",
-                        column: x => x.kitchenID,
-                        principalTable: "Kitchens",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Reservations_PhysicalKitchens_PhysicalKitchenID",
-                        column: x => x.PhysicalKitchenID,
-                        principalTable: "PhysicalKitchens",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Reservations_VirtualKitchens_VirtualKitchenID",
-                        column: x => x.VirtualKitchenID,
-                        principalTable: "VirtualKitchens",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "PhysicalOrders",
                 columns: table => new
                 {
@@ -381,6 +326,36 @@ namespace FinalASP.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Reservations",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    TotalPrice = table.Column<double>(type: "double precision", nullable: false),
+                    StartDate = table.Column<string>(type: "text", nullable: false),
+                    EndDate = table.Column<string>(type: "text", nullable: false),
+                    VirtualKitchenID = table.Column<int>(type: "integer", nullable: false),
+                    PhysicalKitchenID = table.Column<int>(type: "integer", nullable: false),
+                    kitchenID = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reservations", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Reservations_Kitchens_kitchenID",
+                        column: x => x.kitchenID,
+                        principalTable: "Kitchens",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Reservations_PhysicalKitchens_PhysicalKitchenID",
+                        column: x => x.PhysicalKitchenID,
+                        principalTable: "PhysicalKitchens",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "VirtualOrders",
                 columns: table => new
                 {
@@ -391,23 +366,42 @@ namespace FinalASP.Migrations
                     Orderdestination = table.Column<string>(type: "text", nullable: false),
                     OrderPrice = table.Column<double>(type: "double precision", nullable: false),
                     DeliveryOption = table.Column<bool>(type: "boolean", nullable: false),
-                    ReservationID = table.Column<int>(type: "integer", nullable: false),
-                    KitchenID = table.Column<int>(type: "integer", nullable: false)
+                    ReservationID = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_VirtualOrders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_VirtualOrders_Kitchens_KitchenID",
-                        column: x => x.KitchenID,
-                        principalTable: "Kitchens",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_VirtualOrders_Reservations_ReservationID",
                         column: x => x.ReservationID,
                         principalTable: "Reservations",
                         principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VirtualKitchens",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
+                    Address = table.Column<string>(type: "text", nullable: false),
+                    CompanyName = table.Column<string>(type: "text", nullable: false),
+                    LogoImage = table.Column<string>(type: "text", nullable: false),
+                    Phone = table.Column<double>(type: "double precision", nullable: false),
+                    Domain = table.Column<string>(type: "text", nullable: false),
+                    VirtualOrderId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VirtualKitchens", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_VirtualKitchens_VirtualOrders_VirtualOrderId",
+                        column: x => x.VirtualOrderId,
+                        principalTable: "VirtualOrders",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -489,19 +483,43 @@ namespace FinalASP.Migrations
                 column: "SupplierId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_VirtualOrders_KitchenID",
-                table: "VirtualOrders",
-                column: "KitchenID");
+                name: "IX_VirtualKitchens_VirtualOrderId",
+                table: "VirtualKitchens",
+                column: "VirtualOrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_VirtualOrders_ReservationID",
                 table: "VirtualOrders",
                 column: "ReservationID");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Reservations_VirtualKitchens_VirtualKitchenID",
+                table: "Reservations",
+                column: "VirtualKitchenID",
+                principalTable: "VirtualKitchens",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Kitchens_PhysicalKitchens_PhysicalKitchenId",
+                table: "Kitchens");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Reservations_PhysicalKitchens_PhysicalKitchenID",
+                table: "Reservations");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Reservations_Kitchens_kitchenID",
+                table: "Reservations");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Reservations_VirtualKitchens_VirtualKitchenID",
+                table: "Reservations");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -527,9 +545,6 @@ namespace FinalASP.Migrations
                 name: "SupplierMatrials");
 
             migrationBuilder.DropTable(
-                name: "VirtualOrders");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -542,7 +557,7 @@ namespace FinalASP.Migrations
                 name: "Suppliers");
 
             migrationBuilder.DropTable(
-                name: "Reservations");
+                name: "PhysicalKitchens");
 
             migrationBuilder.DropTable(
                 name: "Kitchens");
@@ -551,7 +566,10 @@ namespace FinalASP.Migrations
                 name: "VirtualKitchens");
 
             migrationBuilder.DropTable(
-                name: "PhysicalKitchens");
+                name: "VirtualOrders");
+
+            migrationBuilder.DropTable(
+                name: "Reservations");
         }
     }
 }

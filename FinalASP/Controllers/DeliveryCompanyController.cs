@@ -71,5 +71,36 @@ namespace FinalASP.Controllers
             ViewData["Delivery"] = Delivery;
             return View(Delivery);
         }
+        public IActionResult Edit(int id)
+        {
+            DeliveryCompany DeliveryCompanyToEdit = IDeliveryCompanyRepo.GetById(id);
+            return View(DeliveryCompanyToEdit);//View=>Edit
+        }
+        //Submite MEthod=post
+        [HttpPost]
+        public IActionResult Edit([FromRoute] int id, DeliveryCompany DeliveryCompanyToEdit, IFormFile logo)
+        {
+            if (ModelState.IsValid == true)
+            {
+                try
+                {
+                    string fileName = logo.FileName;
+                    fileName = Path.GetFileName(fileName);
+                    string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName);
+                    var stream = new FileStream(uploadpath, FileMode.Create);
+                    logo.CopyToAsync(stream);
+                    DeliveryCompanyToEdit.logo = fileName;
+                    IDeliveryCompanyRepo.Update(DeliveryCompanyToEdit);
+
+                    return RedirectToAction("DeliveryProfile");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Name", ex.Message);
+                }
+            }
+
+            return View(DeliveryCompanyToEdit);//View Eidt
+        }
     }
 }
