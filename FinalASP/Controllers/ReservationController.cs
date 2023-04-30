@@ -1,6 +1,7 @@
 ﻿using FinalASP.Models;
 using FinalASP.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace FinalASP.Controllers
 {
@@ -37,5 +38,19 @@ namespace FinalASP.Controllers
             List<Reservation> ReservationModel = IReservationRepo.GetAll();
             return View("Index", ReservationModel);
         }
+        public IActionResult Resrve()
+        {
+            string ChefName = User.Identity.Name;
+            ViewBag.ChefId = IVirtualKitchenRepo.GetChefIdByName(ChefName);
+            ViewBag.Kitchen = MyGeneralModel.Kitchen;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Resrve(Reservation reservation)
+        {
+            IReservationRepo.Insert(reservation);
+            return RedirectToAction("index", "Home");
+        }
+        
     }
 }

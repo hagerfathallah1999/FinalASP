@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalASP.Migrations
 {
     [DbContext(typeof(CloudKitchenContext))]
-    [Migration("20230428165324_MigrationZft")]
-    partial class MigrationZft
+    [Migration("20230430030758_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,6 +112,10 @@ namespace FinalASP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -200,6 +204,10 @@ namespace FinalASP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Locaion")
                         .IsRequired()
                         .HasColumnType("text");
@@ -242,6 +250,9 @@ namespace FinalASP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("PhysicalKitchenID")
+                        .HasColumnType("integer");
+
                     b.Property<int>("PhysicalOrderListID")
                         .HasColumnType("integer");
 
@@ -250,6 +261,8 @@ namespace FinalASP.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PhysicalKitchenID");
 
                     b.HasIndex("PhysicalOrderListID");
 
@@ -285,17 +298,16 @@ namespace FinalASP.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<string>("EndDate")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("PhysicalKitchenID")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<string>("StartDate")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<double>("TotalPrice")
                         .HasColumnType("double precision");
@@ -330,6 +342,10 @@ namespace FinalASP.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -380,6 +396,10 @@ namespace FinalASP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("image")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -414,6 +434,10 @@ namespace FinalASP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("LogoImage")
                         .IsRequired()
                         .HasColumnType("text");
@@ -425,7 +449,12 @@ namespace FinalASP.Migrations
                     b.Property<double>("Phone")
                         .HasColumnType("double precision");
 
+                    b.Property<int>("VirtualOrderId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("VirtualOrderId");
 
                     b.ToTable("VirtualKitchens");
                 });
@@ -611,11 +640,19 @@ namespace FinalASP.Migrations
 
             modelBuilder.Entity("FinalASP.Models.PhysicalOrder", b =>
                 {
+                    b.HasOne("FinalASP.Models.PhysicalKitchen", "PhysicalKitchen")
+                        .WithMany("PhysicalOrders")
+                        .HasForeignKey("PhysicalKitchenID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("FinalASP.Models.PhysicalOrderList", "PhysicalOrderList")
                         .WithMany("PhysicalOrders")
                         .HasForeignKey("PhysicalOrderListID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("PhysicalKitchen");
 
                     b.Navigation("PhysicalOrderList");
                 });
@@ -667,6 +704,17 @@ namespace FinalASP.Migrations
                         .IsRequired();
 
                     b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("FinalASP.Models.VirtualKitchen", b =>
+                {
+                    b.HasOne("FinalASP.Models.VirtualOrder", "VirtualOrder")
+                        .WithMany()
+                        .HasForeignKey("VirtualOrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("VirtualOrder");
                 });
 
             modelBuilder.Entity("FinalASP.Models.VirtualOrder", b =>
@@ -734,6 +782,8 @@ namespace FinalASP.Migrations
             modelBuilder.Entity("FinalASP.Models.PhysicalKitchen", b =>
                 {
                     b.Navigation("OwnedKitchens");
+
+                    b.Navigation("PhysicalOrders");
 
                     b.Navigation("Reservations");
                 });

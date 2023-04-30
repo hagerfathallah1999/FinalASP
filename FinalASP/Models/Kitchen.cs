@@ -26,7 +26,11 @@ namespace FinalASP.Models
         [Required(ErrorMessage = "This field is Required")]
         public double Price { get; set; } // Kitchen rent price per hour
         public int PhysicalKitchenId { get; set; }
+        
         public PhysicalKitchen PhysicalKitchen { get; set; }
+
+        
+
 
     }
 }

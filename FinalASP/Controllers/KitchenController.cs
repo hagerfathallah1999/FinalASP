@@ -1,6 +1,7 @@
 ﻿using FinalASP.Models;
 using FinalASP.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace FinalASP.Controllers
 {
@@ -40,8 +41,20 @@ namespace FinalASP.Controllers
 
         public IActionResult KitchenDetails([FromRoute] int id)
         {
-            Kitchen? KitchenModel = IKitchenRepo.GetById(id);
-            return View("KitchenDetails", KitchenModel);
+            //string ChefName = User.Identity.Name;
+            //int ChefId = IVirtualKitchenRepo.GetChefIdByName(ChefName);
+            Kitchen kitchen = IKitchenRepo.GetById(id);
+            MyGeneralModel.Kitchen = kitchen;
+            //ViewBag.kitchenid = kitchen.Id;
+            //TempData["kitchenPrice"] = kitchen.Price;
+            //TempData["kitchenName"] = kitchen.Name;
+            //TempData["PhykitchenID"] = kitchen.PhysicalKitchenId;
+            //int phyKitId = IKitchenRepo.GetById(id).PhysicalKitchenId;
+            //ViewData["kitchenid"] = id;
+            //ViewData["KitchenModel"] = kitchen;
+            //ViewData["phyKitId"] = phyKitId;
+            //ViewData["ChefId"] = ChefId;
+            return View("KitchenDetails", kitchen);
         }
         
 

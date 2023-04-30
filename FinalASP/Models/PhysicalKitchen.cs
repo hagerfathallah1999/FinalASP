@@ -20,6 +20,6 @@ namespace FinalASP.Models
 		public string Domain { get; set; } = string.Empty;
         public ICollection<Kitchen> OwnedKitchens { get; set; } = new List<Kitchen>();
         public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
-
+        public ICollection<PhysicalOrder> PhysicalOrders { get; set; } = new List<PhysicalOrder>();
     }
 }

@@ -21,7 +21,7 @@ namespace FinalASP
             var builder = WebApplication.CreateBuilder(args);
             //
             builder.Services.AddDbContext<CloudKitchenContext>(options =>
-            options.UseNpgsql(builder.Configuration.GetConnectionString("AM"))
+            options.UseNpgsql(builder.Configuration.GetConnectionString("G"))
             );
             //
 
