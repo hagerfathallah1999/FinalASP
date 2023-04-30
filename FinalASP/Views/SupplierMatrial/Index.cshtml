@@ -1,59 +1,22 @@
 ﻿@model IEnumerable<FinalASP.Models.SupplierMatrial>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "MarketPlace";
 }
+<div>
+<partial name="_ResposiveNavPartial" />
+</div>
+    <div class="col-md-9">
+        @foreach (var item in Model)
+        {
+            <div class="card" style="width: 18rem; display: inline-block;">
+                <img src="\images\@item.Image" class="card-img-top" alt="@item.description" style="height:220px" />
+                <div class="text-center card-body">
+                Price: @item.Price /KG
+                    <p class="text-center card-text">@item.description</p>
+                    <a href="#!" class="text-center btn btn-primary">Add to cart</a>
+                </div>
+            </div>
+        }
+    </div>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Supplier)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Supplier.Capacity)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
