@@ -1,4 +1,4 @@
-﻿@model FinalASP.Models.Reservation
+﻿@*@model FinalASP.Models.Reservation
 @if (User.IsInRole("Chef") && MyGeneralModel.Kitchen.State ==false)
 {
     <h4>Reservation for @MyGeneralModel.Kitchen.Name</h4>
@@ -81,7 +81,7 @@ else
         const timeDiff = endDate.getTime() - startDate.getTime();
         const daysDiff = timeDiff / (1000 * 3600 * 24); // convert milliseconds to days
         var TP = @ViewBag.kitchen.Price * daysDiff;
-        var feePrice =(parseInt((TP * 0.1), 10);
+        var feePrice =parseInt((TP * 0.1), 10);
         nightsEl.textContent = daysDiff;
         Totalprice.textContent = `$${TP}`;
         PriceData.setAttribute("value", `${TP}`);
@@ -171,4 +171,73 @@ else
     }
 
 </style>
+
+*@
+
+
+
+@*@model FinalASP.Models.Reservation
+@if (User.IsInRole("Chef") && MyGeneralModel.Kitchen.State ==false)
+{
+    <h4>Reservation for @MyGeneralModel.Kitchen.Name</h4>
+    <div class="container">
+        <div class="box card">
+            <p class="heading"><strong>$@ViewBag.kitchen.Price &nbsp;</strong> Day </p>
+            <form asp-action="Resrve">
+                <div class="check">
+                    <div id="check-in">
+                        <label for="form-control">Start-Date</label>
+                        <br />
+                        <input asp-for="StartDate" class="form-control" id="Start" type="date" required min="2023-04-29" max="2030-12-31" />
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+                    <div id="check-out">
+                        <label for="form-control">End-Date</label>
+                        <br />
+                        <input asp-for="EndDate" class="form-control" id="End" type="date" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input asp-for="VirtualKitchenID" class="form-control visually-hidden" value="@ViewBag.ChefId">
+                </div>
+                <div class="form-group">
+                    <input asp-for="PhysicalKitchenID" class="form-control visually-hidden" value="@MyGeneralModel.Kitchen.PhysicalKitchenId">
+                </div>
+                <div class="form-group">
+                    <input asp-for="kitchenID" class="form-control visually-hidden" value="@MyGeneralModel.Kitchen.Id">
+                </div>
+                <div class="form-group">
+                    <input asp-for="TotalPrice" class="form-control visually-hidden" id="TP" />
+                </div>
+                <div class="reserve-button">
+                    <button class="submit-btn">Reserve</button>
+                </div>
+            </form>
+
+            <p class="after-button">This is Payment Phase</p>
+            <div class="item">
+                <p id="period" class="period">$@ViewBag.kitchen.Price x <span id="nights"></span> Days </p>
+                <p id="Totalprice" class="Totalprice"></p>
+            </div>
+            <div class="item">
+                <p class="service">Kitchenir service fee</p>
+                <p id="price" class="price"></p>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="Message">
+        <p >You Need To be a Chef So you can reserve This Kitchen</p>
+        <p>Or this Kitchen is already reserved for anothe clint</p>
+        <a href="/Kitchen/index" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Back To Our Kitchens</a>
+    </div>
+}
+
+
+</div>*@
+
+
+
 
