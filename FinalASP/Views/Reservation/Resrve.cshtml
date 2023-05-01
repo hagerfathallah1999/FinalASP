@@ -238,6 +238,318 @@ else
 
 </div>*@
 
+@model FinalASP.Models.Reservation
 
+@if (User.IsInRole("Chef") && MyGeneralModel.Kitchen.State == false)
+{
+    <div class="container">
+
+
+        <div class="box card">
+            <h4 class="subj-name">Reservation for @MyGeneralModel.Kitchen.Name</h4>
+
+            <p class="heading heading-p"><strong>$@ViewBag.kitchen.Price &nbsp;</strong> Day </p>
+
+            <div class="d-flex container-reservation">
+                <form class="part-one" asp-action="Resrve">
+                    <div class="check d-flex flex-column">
+                        <div id="check-in">
+                            <label for="form-control">Start-Date</label>
+                            <br />
+                            <input asp-for="StartDate" class="form-control" id="Start" type="date" required min="2023-04-29" max="2030-12-31" />
+                            <span asp-validation-for="StartDate" class="text-danger"></span>
+                        </div>
+
+                        <div id="check-out">
+                            <label for="form-control">End-Date</label>
+                            <br />
+                            <input asp-for="EndDate" class="form-control" id="End" type="date" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="VirtualKitchenID" class="form-control visually-hidden" value="@ViewBag.ChefId">
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="PhysicalKitchenID" class="form-control visually-hidden" value="@MyGeneralModel.Kitchen.PhysicalKitchenId">
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="kitchenID" class="form-control visually-hidden" value="@MyGeneralModel.Kitchen.Id">
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="TotalPrice" class="form-control visually-hidden" id="TP" />
+                    </div>
+                    <div class="reserve-button">
+                        <button class="submit-btn btn btn-light ">Reserve</button>
+                    </div>
+                </form>
+
+                <table class="part-two table table-dark table-hover" style="width: 400px; margin: 0 auto;">
+                    <thead>
+                        <tr>
+                            <th colspan="3">This is Payment Phase</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Kitchen Price (Per Day)</td>
+                            <td>$@ViewBag.kitchen.Price</td>
+                        </tr>
+                        <tr>
+                            <td>Number of Days</td>
+                            <td><span id="nights"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Total Price</td>
+                            <td id="Totalprice"></td>
+                        </tr>
+                        <tr>
+                            <td>Kitchen Service Fee</td>
+                            <td id="price"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+}
+else
+{
+    <div class="Message">
+        <p>You Need To be a Chef So you can reserve This Kitchen</p>
+        <p>Or this Kitchen is already reserved for another client</p>
+        <a href="/Kitchen/index" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Back To Our Kitchens</a>
+    </div>
+}
+
+
+
+
+<script>
+    const dateStart = document.getElementById('Start');
+    const dateEnd = document.getElementById('End');
+    const nightsEl = document.getElementById('nights');
+    const Totalprice = document.getElementById('Totalprice');
+    const fee = document.getElementById('price');
+    const PriceData = document.getElementById('TP')
+
+    dateStart.addEventListener("change", (e) => {
+        console.log(e.target.valueAsDate.toISOString());
+        dateEnd.setAttribute("min", `${e.target.value}`);
+    });
+
+    dateEnd.addEventListener("change", (e) => {
+        //console.log(e.target.valueAsDate.toISOString());
+        const startDate = new Date(dateStart.valueAsNumber);
+        const endDate = new Date(e.target.valueAsNumber);
+        dateEnd.setAttribute("value", `${startDate}`);
+        e.target.setAttribute("value", `${endDate}`);
+        const timeDiff = endDate.getTime() - startDate.getTime();
+        const daysDiff = timeDiff / (1000 * 3600 * 24); // convert milliseconds to days
+        var TP = @ViewBag.kitchen.Price * daysDiff;
+        var feePrice = parseInt((TP * 0.1), 10);
+        nightsEl.textContent = daysDiff;
+        Totalprice.textContent = `$${TP}`;
+        PriceData.setAttribute("value", `${TP}`);
+        fee.textContent = `$${feePrice}`;
+        //console.log(`Number of days between ${startDate.toDateString()} and ${endDate.toDateString()}: ${Math.floor(daysDiff)}`);
+
+    });
+
+
+
+</script>
+
+
+
+
+
+<style>
+    .subj-name {
+        color: white;
+        left: 29%;
+        position: absolute;
+        top: 55px;
+        font-size: 30px;
+        font-family: monospace;
+    }
+  
+
+    .part-two {
+        left: 40%;
+        height: 300px;
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+        font-family: sans-serif;
+        position: absolute;
+        right: 15%;
+        top: 130%;
+    }
+
+    .heading-p {
+        color:white;
+        position: absolute;
+        left: 40%;
+        top: 17%;
+        font-family: monospace;
+    }
+
+    .container-reservation {
+        position: relative;
+        align-items: center;
+        padding-left: 17%;
+        padding-top: 9%;
+    }
+
+
+    .days-count {
+    }
+
+    .kit-feee {
+        /*        position: absolute;
+                    top: 50%;
+                    left: 44%;*/
+    }
+
+    .price-days {
+        /*        position: absolute;
+
+                    top: 40%;
+                    left: 47%;*/
+    }
+
+    .pay-phase {
+        /*        left: 43%;
+                    top: 30%;*/
+    }
+
+    .res {
+        /*        top: 1%;
+                    position: absolute;
+                    left: 45%;*/
+    }
+
+    .container-booking {
+    }
+
+
+    .container {
+    }
+
+
+    .box {
+        background-color: #212529;
+        margin-top: 4%;
+        left: 5%;
+        position: relative;
+        height: 600px;
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+        font-family: sans-serif;
+        width: 90%;
+    }
+
+    .heading {
+        color: white;
+        font-size: 20px;
+        padding-bottom: 20px;
+    }
+
+    .check {
+        color: white;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        margin: 0%;
+        top: 131%;
+        left: 25%;
+        font-family: monospace;
+    }
+
+    #check-out {
+        margin-top: 15%;
+    }
+
+    #check-in,
+    #check-out {
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 6px;
+        width: 150px;
+        height: 50px;
+        font-size: 12px;
+        padding-left: 20px;
+        padding-top: 10px;
+    }
+
+    .form-control {
+/*        color: #ff3385;*/
+        border: none;
+        padding-top: 3px;
+    }
+
+    .submit-btn {
+        /* bottom: -42%; */
+        width: 200px;
+        height: 52px;
+/*        background-image: linear-gradient(to bottom right, #ff3385, #ff1a75);
+    */ /*background-image: linear-gradient(to bottom right, #ffffff, #ffffff);*/
+        border-radius: 10px;
+      /*  border-color: #ffffff;*/
+        font-weight: bolder;
+        font-size: 20px;
+        color: #212529;
+        position: absolute;
+        left: 36%;
+        justify-content: center;
+        /* padding-top: 15px; */
+        align-items: center;
+        /* bottom: 25%;
+            }
+
+
+            .reserve-button {
+            top: 450%;
+            /* bottom: 20%; */
+        /* bottom: 41%; */
+        position: absolute;
+        display: flex;
+        /* justify-content: center; */
+        /* padding-top: 15px; */
+        /* align-items: center; */
+        left: 35%;
+        top: 450%;
+        }
+        /* width: 46%;
+            }
+
+            .after-button {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                color: #7a7a52;
+                bottom: 12%;
+            }
+
+            .item, p {
+                display: flex;
+                color: #7a7a52;
+                margin-bottom: 2px;
+            }
+
+            .period,
+            .service {
+                width: 25%;
+            }
+
+            .price .Totalprice {
+                width: 25%;
+            }
+            }
+</style>
 
 
