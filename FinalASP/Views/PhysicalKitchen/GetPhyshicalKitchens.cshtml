@@ -5,58 +5,51 @@
     ViewData["Title"] = "GetPhyshicalKitchens";
 }
 <partial name="_ResposiveNavPartial" />
+<div class="container-cards-kit-store">
 <div class="row">
     <partial name="_PhyKitchenSideBarPartial" />
-    <div class="col-md-9">
+    <div class="col">
         @foreach (var item in Model)
         {
             <div class="card" style="width: 18rem; display: inline-block;">
                 <img src="\images\@item.KitchenImage1" class="card-img-top" alt="@item.Description" style="height:220px" />
                 <div class="text-center card-body">
-                    <h5 class="text-center card-title">@item.Name</h5>
-                    @item.Price
-                    <p class="text-center card-text">@item.Description.</p>
-                    <a asp-action="Edit" asp-controller="Kitchen" asp-route-id="@item.Id" class="text-center btn btn-primary">Edit Kitchen</a>
+                    <h5 class="text-center card-title">Name: @item.Name</h5>
+                     <h5 class="text-center card-title">Price: @item.Price</h5>
+                    <p class="text-center card-text">Location: @item.Locaion</p>
+                        <a asp-action="Edit" asp-controller="Kitchen" asp-route-id="@item.Id" class="text-center btn btn-primary">Edit Kitchen</a>
                 </div>
             </div>
         }
-        <p>
-            <a class="btn btn-outline-dark" asp-action="AddKitchenToPhyKitchen">Create New </a>
-        </p>
     </div>
 </div>
+</div>
 @*<script src="~/js/site.js"></script>*@
-
-
-                        <style>
-
-
-    .container-cards-kit{
-        position: relative;
+<style>
+    .container-cards-kit-store {
+        position: absolute;
         top: 150px;
-        width: 84%;
-        left: 16%;
-        height: 601px;
-        background-color: white;
+        width: 100%;
+        left: 0;
+        right: 0;
+        height: 600px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
         overflow-y: auto;
-        padding:1%;
+        padding: 1%;
     }
-
-/*    .cards-kit {
-        position: absolute;
-        top: 5%;
-        right: 2%;
-        width: 80%;
-        flex-basis: calc(100% / 3);
-    }*/
-
     .card {
         margin-bottom: 1%;
-        border-radius:10%;
+        background-color: #212529;
     }
-
-                        </style>
+        .card .card-title,
+        .card .card-text {
+            color: white;
+            font-size: 20px;
+            font-family: monospace;
+        }
+        .card .btn {
+        }
+</style>

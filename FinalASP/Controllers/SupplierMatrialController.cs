@@ -70,7 +70,7 @@ namespace FinalASP.Controllers
             }
             return View(MaterialToEdit);//View Eidt
         }
-        public IActionResult GetMatrialWithID([FromRoute] int id)
+        public IActionResult GetMatrialWithID ([FromRoute]int id)
         {
             SupplierMatrial supplierMatrial = ISupplierMatrialRepo.GetById(id);
             return View();
@@ -81,7 +81,6 @@ namespace FinalASP.Controllers
             return View();
         }
     }
-
     }
 
 

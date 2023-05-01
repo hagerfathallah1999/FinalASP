@@ -3,6 +3,7 @@ using FinalASP.Repositories;
 using FinalASP.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using NuGet.Protocol.Core.Types;
 using System.Security.Principal;
 
@@ -52,7 +53,8 @@ namespace FinalASP.Controllers
             ViewData["Supplier"] = Supplier;
             int SupplierId = ISupplierRepo.GetSupplierIdByName(SupplierName);
             List<SupplierMatrial> MatrialsModel = ISupplierMatrialRepo.GetMatrialsBySupplier(SupplierId);
-            return View("GetSupplierMatrials", MatrialsModel);
+            ViewData["MatrialsModel"] = MatrialsModel;
+            return View("GetSupplierMatrials");
         }
   
         public IActionResult AddMatrialToSupplier()

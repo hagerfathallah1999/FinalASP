@@ -1,29 +1,72 @@
-﻿@model IEnumerable<FinalASP.Models.SupplierMatrial>
-
+﻿
 @{
     ViewData["Title"] = "GetSupplierMatrials";
 }
 <partial name="_ResposiveNavPartial" />
-
-<div class="row">
-        <partial name="_SupplierSidepar" />
-    <div class="col-md-9">
-        @foreach (var item in Model) {
+<div class="container-cards-kit-store">
+    <div class="row">
+    <partial name="_ProfileSidebarPartial" />
+    <div class="col">
+        @foreach (var item in ViewBag.MatrialsModel)
+        {
             <div class="card" style="width: 18rem; display: inline-block;">
                         <img src="\images\@item.Image" class="card-img-top" alt="@item.description" style="height:220px" />
-
                 <div class="text-center card-body">
-                    <h5 class="text-center card-title">@item.name</h5>
-                    @item.Price
-                    <p class="text-center card-text">@item.description.</p>
+                    <h5 class="text-center card-title">Name: @item.name</h5>
+                        <p class="text-center card-text">Price: @item.Price</p>
+                    <p class="text-center card-text">Descreption: @item.description</p>
+
                     <a asp-action="Edit" asp-controller="SupplierMatrial" asp-route-id="@item.id" class="text-center btn btn-primary">Edit your Products</a>
                 </div>
             </div>
         }
-                <p>
-                    <a class="btn btn-outline-dark" asp-action="AddMatrialToSupplier">Add New Product</a>
-                </p>
     </div>
-    
+    </div>
 </div>
 @*<script src="~/js/site.js"></script>*@
+<style>
+
+
+    .container-cards-kit-store {
+        position: absolute;
+        top: 150px;
+        width: 100%;
+        left: 0;
+        right: 0;
+        height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow-y: auto;
+        padding: 1%;
+        /*        flex-basis: calc(100% / 3);
+    */
+    }
+
+    /*    .cards-kit-store {
+            position: absolute;
+            top: 5%;
+            right: 2%;
+            width: 80%;
+            flex-basis: calc(100% / 3);
+        }*/
+
+    .card {
+        margin-bottom: 1%;
+        background-color: #212529;
+    }
+
+
+
+        .card .card-title,
+        .card .card-text {
+            color: white;
+            font-size: 20px;
+            font-family: monospace;
+        }
+
+        .card .btn {
+        }
+
+</style>
