@@ -3,7 +3,7 @@
     ViewData["Title"] = "_DeliveryProfilePartial";
 }
 <section>
-    <div class=" py-4 h-100">
+    <div class=" py-4 h-100 container-side-chif">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-11 mb-5 mb-lg5">
                 <div class="card mb-5" style="border-radius: .5rem;">
@@ -16,7 +16,7 @@
                             <p>Co.Name: @Model.CompanyName</p>
                             <a href="/DeliveryCompany/Edit?id=@Model.id" @*asp-action="Edit" asp-route-id="@Model.id"*@ class="btn btn-secondary mb-5">Edit Profile</a>
                         </div>
-                        <div class="col-md-8">
+                        <div class="card-bg-clr col-md-8">
                             <div class="card-body p-4">
                                 <h6>Information</h6>
                                 <hr class="mt-0 mb-4">
@@ -56,6 +56,23 @@
     </div>
 </section>
 <style>
+
+
+    .container-side-chif {
+        position: absolute;
+        top: 5%;
+        right: 2%;
+        width: 80%;
+    }
+
+    .card-bg-clr {
+        background-color: #212529;
+    }
+
+        .card-bg-clr h6 {
+            color: white;
+        }
+
     .gradient-custom {
         /* Chrome 10-25, Safari 5.1-6 */
         /*        background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));*/
@@ -63,6 +80,38 @@
         background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
     }
 </style>
+@*<style>
+    .gradient-custom {
+        /* Chrome 10-25, Safari 5.1-6 */
+        /*        background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));*/
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+    }
+
+    .container-side {
+        position: absolute;
+        top: 9%;
+        right: 2%;
+        width: 80%;
+    }
+
+    .card {
+        margin-bottom: 1%;
+        background-color: #212529;
+    }
+
+        .card .card-title,
+        .card .card-text {
+            color: white;
+            font-size: 20px;
+            font-family: monospace;
+        }
+        h6{
+        color: white;
+        font-size: 20px;
+        font-family: monospace;
+        }
+</style>*@
 @*<div>
     <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
     <a asp-action="Index">Back to List</a>
