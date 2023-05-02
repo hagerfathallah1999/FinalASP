@@ -7,35 +7,32 @@
 <div class="container mt-5 mb-5">
     <div class="d-flex justify-content-center row">
         <div class="col-md-8">
-            <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
-                <a href="/SupplierMatrial/Index">
-                    Continue Shopping
-                </a>
-            </div>
             <div class="p-2">
                 <h4>Shopping cart</h4>
             </div>
-            @foreach(var item in MyGeneralModel.Matrials){
-            <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
-                <div class="mr-1"><img class="rounded" src="\images\@item.SupplierMatrial.Image" width="70"></div>
-                <div class="d-flex flex-column align-items-center product-details">
-                    <span class="font-weight-bold">@item.SupplierMatrial.name</span>
-                    <div class="d-flex flex-row product-desc">
+            @foreach (var item in MyGeneralModel.Matrials)
+            {
+                <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+                    <div class="mr-1"><img class="rounded" src="\images\@item.SupplierMatrial.Image" width="70"></div>
+                    <div class="d-flex flex-column align-items-center product-details">
+                        <span class="font-weight-bold">@item.SupplierMatrial.name</span>
+                        <div class="d-flex flex-row product-desc">
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex flex-row align-items-center qty">
-                    <h5 class="text-grey mt-1 mr-1 ml-1">@item.Quantity</h5>
-                </div>
-                <div>
+                    <div class="d-flex flex-row align-items-center qty">
+                        <h5 class="text-grey mt-1 mr-1 ml-1">@item.Quantity</h5>
+                    </div>
+                    <div>
                         @{
                             var price = item.SupplierMatrial.Price * item.Quantity;
                         }
                         <h5 class="text-grey">$@price</h5>
+                    </div>
+                    <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
                 </div>
-                <div class="d-flex align-items-center"><i class="fa fa-trash mb-1 text-danger"></i></div>
-            </div>
             }
             <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button">submit your Order</button></div>
+            <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><a href="/SupplierMatrial/Index" class="btn btn-warning btn-block btn-lg ml-2 pay-button">Continue Shopping</a></div>
         </div>
     </div>
 </div>
@@ -43,47 +40,47 @@
 
 <style>
 
-body {
-  font-family: 'Manrope', sans-serif;
-  background:#eee;
-}
+    body {
+        font-family: 'Manrope', sans-serif;
+        background: #eee;
+    }
 
-.size span {
-  font-size: 11px;
-}
+    .size span {
+        font-size: 11px;
+    }
 
-.color span {
-  font-size: 11px;
-}
+    .color span {
+        font-size: 11px;
+    }
 
-.product-deta {
-  margin-right: 70px;
-}
+    .product-deta {
+        margin-right: 70px;
+    }
 
-.gift-card:focus {
-  box-shadow: none;
-}
+    .gift-card:focus {
+        box-shadow: none;
+    }
 
-.pay-button {
-  color: #fff;
-}
+    .pay-button {
+        color: #fff;
+    }
 
-.pay-button:hover {
-  color: #fff;
-}
+        .pay-button:hover {
+            color: #fff;
+        }
 
-.pay-button:focus {
-  color: #fff;
-  box-shadow: none;
-}
+        .pay-button:focus {
+            color: #fff;
+            box-shadow: none;
+        }
 
-.text-grey {
-  color: #a39f9f;
-}
+    .text-grey {
+        color: #a39f9f;
+    }
 
-.qty i {
-  font-size: 11px;
-}
+    .qty i {
+        font-size: 11px;
+    }
 </style>
 
 <link rel="stylesheet"

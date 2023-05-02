@@ -5,8 +5,14 @@
 <partial name="_ResposiveNavPartial" />
 <div class="container-cards-sup-details">
     <div class="row handle-row">
-    <partial name="_SupplierSidebarPartial" />
-        <div class="col handle-col">
+
+        <partial name="_SupplierCheckMarerialPartial" />
+
+
+@*        <partial name="_ProfileSidebarPartial" />
+*@
+
+<div class="col handle-col">
         @foreach (var item in ViewBag.MatrialsModel)
         {
                 <div class="card cards-sup-details" style="width: 18rem; display: inline-block;">

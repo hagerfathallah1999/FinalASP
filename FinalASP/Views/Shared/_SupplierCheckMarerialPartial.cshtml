@@ -1,0 +1,117 @@
+﻿@model FinalASP.Models.Supplier
+
+@{
+    ViewData["Title"] = "_SupplierProfilePartial";
+}
+
+<section>
+    <div class="sidebar-style-sup-mat">
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                        <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                            <span class="d-none d-sm-inline" id="p">P<span id="rofile">rofile</span></span>
+                        </a>
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                            <li>
+                                <a asp-action="GetSupplierMatrials" asp-controller="Supplier" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Products</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Orders</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider d-none d-sm-inline">
+                            </li>
+
+                            <li class="settings-style">
+                                <a href="/VirtualKitchen/ChefProfile" class="nav-link px-0 align-middle">
+                                    <i class="bi bi-gear-fill"></i> <span class="ms-1 d-none d-sm-inline">Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .sidebar-style-sup-mat {
+        bottom: 0;
+        position: fixed;
+        top: 147px;
+        width: 1500px;
+        left: -12px;
+    }
+
+    span {
+        color: white;
+        font-family: monospace;
+        font-size: 25px;
+        font-weight: inherit;
+    }
+
+        span:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+            color: #fff107;
+        }
+
+    i {
+        color: #fff107;
+    }
+
+    .dropdown-divider {
+        height: 1px;
+        width: 160px;
+        position: fixed;
+        bottom: 65px;
+    }
+
+    .settings-style {
+        position: fixed;
+        bottom: 15px;
+    }
+
+
+
+
+    #p:hover {
+        color: white;
+    }
+
+    #rofile:hover {
+        color: white;
+    }
+
+    #p:hover #rofile {
+        color: white;
+    }
+
+    #p {
+        display: flex;
+        /*        color: #ff9200;
+            */ color: white;
+        font-size: 27px;
+        font-family: monospace;
+        font-weight: inherit;
+    }
+
+    #rofile {
+        /*        color: #fff107;*/
+        /*        color: #ff9200;
+            */ color: white;
+        font-size: 27px;
+        font-family: monospace;
+        font-weight: inherit;
+    }
+</style>
